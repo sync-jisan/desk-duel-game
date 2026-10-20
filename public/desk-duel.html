@@ -1039,7 +1039,8 @@ const SFX={
   tick(){SND.tone(1250,.03,{type:'square',vol:.035});},
   trick(){[880,1175,1568,2093].forEach((f,i)=>SND.tone(f,.13,{type:'triangle',vol:.07,delay:i*.06}));},
   buy(){SFX.coin();SND.tone(660,.35,{vol:.06,delay:.15});SND.tone(990,.35,{vol:.04,delay:.22});},
-  deny(){SND.tone(200,.12,{type:'square',vol:.05});SND.tone(150,.15,{type:'square',vol:.05,delay:.08});}};
+  deny(){SND.tone(200,.12,{type:'square',vol:.05});SND.tone(150,.15,{type:'square',vol:.05,delay:.08});},
+  fanfare(){try{if(!SND.ok())return;[523,659,784,1047,1318].forEach((f,i)=>SND.tone(f,.2,{type:'triangle',vol:.1,delay:i*.09}));}catch(e){}}};
 function buzz(ms){if(S.settings.vibrate&&!SND.muted&&navigator.vibrate){try{navigator.vibrate(ms);}catch(e){}}}
 
 /* ============================= PHYSICS =============================
@@ -2241,21 +2242,23 @@ function getSupabase(){
 }
 
 function getPlayerId(){
+  if(S&&S.profile&&S.profile.google_id)return S.profile.google_id;
   let pid=localStorage.getItem('deskduel_player_id');
   if(!pid){pid='p_'+Math.random().toString(36).slice(2,10)+Date.now().toString(36);localStorage.setItem('deskduel_player_id',pid);}
   return pid;
 }
 
 let _syncDebounce=null;
-function syncProgressToCloud(){
+function syncProgressToCloud(immediate){
   const sb=getSupabase();if(!sb||!S)return;
   clearTimeout(_syncDebounce);
-  _syncDebounce=setTimeout(async()=>{
+  const doSync=async()=>{
     try{
       const pid=getPlayerId();
+      const pName=(S.profile&&S.profile.name?S.profile.name:'').trim().slice(0,14)||'Player';
       await sb.from('deskduel_profiles').upsert({
         id:pid,
-        name:(S.profile&&S.profile.name?S.profile.name:'').trim().slice(0,14)||'Player',
+        name:pName,
         email:(S.profile&&S.profile.email)||null,
         avatar_url:(S.profile&&S.profile.avatar_url)||null,
         avatar_color:S.profile&&S.profile.color?S.profile.color:'blue',
@@ -2274,17 +2277,33 @@ function syncProgressToCloud(){
         updated_at:new Date().toISOString()
       });
     }catch(err){console.warn('Supabase profile sync error:',err);}
-  },1200);
+  };
+  if(immediate){
+    return doSync();
+  }else{
+    _syncDebounce=setTimeout(doSync,1000);
+  }
 }
 
 async function loadProgressFromCloud(forcedId){
   const sb=getSupabase();if(!sb)return false;
   const pid=forcedId||getPlayerId();
+  const email=(S&&S.profile&&S.profile.email)||null;
   try{
-    const {data,error}=await sb.from('deskduel_profiles').select('*').eq('id',pid).single();
+    let query=sb.from('deskduel_profiles').select('*');
+    if(email){
+      query=query.or(`id.eq.${pid},email.eq.${email}`);
+    }else{
+      query=query.eq('id',pid);
+    }
+    const {data,error}=await query.order('updated_at',{ascending:false}).limit(1).maybeSingle();
     if(!error&&data){
       let changed=false;
-      if(data.name){S.profile.name=data.name;S.profile.name_customized=true;changed=true;}
+      if(data.name&&data.name!=='Player'){
+        S.profile.name=data.name;
+        S.profile.name_customized=true;
+        changed=true;
+      }
       if(data.avatar_url&&!S.profile.avatar_url){S.profile.avatar_url=data.avatar_url;changed=true;}
       if(data.trophies&&data.trophies>=(S.trophies||0)){S.trophies=data.trophies;changed=true;}
       if(data.coins>S.coins){S.coins=data.coins;changed=true;}
@@ -2294,7 +2313,13 @@ async function loadProgressFromCloud(forcedId){
       if(data.career){S.career=Object.assign({},S.career,data.career);changed=true;}
       if(data.achievements){S.ach=Object.assign({},S.ach,data.achievements);changed=true;}
       if(data.login_streak&&(!S.daily||!S.daily.streak)){S.daily=Object.assign({},S.daily,{streak:data.login_streak});changed=true;}
-      if(changed){persist();refreshCoins(true);if(SCREEN==='menu')RENDER.menu();if(SCREEN==='stats')RENDER.stats();}
+      if(changed){
+        persist();
+        updateNameEverywhere(S.profile.name);
+        refreshCoins(true);
+        if(SCREEN==='menu')RENDER.menu();
+        if(SCREEN==='stats')RENDER.stats();
+      }
       return true;
     }
   }catch(e){console.warn('Cloud restore error:',e);}
@@ -2314,8 +2339,8 @@ async function initGoogleAuth(){
       applyGoogleUser(session.user,false);
     }
     sb.auth.onAuthStateChange(async(event,session)=>{
-      if(event==='SIGNED_IN'&&session&&session.user){
-        applyGoogleUser(session.user,true);
+      if((event==='SIGNED_IN'||event==='INITIAL_SESSION'||event==='TOKEN_REFRESHED')&&session&&session.user){
+        applyGoogleUser(session.user,event==='SIGNED_IN');
       }else if(event==='SIGNED_OUT'){
         applySignedOut();
       }
@@ -2326,29 +2351,34 @@ async function initGoogleAuth(){
 function applyGoogleUser(user,showNotice){
   if(!user)return;
   const meta=user.user_metadata||{};
-  const gName=(meta.full_name||meta.name||(user.email?user.email.split('@')[0]:'')||'Player').trim().slice(0,14);
+  const customName=meta.custom_name||meta.name||meta.full_name||'';
+  const gName=(customName||(user.email?user.email.split('@')[0]:'')||'Player').trim().slice(0,14);
   const gAvatar=meta.avatar_url||meta.picture||'';
   const gEmail=user.email||'';
   const wasSigned=isGoogleSignedIn();
   S.profile.google_id=user.id;
-  if(gName&&(!S.profile.name||S.profile.name==='Player'||!S.profile.name_customized)){
-    S.profile.name=gName;
-  }
+  localStorage.setItem('deskduel_player_id',user.id);
   if(gAvatar)S.profile.avatar_url=gAvatar;
   if(gEmail)S.profile.email=gEmail;
+  if(!S.profile.name_customized||!S.profile.name||S.profile.name==='Player'){
+    if(gName)S.profile.name=gName;
+  }
   if(!wasSigned){
     S.coins=(S.coins||0)+500;
-    openWelcomeBonusModal(S.profile.name||gName,500);
   }
   persist();
-  syncProgressToCloud();
-  loadProgressFromCloud(user.id);
+  updateNameEverywhere(S.profile.name);
   NAV.length=0;
   if(UI.joinCode){
     showScreen('online',true);
   }else{
     showScreen('menu',true);
   }
+  if(!wasSigned){
+    openWelcomeBonusModal(S.profile.name||gName,500);
+  }
+  syncProgressToCloud();
+  loadProgressFromCloud(user.id);
   if(showNotice)toast('Signed in as '+S.profile.name,'Google Cloud Save Active','user','blue');
 }
 
@@ -2453,18 +2483,19 @@ function saveGoogleProfileFromModal(){
   }
   if(!wasSigned){
     S.coins=(S.coins||0)+500;
-    openWelcomeBonusModal(S.profile.name,500);
-  }else{
-    closeModal();
   }
   persist();
-  syncProgressToCloud();
+  closeModal();
   NAV.length=0;
   if(UI.joinCode){
     showScreen('online',true);
   }else{
     showScreen('menu',true);
   }
+  if(!wasSigned){
+    openWelcomeBonusModal(S.profile.name,500);
+  }
+  syncProgressToCloud();
   toast('Google Profile Linked!','Cloud save active for '+S.profile.name,'user','blue');
 }
 
@@ -2474,7 +2505,19 @@ async function handleGoogleSignOut(){
   applySignedOut();
 }
 
-function saveProfileName(newName){
+function updateNameEverywhere(name){
+  if(!name)return;
+  name=name.trim().slice(0,14);
+  if(S&&S.profile)S.profile.name=name;
+  $$('#mLvlName').forEach(el=>{el.textContent=name;});
+  const pIn=$('#profileNameIn');if(pIn&&document.activeElement!==pIn)pIn.value=name;
+  const oIn=$('#onName');if(oIn&&document.activeElement!==oIn)oIn.value=name;
+  if(SCREEN==='stats')RENDER.stats();
+  if(SCREEN==='menu')RENDER.menu();
+  if(SCREEN==='online')renderOnline();
+}
+
+async function saveProfileName(newName){
   newName=(newName||'').trim().replace(/[\r\n\t]/g,'').slice(0,14);
   if(!newName){
     toast('Invalid Name','Name cannot be blank','x','gold');
@@ -2483,13 +2526,25 @@ function saveProfileName(newName){
   S.profile.name=newName;
   S.profile.name_customized=true;
   persist();
-  syncProgressToCloud();
-  if(SCREEN==='stats')RENDER.stats();
-  if(SCREEN==='menu')RENDER.menu();
-  if(SCREEN==='online')renderOnline();
-  const topLvlName=$('#mLvlName');
-  if(topLvlName)topLvlName.textContent=newName;
-  toast('Name Updated','Display name changed to '+S.profile.name,'check','blue');
+  updateNameEverywhere(newName);
+
+  // 1. Immediate sync to Supabase table
+  await syncProgressToCloud(true);
+
+  // 2. Also update Supabase Auth user metadata so session refresh always has it
+  const sb=getSupabase();
+  if(sb){
+    try{
+      await sb.auth.updateUser({
+        data:{
+          name:newName,
+          full_name:newName,
+          custom_name:newName
+        }
+      });
+    }catch(e){console.warn('sb.auth.updateUser notice:',e);}
+  }
+  toast('Name Updated!','Display name saved in cloud as '+S.profile.name,'check','blue');
 }
 
 function openWelcomeBonusModal(name,bonus){
@@ -2506,11 +2561,11 @@ function openWelcomeBonusModal(name,bonus){
         <span>Cloud Save</span><b style="color:#4ade80">Active ✓</b>
         <span>Starting Trophies</span><b>🏆 ${S.trophies||100}</b>
       </div>
-      <button class="btn primary lg block" data-act="closeModal">${ICON('play')} Start Playing</button>
+      <button class="btn primary lg block" data-act="welcomeBonusGo">${ICON('play')} Start Playing</button>
     </div>
   `);
-  confetti();
-  SFX.fanfare();
+  try{confetti();}catch(e){}
+  try{if(SFX.fanfare)SFX.fanfare();else if(SFX.win)SFX.win();}catch(e){}
   refreshCoins(true);
 }
 
@@ -3283,7 +3338,15 @@ RENDER.party=function(){
 };
 $('#partyBody').addEventListener('input',e=>{const el=e.target;if(el.dataset.f==='name'){S.party.slots[+el.dataset.slot].name=el.value;persist();}});
 $('#partyBody').addEventListener('change',e=>{const el=e.target,f=el.dataset.f;if(f==='pen'||f==='skill'){S.party.slots[+el.dataset.slot][f]=el.value;persist();}});
-function saveOnlineName(){const el=$('#onName');if(el){S.profile.name=el.value.trim().slice(0,14);persist();}}
+function saveOnlineName(){
+  const el=$('#onName');
+  if(el&&el.value.trim()){
+    const v=el.value.trim().slice(0,14);
+    if(v&&v!==S.profile.name){
+      saveProfileName(v);
+    }
+  }
+}
 function startParty(){
   const P=S.party,players=P.slots.slice(0,P.n).map((s,i)=>({name:(s.name||'').trim()||(s.type==='cpu'?'CPU '+(i+1):'Player '+(i+1)),color:s.color,
     pen:S.owned[s.pen]?s.pen:S.equip,human:s.type==='human',skill:QUICK_DIFF[s.skill]?QUICK_DIFF[s.skill].skill:.42}));
@@ -3588,7 +3651,7 @@ $('#onlineBody').addEventListener('input',e=>{const el=e.target;
   if(el.id==='onName'){S.profile.name=el.value.slice(0,14);persist();}
   else if(el.id==='joinCode'){const v=el.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);if(v!==el.value)el.value=v;UI.joinCode=v;}});
 $('#onlineBody').addEventListener('change',e=>{const el=e.target;
-  if(el.id==='onName')netUpdateProfile();
+  if(el.id==='onName'){saveOnlineName();netUpdateProfile();}
   else if(el.dataset.cpu&&NET.role==='host'){const p=NET.lobby.players.find(x=>x.pid===el.dataset.cpu);if(p){p.cpu=el.value;netLobbyChanged();}}});
 $('#onlineBody').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='joinCode'){e.preventDefault();ACT.netJoin();}});
 
@@ -3707,7 +3770,10 @@ const ACT={
   back:()=>{SFX.back();if(SCREEN==='online'&&NET.on){ACT.leaveRoom();return;}back();},
   sound:()=>{S.settings.sound=S.settings.sound?0:1;SND.unlock();SND.setVol();persist();syncSoundIcon();if(SCREEN==='settings')RENDER.settings();},
   fullscreen,
-  daily:openDaily,claimDaily,claimDailyBonusRpc:handleClaimDailyBonus,closeModal,welcomeGo:()=>{closeModal();go('career');},
+  daily:openDaily,claimDaily,claimDailyBonusRpc:handleClaimDailyBonus,
+  closeModal:()=>{closeModal();if(isGoogleSignedIn()&&(SCREEN==='auth'||!SCREEN))showScreen('menu',true);},
+  welcomeGo:()=>{closeModal();go('career');},
+  welcomeBonusGo:()=>{closeModal();showScreen('menu',true);},
   signInGoogle:()=>handleGoogleSignIn(),
   signOutGoogle:()=>handleGoogleSignOut(),
   saveGoogleProfile:()=>saveGoogleProfileFromModal(),
@@ -3811,7 +3877,8 @@ function frame(ts){
 }
 function boot(){
   loadSave();SND.setVol();layout();startDemo();
-  if(!isGoogleSignedIn()){
+  const hasAuthInUrl=typeof location!=='undefined'&&(location.hash.includes('access_token')||location.search.includes('code='));
+  if(!isGoogleSignedIn()&&!hasAuthInUrl){
     showScreen('auth');
   }else{
     showScreen('menu');
@@ -3827,11 +3894,9 @@ function boot(){
       go('online');
     }
   }
-  setTimeout(()=>{
-    initGoogleAuth();
-    const sb=getSupabase();
-    if(sb&&isGoogleSignedIn()){loadProgressFromCloud();fetchOpenRooms();}
-  },300);
+  initGoogleAuth();
+  const sb=getSupabase();
+  if(sb&&isGoogleSignedIn()){loadProgressFromCloud();fetchOpenRooms();}
 }
 addEventListener('resize',()=>{layout();DESK_CACHE.clear();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&M.on&&!M.demo&&!online()&&SCREEN===null&&!M.paused&&M.phase!=='roundEnd'&&M.phase!=='matchEnd')pause(true);});

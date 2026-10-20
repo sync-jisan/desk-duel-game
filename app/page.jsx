@@ -1,5 +1,11 @@
-import { redirect } from 'next/navigation';
+import GameMarkup from '@/components/GameMarkup';
+import GameBoot from '@/components/GameBoot';
 
-export default function HomePage() {
-  redirect('/desk-duel.html');
+export default function Home() {
+  return (
+    <>
+      <GameMarkup />
+      <GameBoot />
+    </>
+  );
 }
