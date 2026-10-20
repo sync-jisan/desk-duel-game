@@ -1,0 +1,13 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Environment & Credentials
+*.env
+*.env.*
+!.env.example
+
+# Temporary / IDE files
+.vscode/
+.idea/
+*.log
