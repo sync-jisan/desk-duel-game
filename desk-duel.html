@@ -462,6 +462,23 @@ body.in-match #hud{display:block}
 .daily-box.today{background:rgba(255,194,61,.18);border-color:rgba(255,194,61,.6);color:var(--accent);box-shadow:0 0 12px rgba(255,194,61,.25);animation:pulse-glow 2s infinite}
 .daily-box b{display:block;font-size:13px;color:#fff;margin-top:2px}
 
+/* Auth Gate Screen */
+.auth-page{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100%;padding:24px 16px;text-align:center}
+.auth-card{width:100%;max-width:440px;background:linear-gradient(180deg,rgba(16,24,56,.94),rgba(10,16,40,.98));border:1px solid rgba(255,194,61,.35);border-radius:24px;padding:32px 24px;box-shadow:0 20px 50px -10px rgba(0,0,0,.7),0 0 30px rgba(255,194,61,.15);position:relative;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.auth-logo{width:72px;height:72px;margin:0 auto 14px;border-radius:20px;background:linear-gradient(135deg,rgba(255,194,61,.25),rgba(59,130,246,.25));border:1px solid var(--line2);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.auth-logo svg{width:40px;height:40px;color:var(--accent)}
+.auth-title{font-size:32px;font-weight:900;letter-spacing:-.02em;margin:0 0 4px;background:linear-gradient(180deg,#ffffff,#cbd5e1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.auth-sub{font-size:13.5px;color:var(--muted);margin:0 0 20px;line-height:1.4}
+.auth-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;text-align:left}
+.auth-feat{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:12px}
+.auth-feat b{display:block;font-size:12.5px;color:#fff;margin-bottom:2px}
+.auth-feat small{color:var(--muted);font-size:11px;display:block}
+.auth-btn-wrap{margin-top:6px}
+.btn-google.hero{height:54px;font-size:16px;border-radius:16px;box-shadow:0 6px 20px rgba(255,255,255,.15),0 4px 12px rgba(0,0,0,.4)}
+.btn-google.hero:hover{box-shadow:0 8px 25px rgba(255,255,255,.25),0 6px 16px rgba(0,0,0,.5)}
+.auth-footnote{font-size:11.5px;color:var(--dim);margin-top:14px;line-height:1.4}
+.auth-bonus-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,rgba(255,194,61,.22),rgba(245,158,11,.16));border:1px solid rgba(255,194,61,.5);color:var(--accent);font-weight:800;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:14px;box-shadow:0 0 16px rgba(255,194,61,.2)}
+
 /* Full Device Responsiveness */
 @media (max-width:560px){
   .tile{min-height:100px;padding:12px}.tile b{font-size:16px}.tile small{font-size:11.5px}.tile .ti{width:34px;height:34px;margin-bottom:8px}
@@ -565,8 +582,57 @@ body.in-match #hud{display:block}
 <div class="round-card" id="roundCard" data-act="roundNext"></div>
 <div id="toasts" aria-live="polite"></div>
 
+<!-- ============ AUTH GATE SCREEN ============ -->
+<section class="screen solid active" id="scr-auth">
+  <div class="scroll">
+    <div class="auth-page">
+      <div class="auth-card">
+        <div class="auth-bonus-badge">
+          <svg class="coin" style="width:16px;height:16px"><use href="#i-coin"/></svg>
+          <span>New Player Bonus: +500 Coins</span>
+        </div>
+        <div class="auth-logo">
+          <svg class="i"><use href="#i-pen"/></svg>
+        </div>
+        <h1 class="auth-title">Desk Duel</h1>
+        <p class="auth-sub">Pen Fighting Championship · Real-Time Physics &amp; Cloud Multiplayer</p>
+
+        <div class="auth-features">
+          <div class="auth-feat">
+            <b>🎁 +500 Coins</b>
+            <small>Instant starter wallet</small>
+          </div>
+          <div class="auth-feat">
+            <b>☁️ Cloud Save</b>
+            <small>Sync progress anywhere</small>
+          </div>
+          <div class="auth-feat">
+            <b>🏆 Global Ranks</b>
+            <small>Live world leaderboard</small>
+          </div>
+          <div class="auth-feat">
+            <b>⚡ Multiplayer</b>
+            <small>Online room duels</small>
+          </div>
+        </div>
+
+        <div class="auth-btn-wrap">
+          <button class="btn-google block hero" data-act="signInGoogle">
+            <svg><use href="#i-google"/></svg>
+            <span>Continue with Google</span>
+          </button>
+        </div>
+
+        <p class="auth-footnote">
+          🔒 Sign in with Google is required to play. It syncs your pen collection, coins, trophies, and duel stats.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ MAIN MENU ============ -->
-<section class="screen active" id="scr-menu">
+<section class="screen" id="scr-menu">
   <header class="topbar">
     <button class="profile btn ghost" style="padding:0;border:0;height:auto;gap:10px" data-act="go" data-to="stats" aria-label="Profile and stats">
       <div class="profile-avatar-wrap" id="mAvatarWrap">
@@ -1859,6 +1925,7 @@ function chooseLand(){const top=M.demo?0:118,bot=M.demo?0:100,aw=window.innerWid
 function posesOf(W){return W.bodies.map(b=>{if(b.state==='on'){b.x=q4(b.x);b.y=q4(b.y);b.a=q4(b.a);}return [b.x,b.y,b.a,b.state==='on'?0:b.state==='fall'?1:2];});}
 
 function startMatch(o){
+  if(!o.demo&&!isGoogleSignedIn()){showScreen('auth');return;}
   M.opts=o;M.on=true;M.demo=!!o.demo;M.mode=o.mode;M.arena=ARENA(o.arena);M.need=o.need;M.clock=o.clock||0;M.career=o.career||null;M.diff=o.diff||null;
   const cols=distinctColors(o.players.map(p=>p.col||teamColor(p.color)));
   M.players=o.players.map((p,i)=>({name:p.name,col:cols[i],pen:p.pen,human:!!p.human,skill:p.skill||0,boss:!!p.boss,pid:p.pid||null,score:0,out:false,kos:0,selfKos:0,idx:i}));
@@ -2113,11 +2180,11 @@ function pause(on){
   M.paused=on&&!online();if(on){DRAG=null;hidePower();netSendAim(null);}
   NAV.length=0;showScreen(on?'pause':null);
 }
-function toMenu(){M.paused=false;hideRoundCard();document.body.classList.remove('in-match');startDemo();NAV.length=0;showScreen('menu');}
+function toMenu(){M.paused=false;hideRoundCard();document.body.classList.remove('in-match');startDemo();NAV.length=0;if(!isGoogleSignedIn())showScreen('auth');else showScreen('menu');}
 
 /* ============================== INPUT ============================== */
 function toWorld(cx,cy){return {x:(cx-VIEW.ox)/VIEW.sc,y:(cy-VIEW.oy)/VIEW.sc};}
-function canAim(){return M.on&&!M.demo&&!M.paused&&M.phase==='aim'&&isLocal(M.players[M.turn])&&SCREEN===null&&!modalOpen();}
+function canAim(){return isGoogleSignedIn()&&M.on&&!M.demo&&!M.paused&&M.phase==='aim'&&isLocal(M.players[M.turn])&&SCREEN===null&&!modalOpen();}
 cv.addEventListener('pointerdown',e=>{
   SND.unlock();if(!canAim()||DRAG)return;
   const b=M.W.bodies[M.turn],p=toWorld(e.clientX,e.clientY),ux=Math.cos(b.a),uy=Math.sin(b.a);
@@ -2281,9 +2348,12 @@ function applyGoogleUser(user,showNotice){
   persist();
   syncProgressToCloud();
   loadProgressFromCloud(user.id);
-  if(SCREEN==='menu')RENDER.menu();
-  if(SCREEN==='stats')RENDER.stats();
-  if(SCREEN==='online')renderOnline();
+  NAV.length=0;
+  if(UI.joinCode){
+    showScreen('online',true);
+  }else{
+    showScreen('menu',true);
+  }
   if(showNotice)toast('Signed in as '+S.profile.name,'Google Cloud Save Active','user','blue');
 }
 
@@ -2293,10 +2363,9 @@ function applySignedOut(){
   S.profile.avatar_url='';
   S.profile.name='Player';
   persist();
-  toast('Signed Out','Playing in guest mode','user','blue');
-  if(SCREEN==='menu')RENDER.menu();
-  if(SCREEN==='stats')RENDER.stats();
-  if(SCREEN==='online')renderOnline();
+  toast('Signed Out','Please sign in with Google to play','user','blue');
+  NAV.length=0;
+  showScreen('auth',true);
 }
 
 async function handleGoogleSignIn(){
@@ -2395,9 +2464,12 @@ function saveGoogleProfileFromModal(){
   }
   persist();
   syncProgressToCloud();
-  if(SCREEN==='menu')RENDER.menu();
-  if(SCREEN==='stats')RENDER.stats();
-  if(SCREEN==='online')renderOnline();
+  NAV.length=0;
+  if(UI.joinCode){
+    showScreen('online',true);
+  }else{
+    showScreen('menu',true);
+  }
   toast('Google Profile Linked!','Cloud save active for '+S.profile.name,'user','blue');
 }
 
@@ -3009,14 +3081,23 @@ function copyText(t){
 }
 
 /* =============================== UI =============================== */
-let SCREEN='menu';const NAV=[];const RENDER={};const UI={shopTab:'pens',careerPen:null};
+let SCREEN='auth';const NAV=[];const RENDER={};const UI={shopTab:'pens',careerPen:null};
 function showScreen(id,fresh){
+  if(!isGoogleSignedIn()&&id!=='auth'){
+    id='auth';
+  }
   $$('.screen').forEach(s=>s.classList.toggle('active',s.id==='scr-'+id));SCREEN=id||null;
   if(id&&RENDER[id])RENDER[id]();
   if(id&&fresh){const sc=$('#scr-'+id+' .scroll');if(sc)sc.scrollTop=0;}
 }
-function go(id){if(SCREEN&&SCREEN!==id)NAV.push(SCREEN);showScreen(id,true);}
-function back(){const prev=NAV.pop();if(prev)showScreen(prev);else if(M.on&&!M.demo&&M.phase!=='matchEnd')showScreen('pause');else showScreen('menu');}
+function go(id){
+  if(!isGoogleSignedIn()){showScreen('auth');return;}
+  if(SCREEN&&SCREEN!==id)NAV.push(SCREEN);showScreen(id,true);
+}
+function back(){
+  if(!isGoogleSignedIn()){showScreen('auth');return;}
+  const prev=NAV.pop();if(prev)showScreen(prev);else if(M.on&&!M.demo&&M.phase!=='matchEnd')showScreen('pause');else showScreen('menu');
+}
 function refreshCoins(bump){$$('.coins').forEach(el=>el.textContent=fmt(S.coins));if(bump)$$('.coin-pill').forEach(el=>{el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');});}
 function openModal(html){$('#dialog').innerHTML=html;$('#modal').classList.add('active');requestAnimationFrame(()=>drawPicks($('#dialog')));}
 function closeModal(){$('#modal').classList.remove('active');}
@@ -3675,17 +3756,28 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 function boot(){
-  loadSave();SND.setVol();layout();startDemo();showScreen('menu');
+  loadSave();SND.setVol();layout();startDemo();
+  if(!isGoogleSignedIn()){
+    showScreen('auth');
+  }else{
+    showScreen('menu');
+  }
   requestAnimationFrame(t=>{lastT=t;requestAnimationFrame(frame);});
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{LAYERS.key='';DESK_CACHE.clear();});
   let room='';try{room=(new URLSearchParams(location.search).get('room')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);}catch(e){}
-  if(room.length===5){UI.joinCode=room;S.seenWelcome=1;persist();go('online');}
-  else if(!S.seenWelcome)setTimeout(welcome,800);
+  if(room.length===5){
+    UI.joinCode=room;
+    S.seenWelcome=1;
+    persist();
+    if(isGoogleSignedIn()){
+      go('online');
+    }
+  }
   setTimeout(()=>{
     initGoogleAuth();
     const sb=getSupabase();
-    if(sb){loadProgressFromCloud();fetchOpenRooms();}
-  },500);
+    if(sb&&isGoogleSignedIn()){loadProgressFromCloud();fetchOpenRooms();}
+  },300);
 }
 addEventListener('resize',()=>{layout();DESK_CACHE.clear();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&M.on&&!M.demo&&!online()&&SCREEN===null&&!M.paused&&M.phase!=='roundEnd'&&M.phase!=='matchEnd')pause(true);});
