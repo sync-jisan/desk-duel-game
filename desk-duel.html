@@ -403,12 +403,26 @@ body.in-match #hud{display:block}
 .stand .sel{height:36px;font-size:13px}
 .stand .icon-btn{width:36px;height:36px}
 
-/* Supabase Cloud & Multiplayer UI */
-.cloud-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:14px;background:rgba(12,20,44,.75);border:1px solid var(--line);margin-bottom:12px;font-size:13px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.cloud-tag{display:inline-flex;align-items:center;gap:7px;font-weight:700}
+/* Google Auth & Player Profile & Cloud Save */
+.btn-google{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:46px;padding:0 18px;border-radius:12px;background:#ffffff;color:#1f2937;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.2);box-shadow:0 3px 12px rgba(0,0,0,.35);cursor:pointer;white-space:nowrap;transition:transform .08s,filter .15s,box-shadow .15s}
+.btn-google:hover{filter:brightness(1.04);transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.btn-google:active{transform:translateY(1px)}
+.btn-google svg{width:20px;height:20px;flex:none}
+.btn-google.block{width:100%;height:48px;font-size:15px}
+
+.google-avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 10px rgba(255,194,61,.35);flex:none}
+.profile-avatar-wrap{position:relative;width:40px;height:40px;flex:none;display:grid;place-items:center}
+.profile-avatar-wrap .google-avatar{width:100%;height:100%}
+.profile-avatar-wrap .lvl-badge{position:absolute;bottom:-3px;right:-3px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:10px;font-weight:900;display:grid;place-items:center;border:1.5px solid var(--bg0)}
+
+.profile-header-card{display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;background:linear-gradient(135deg,rgba(26,38,82,.85),rgba(14,21,48,.92));border:1px solid var(--line2);margin-bottom:14px;box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+.cloud-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;background:rgba(34,197,94,.16);color:#4ade80;border:1px solid rgba(34,197,94,.35)}
+.cloud-pill.offline{background:rgba(245,158,11,.14);color:#fbbf24;border-color:rgba(245,158,11,.35)}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.3);animation:pulse-glow 1.8s infinite}
 .pulse-dot.warn{background:#f59e0b;box-shadow:0 0 0 2px rgba(245,158,11,.3)}
 @keyframes pulse-glow{0%{transform:scale(.95);box-shadow:0 0 0 0 rgba(34,197,94,.7)}70%{transform:scale(1.15);box-shadow:0 0 0 6px rgba(34,197,94,0)}100%{transform:scale(.95);box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+
+/* Multiplayer Room Cards */
 .room-card{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(14,23,52,.7);border:1px solid var(--line);margin-bottom:8px;transition:border-color .15s,background .15s,transform .1s}
 .room-card:hover{border-color:rgba(255,194,61,.5);background:rgba(22,34,74,.85);transform:translateY(-1px)}
 .room-card .code{font-size:17px;font-weight:900;letter-spacing:.08em;color:var(--accent);font-variant-numeric:tabular-nums;flex:none}
@@ -417,9 +431,41 @@ body.in-match #hud{display:block}
 .room-card .info small{display:block;color:var(--muted);font-size:12px}
 .room-count{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800;background:rgba(255,255,255,.08);color:var(--muted);flex:none}
 
+/* Global Leaderboard UI */
+.lb-podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;align-items:end;gap:10px;margin:14px 0 18px}
+.lb-step{text-align:center;background:rgba(14,22,50,.8);border:1px solid var(--line);border-radius:16px;padding:14px 6px 10px;position:relative}
+.lb-step.first{background:linear-gradient(180deg,rgba(255,194,61,.22),rgba(18,27,58,.95));border-color:rgba(255,194,61,.55);transform:scale(1.04);box-shadow:0 0 25px rgba(255,194,61,.2)}
+.lb-step .crown{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:22px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.lb-step .av-wrap{width:46px;height:46px;margin:0 auto 6px;position:relative}
+.lb-step.first .av-wrap{width:56px;height:56px}
+.lb-step .av-img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--line2)}
+.lb-step.first .av-img{border-color:var(--accent);box-shadow:0 0 14px rgba(255,194,61,.6)}
+.lb-step b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:96px;margin:0 auto}
+.lb-step .trophies{color:var(--accent);font-size:12px;font-weight:800;margin-top:2px}
+.lb-list{display:flex;flex-direction:column;gap:6px;max-height:360px;overflow-y:auto;touch-action:pan-y;overscroll-behavior:contain;padding-right:2px}
+.lb-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:14px;background:rgba(12,20,44,.7);border:1px solid var(--line);transition:background .15s}
+.lb-item.me{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.4)}
+.lb-rank{width:26px;font-weight:900;font-size:14px;text-align:center;color:var(--muted);flex:none}
+.lb-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line2)}
+.lb-info{flex:1;min-width:0}
+.lb-info b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-info small{color:var(--muted);font-size:12px}
+.lb-stats{text-align:right;flex:none}
+.lb-stats .tr{color:var(--accent);font-weight:900;font-size:14px}
+.lb-stats small{color:var(--muted);font-size:11px}
+.lb-sticky-me{margin-top:12px;padding:12px 14px;border-radius:16px;background:linear-gradient(90deg,rgba(56,189,248,.18),rgba(167,139,250,.18));border:1px solid rgba(56,189,248,.45);display:flex;align-items:center;gap:12px}
+
+/* Daily Streak UI */
+.daily-streak-bar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:12px 0 16px}
+.daily-box{background:rgba(12,20,44,.6);border:1px solid var(--line);border-radius:10px;padding:8px 4px;text-align:center;font-size:11px;color:var(--muted);transition:transform .15s}
+.daily-box.done{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.4);color:#86efac}
+.daily-box.today{background:rgba(255,194,61,.18);border-color:rgba(255,194,61,.6);color:var(--accent);box-shadow:0 0 12px rgba(255,194,61,.25);animation:pulse-glow 2s infinite}
+.daily-box b{display:block;font-size:13px;color:#fff;margin-top:2px}
+
+/* Full Device Responsiveness */
 @media (max-width:560px){
-  .tile{min-height:104px;padding:14px}.tile b{font-size:17px}.tile small{font-size:12px}.tile .ti{width:36px;height:36px;margin-bottom:10px}
-  .tile.hero{min-height:124px}
+  .tile{min-height:100px;padding:12px}.tile b{font-size:16px}.tile small{font-size:11.5px}.tile .ti{width:34px;height:34px;margin-bottom:8px}
+  .tile.hero{min-height:118px}
   .pc .nm small{display:none}
   .pc{padding:5px 8px 5px 5px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:7px;row-gap:3px;align-items:center}
   .pc .av{grid-row:1/3}.pc .pips{grid-column:2}
@@ -429,16 +475,27 @@ body.in-match #hud{display:block}
   .set{flex-wrap:wrap}
   .set .seg{min-width:0;flex:1 1 100%}
   .set input[type=range]{max-width:none!important;flex:1 1 100%}
-  .profile .meta{display:none}
+  .profile-header-card{flex-direction:column;text-align:center;gap:10px}
+  .profile-header-card .google-avatar{width:56px;height:56px}
+  .lb-podium{gap:6px}
+  .lb-step b{max-width:74px;font-size:12px}
+  .daily-streak-bar{gap:3px}
+  .daily-box{padding:6px 2px;font-size:10px}
+  .daily-box b{font-size:11px}
 }
-@media (max-width:380px){ .pc .nm b{font-size:12px} }
+@media (max-width:380px){
+  .pc .nm b{font-size:12px}
+  .topbar h2{font-size:18px}
+  .btn.lg{height:52px;font-size:17px;padding:0 18px}
+  .daily-box b{font-size:10px}
+}
 @media (max-height:620px){
-  .brand svg{display:none}.brand h1{font-size:44px}.menu-body{gap:14px}.tile{min-height:88px}.tile.hero{min-height:100px}
-  .tile .ti{width:34px;height:34px}.tile small{display:none}.tile.hero small{display:block}
+  .brand svg{display:none}.brand h1{font-size:40px}.menu-body{gap:10px}.tile{min-height:82px}.tile.hero{min-height:96px}
+  .tile .ti{width:32px;height:32px}.tile small{display:none}.tile.hero small{display:block}
 }
 @media (max-height:520px) and (orientation:landscape){
   .hud-meta{display:none}.hud-top{padding-top:calc(6px + var(--st))}.hud-row{max-width:calc(100% - 60px)}
-  .hud-bottom{height:calc(64px + var(--sb));padding-bottom:calc(8px + var(--sb))}.turn-pill{height:36px;font-size:13px}.power{height:20px}
+  .hud-bottom{height:calc(60px + var(--sb));padding-bottom:calc(6px + var(--sb))}.turn-pill{height:34px;font-size:12px}.power{height:18px}
   .hud-pause{top:calc(6px + var(--st))}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
@@ -481,6 +538,12 @@ body.in-match #hud{display:block}
     <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.2"/><path d="M15.5 8.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7.5a2 2 0 0 0 2 2h2.5"/></symbol>
     <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></symbol>
     <symbol id="i-weight" viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></symbol>
+    <symbol id="i-google" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.15z"/>
+      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.15C3.25 21.35 7.31 24 12 24z"/>
+      <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.27C.46 8.2 0 10.04 0 12s.46 3.8 1.27 5.42l4.01-3.15z"/>
+      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.65 1.27 6.58l4.01 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -505,13 +568,16 @@ body.in-match #hud{display:block}
 <!-- ============ MAIN MENU ============ -->
 <section class="screen active" id="scr-menu">
   <header class="topbar">
-    <button class="profile btn ghost" style="padding:0;border:0;height:auto" data-act="go" data-to="stats" aria-label="Profile and stats">
-      <div class="lvl" id="mLvl"><span>1</span></div>
-      <div class="meta" style="text-align:left"><b id="mLvlName">Level 1</b><small id="mXp">0 / 250 XP</small></div>
+    <button class="profile btn ghost" style="padding:0;border:0;height:auto;gap:10px" data-act="go" data-to="stats" aria-label="Profile and stats">
+      <div class="profile-avatar-wrap" id="mAvatarWrap">
+        <div class="lvl" id="mLvl"><span>1</span></div>
+      </div>
+      <div class="meta" style="text-align:left"><b id="mLvlName">Player</b><small id="mXp">Level 1 · 0/250 XP</small></div>
     </button>
     <div class="sp"></div>
     <button class="coin-pill" data-act="go" data-to="shop" aria-label="Coins — open shop"><svg class="coin"><use href="#i-coin"/></svg><span class="coins">0</span></button>
-    <button class="icon-btn" id="giftBtn" data-act="daily" aria-label="Daily reward"><svg class="i"><use href="#i-gift"/></svg><span class="dot hidden"></span></button>
+    <button class="icon-btn" data-act="openLeaderboard" aria-label="Global Leaderboard" title="Leaderboard"><svg class="i"><use href="#i-trophy"/></svg></button>
+    <button class="icon-btn" id="giftBtn" data-act="daily" aria-label="Daily reward" title="Daily Reward"><svg class="i"><use href="#i-gift"/></svg><span class="dot hidden"></span></button>
     <button class="icon-btn" data-act="sound" aria-label="Toggle sound"><svg class="i"><use class="sndic" href="#i-vol"/></svg></button>
     <button class="icon-btn" data-act="go" data-to="settings" aria-label="Settings"><svg class="i"><use href="#i-gear"/></svg></button>
   </header>
@@ -537,11 +603,13 @@ body.in-match #hud{display:block}
       <button class="tile" id="shopTile" data-act="go" data-to="shop"><span class="ti"><svg class="i"><use href="#i-bag"/></svg></span><b>Pen Shop</b><small>Heavier pens, tougher leagues</small></button>
     </nav>
     <div class="menu-links">
+      <button class="btn" data-act="openLeaderboard"><svg class="i"><use href="#i-trophy"/></svg>Leaderboard</button>
+      <button class="btn" data-act="daily"><svg class="i"><use href="#i-gift"/></svg>Daily Bonus</button>
+      <button class="btn" data-act="go" data-to="stats"><svg class="i"><use href="#i-user"/></svg>Profile &amp; Stats</button>
       <button class="btn" data-act="go" data-to="how"><svg class="i"><use href="#i-help"/></svg>How to play</button>
-      <button class="btn" data-act="go" data-to="stats"><svg class="i"><use href="#i-chart"/></svg>Stats &amp; trophies</button>
       <button class="btn" data-act="fullscreen"><svg class="i"><use href="#i-expand"/></svg>Fullscreen</button>
     </div>
-    <div class="version">v2.0 · progress saves on this device</div>
+    <div class="version" id="mCloudStatus">v2.0 · ☁️ Sign in with Google for Cloud Save</div>
   </div>
 </section>
 
@@ -801,7 +869,7 @@ const LEAGUES=[
 const ALL_OPP=LEAGUES.flatMap((l,li)=>l.opp.map((o,oi)=>Object.assign(o,{league:li,idx:oi})));
 
 const QUICK_DIFF={easy:{skill:.14,win:20,n:'Easy'},medium:{skill:.42,win:35,n:'Medium'},hard:{skill:.68,win:55,n:'Hard'},expert:{skill:.92,win:80,n:'Expert'}};
-const DAILY=[40,60,80,100,130,160,250];
+const DAILY=[150,200,250,300,350,400,500];
 
 const ACH=[
   {id:'first',  name:'First Flick',      desc:'Win your first match',                     reward:50,  ic:'flag',   v:s=>s.stats.wins,        n:1},
@@ -826,7 +894,7 @@ const ACH=[
 /* ============================== SAVE =============================== */
 const SAVE_KEY='deskduel.save.v2';
 const DEF_SETTINGS={sound:1,volume:.8,vibrate:1,shake:1,guide:'path',slowmo:1,quality:'high',tut:0};
-function defaultSave(){return {v:2,coins:250,xp:0,level:1,owned:{ballpoint:1},equip:'ballpoint',desks:{classroom:1},career:{},
+function defaultSave(){return {v:2,coins:500,xp:0,level:1,trophies:100,owned:{ballpoint:1},equip:'ballpoint',desks:{classroom:1},career:{},
   stats:{matches:0,wins:0,losses:0,streak:0,bestStreak:0,rounds:0,roundsLost:0,kos:0,selfKos:0,shots:0,tricks:0,coinsEarned:0,
     doubleKos:0,bankKos:0,spinKos:0,longKos:0,chainKos:0,closeCalls:0,flawless:0,expertWins:0,party:0,party3:0,careerWins:0,online:0,onlineWins:0},
   ach:{},daily:{last:'',streak:0},settings:Object.assign({},DEF_SETTINGS),
@@ -835,7 +903,7 @@ function defaultSave(){return {v:2,coins:250,xp:0,level:1,owned:{ballpoint:1},eq
     {name:'Player 1',type:'human',skill:'medium',color:'blue',pen:'ballpoint'},
     {name:'Player 2',type:'human',skill:'medium',color:'red',pen:'ballpoint'},
     {name:'CPU',type:'cpu',skill:'medium',color:'green',pen:'ballpoint'}]},
-  profile:{color:'blue',name:''},online:{arena:'classroom',need:2,clock:20,pen:''},seenWelcome:0};}
+  profile:{color:'blue',name:'Player',avatar_url:'',email:'',google_id:'',trophies:100},online:{arena:'classroom',need:2,clock:20,pen:''},seenWelcome:0};}
 function merge(base,over){
   if(!over||typeof over!=='object')return base;
   for(const k of Object.keys(over)){
@@ -850,6 +918,9 @@ function loadSave(){
   let raw=null;try{raw=localStorage.getItem(SAVE_KEY);}catch(e){}
   if(raw){try{S=merge(defaultSave(),JSON.parse(raw));}catch(e){S=null;}}
   if(!S){S=defaultSave();migrateV1();}
+  if(S.trophies===undefined)S.trophies=100;
+  if(!S.profile)S.profile={color:'blue',name:'Player',avatar_url:'',email:'',google_id:'',trophies:100};
+  if(!S.profile.name)S.profile.name='Player';
   if(!S.owned[S.equip])S.equip='ballpoint';
   if(!S.desks.classroom)S.desks.classroom=1;
 }
@@ -2124,12 +2195,16 @@ function syncProgressToCloud(){
       const pid=getPlayerId();
       await sb.from('deskduel_profiles').upsert({
         id:pid,
-        name:(S.profile.name||'').trim()||'Player',
-        avatar_color:S.profile.color||'blue',
+        name:(S.profile&&S.profile.name?S.profile.name:'').trim().slice(0,14)||'Player',
+        email:(S.profile&&S.profile.email)||null,
+        avatar_url:(S.profile&&S.profile.avatar_url)||null,
+        avatar_color:S.profile&&S.profile.color?S.profile.color:'blue',
         equipped_pen:S.equip||'ballpoint',
         coins:S.coins||0,
         xp:S.xp||0,
         level:S.level||1,
+        trophies:S.trophies||100,
+        login_streak:S.daily?S.daily.streak:1,
         stats:S.stats||{},
         owned_pens:S.owned||{},
         owned_desks:S.desks||{},
@@ -2139,7 +2214,7 @@ function syncProgressToCloud(){
         updated_at:new Date().toISOString()
       });
     }catch(err){console.warn('Supabase profile sync error:',err);}
-  },1500);
+  },1200);
 }
 
 async function loadProgressFromCloud(forcedId){
@@ -2149,17 +2224,391 @@ async function loadProgressFromCloud(forcedId){
     const {data,error}=await sb.from('deskduel_profiles').select('*').eq('id',pid).single();
     if(!error&&data){
       let changed=false;
+      if(data.name&&(!S.profile.name||S.profile.name==='Player')){S.profile.name=data.name;changed=true;}
+      if(data.avatar_url&&!S.profile.avatar_url){S.profile.avatar_url=data.avatar_url;changed=true;}
+      if(data.trophies&&data.trophies>=(S.trophies||0)){S.trophies=data.trophies;changed=true;}
       if(data.coins>S.coins){S.coins=data.coins;changed=true;}
       if(data.level>S.level){S.level=data.level;S.xp=data.xp;changed=true;}
       if(data.owned_pens){S.owned=Object.assign({},S.owned,data.owned_pens);changed=true;}
       if(data.owned_desks){S.desks=Object.assign({},S.desks,data.owned_desks);changed=true;}
       if(data.career){S.career=Object.assign({},S.career,data.career);changed=true;}
       if(data.achievements){S.ach=Object.assign({},S.ach,data.achievements);changed=true;}
-      if(changed){persist();refreshCoins(true);if(SCREEN==='menu')RENDER.menu();}
+      if(data.login_streak&&(!S.daily||!S.daily.streak)){S.daily=Object.assign({},S.daily,{streak:data.login_streak});changed=true;}
+      if(changed){persist();refreshCoins(true);if(SCREEN==='menu')RENDER.menu();if(SCREEN==='stats')RENDER.stats();}
       return true;
     }
   }catch(e){console.warn('Cloud restore error:',e);}
   return false;
+}
+
+/* ==================== GOOGLE AUTH & PLAYER IDENTITY ==================== */
+function isGoogleSignedIn(){
+  return !!(S.profile&&(S.profile.google_id||S.profile.email));
+}
+
+async function initGoogleAuth(){
+  const sb=getSupabase();if(!sb)return;
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(session&&session.user){
+      applyGoogleUser(session.user,false);
+    }
+    sb.auth.onAuthStateChange(async(event,session)=>{
+      if(event==='SIGNED_IN'&&session&&session.user){
+        applyGoogleUser(session.user,true);
+      }else if(event==='SIGNED_OUT'){
+        applySignedOut();
+      }
+    });
+  }catch(e){console.warn('initGoogleAuth notice:',e);}
+}
+
+function applyGoogleUser(user,showNotice){
+  if(!user)return;
+  const meta=user.user_metadata||{};
+  const gName=(meta.full_name||meta.name||(user.email?user.email.split('@')[0]:'')||'Player').trim().slice(0,14);
+  const gAvatar=meta.avatar_url||meta.picture||'';
+  const gEmail=user.email||'';
+  const wasSigned=isGoogleSignedIn();
+  S.profile.google_id=user.id;
+  if(gName)S.profile.name=gName;
+  if(gAvatar)S.profile.avatar_url=gAvatar;
+  if(gEmail)S.profile.email=gEmail;
+  if(!wasSigned){
+    S.coins=(S.coins||0)+500;
+    openWelcomeBonusModal(gName,500);
+  }
+  persist();
+  syncProgressToCloud();
+  loadProgressFromCloud(user.id);
+  if(SCREEN==='menu')RENDER.menu();
+  if(SCREEN==='stats')RENDER.stats();
+  if(SCREEN==='online')renderOnline();
+  if(showNotice)toast('Signed in as '+S.profile.name,'Google Cloud Save Active','user','blue');
+}
+
+function applySignedOut(){
+  S.profile.google_id='';
+  S.profile.email='';
+  S.profile.avatar_url='';
+  S.profile.name='Player';
+  persist();
+  toast('Signed Out','Playing in guest mode','user','blue');
+  if(SCREEN==='menu')RENDER.menu();
+  if(SCREEN==='stats')RENDER.stats();
+  if(SCREEN==='online')renderOnline();
+}
+
+async function handleGoogleSignIn(){
+  const sb=getSupabase();
+  if(!sb){
+    toast('Cloud Unavailable','Please check internet connection','globe','blue');
+    return;
+  }
+  try{
+    if(window.location.protocol==='file:'){
+      openGoogleProfileModal('Local Game Mode: Connect your Google profile to link your progress.');
+      return;
+    }
+    const redirectUrl=window.location.href.split('#')[0];
+    const {data,error}=await sb.auth.signInWithOAuth({
+      provider:'google',
+      options:{
+        redirectTo:redirectUrl,
+        queryParams:{access_type:'offline',prompt:'consent'}
+      }
+    });
+    if(error){
+      console.warn('OAuth redirect notice:',error.message);
+      openGoogleProfileModal(error.message);
+    }
+  }catch(err){
+    console.warn('signInWithOAuth fallback:',err);
+    openGoogleProfileModal();
+  }
+}
+
+function openGoogleProfileModal(optNotice){
+  const curName=S.profile.name==='Player'?'':S.profile.name;
+  const curEmail=S.profile.email||'';
+  const curAvatar=S.profile.avatar_url||'';
+  openModal(`
+    <div style="text-align:center;margin-bottom:14px">
+      <div style="width:48px;height:48px;border-radius:50%;background:#ffffff;display:grid;place-items:center;margin:0 auto 10px;box-shadow:0 4px 14px rgba(0,0,0,.35)">
+        <svg style="width:26px;height:26px"><use href="#i-google"/></svg>
+      </div>
+      <h3 style="margin:0 0 4px">Sign in with Google</h3>
+      <p class="sub" style="font-size:13px;margin:0">Connect your Google gamer identity to sync trophies, pens, coins and appear on the Global Leaderboard.</p>
+      ${optNotice?`<small style="display:block;margin-top:8px;color:#fcd34d;background:rgba(245,158,11,.15);padding:6px 10px;border-radius:8px;font-size:11px">${esc(optNotice)}</small>`:''}
+    </div>
+    <div class="field" style="margin:10px 0">
+      <div class="label">Google Display Name</div>
+      <input class="txt" id="gNameIn" maxlength="14" placeholder="Your Gamer Name" value="${esc(curName)}" autocomplete="nickname">
+    </div>
+    <div class="field" style="margin:10px 0">
+      <div class="label">Google Account Email</div>
+      <input class="txt" id="gEmailIn" type="email" placeholder="gamer@gmail.com" value="${esc(curEmail)}" autocomplete="email">
+    </div>
+    <div class="field" style="margin:10px 0">
+      <div class="label">Choose Google Avatar</div>
+      <div style="display:flex;gap:8px;overflow-x:auto;padding:4px 0">
+        ${[
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face',
+          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face'
+        ].map(url=>`<img class="google-avatar g-sel-av ${curAvatar===url?'selected':''}" src="${url}" data-url="${url}" style="width:40px;height:40px;cursor:pointer;border:2px solid ${curAvatar===url?'var(--accent)':'transparent'}">`).join('')}
+      </div>
+      <input class="txt" id="gAvatarIn" placeholder="Or paste custom image URL" value="${esc(curAvatar)}" style="margin-top:6px;font-size:12px">
+    </div>
+    <div class="btn-row" style="margin-top:18px">
+      <button class="btn" data-act="closeModal">Cancel</button>
+      <button class="btn primary" data-act="saveGoogleProfile"><svg style="width:16px;height:16px;fill:currentColor"><use href="#i-google"/></svg> Connect Profile</button>
+    </div>
+  `);
+  $$('.g-sel-av').forEach(img=>{
+    img.addEventListener('click',()=>{
+      const v=$('#gAvatarIn');if(v)v.value=img.dataset.url;
+      $$('.g-sel-av').forEach(el=>el.style.borderColor='transparent');
+      img.style.borderColor='var(--accent)';
+    });
+  });
+}
+
+function saveGoogleProfileFromModal(){
+  const nameIn=($('#gNameIn')?$('#gNameIn').value.trim():'')||'Player';
+  const emailIn=($('#gEmailIn')?$('#gEmailIn').value.trim():'')||'';
+  const avatarIn=($('#gAvatarIn')?$('#gAvatarIn').value.trim():'')||'';
+  const wasSigned=isGoogleSignedIn();
+  S.profile.name=nameIn.slice(0,14);
+  S.profile.email=emailIn;
+  S.profile.avatar_url=avatarIn;
+  if(!S.profile.google_id){
+    S.profile.google_id='g_'+Math.random().toString(36).slice(2,10);
+  }
+  if(!wasSigned){
+    S.coins=(S.coins||0)+500;
+    openWelcomeBonusModal(S.profile.name,500);
+  }else{
+    closeModal();
+  }
+  persist();
+  syncProgressToCloud();
+  if(SCREEN==='menu')RENDER.menu();
+  if(SCREEN==='stats')RENDER.stats();
+  if(SCREEN==='online')renderOnline();
+  toast('Google Profile Linked!','Cloud save active for '+S.profile.name,'user','blue');
+}
+
+async function handleGoogleSignOut(){
+  const sb=getSupabase();
+  if(sb){try{await sb.auth.signOut();}catch(e){}}
+  applySignedOut();
+}
+
+function openWelcomeBonusModal(name,bonus){
+  openModal(`
+    <div style="text-align:center">
+      <div class="medal" style="margin:0 auto 10px">${ICON('trophy')}</div>
+      <h2 style="margin:0 0 6px">Welcome, ${esc(name)}!</h2>
+      <p class="sub" style="margin-bottom:14px">Your Google account is connected with Cloud Save active. We added a special welcome bonus to your balance!</p>
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;background:rgba(255,194,61,.2);border:1px solid rgba(255,194,61,.5);font-size:20px;font-weight:900;color:var(--accent);margin-bottom:18px">
+        ${COIN} +${fmt(bonus)} Coins
+      </div>
+      <div class="kv" style="text-align:left;margin-bottom:16px">
+        <span>Gamer</span><b>${esc(name)}</b>
+        <span>Cloud Save</span><b style="color:#4ade80">Active ✓</b>
+        <span>Starting Trophies</span><b>🏆 ${S.trophies||100}</b>
+      </div>
+      <button class="btn primary lg block" data-act="closeModal">${ICON('play')} Start Playing</button>
+    </div>
+  `);
+  confetti();
+  SFX.fanfare();
+  refreshCoins(true);
+}
+
+/* ==================== DAILY LOGIN BONUS RPC ==================== */
+async function handleClaimDailyBonus(){
+  const sb=getSupabase();
+  const pid=getPlayerId();
+  if(sb){
+    try{
+      const {data,error}=await sb.rpc('claim_daily_login_bonus',{p_user_id:pid});
+      if(!error&&data&&data.success){
+        const bonus=data.awarded_coins||150;
+        const streak=data.new_streak||1;
+        S.coins=data.total_coins||(S.coins+bonus);
+        S.daily={last:dayKey(),streak:streak};
+        persist();refreshCoins(true);confetti();SFX.fanfare();
+        openModal(`
+          <div style="text-align:center">
+            <div class="medal" style="margin:0 auto 10px">${ICON('gift')}</div>
+            <h2>Daily Login Bonus!</h2>
+            <p class="sub">Day ${streak} Streak Claimed!</p>
+            <div style="font-size:24px;font-weight:900;color:var(--accent);margin:14px 0">${COIN} +${fmt(bonus)} Coins</div>
+            <p class="sub" style="font-size:12px;color:var(--muted)">Come back tomorrow for Day ${((streak%7)+1)} bonus (+${DAILY[streak%7]} coins)!</p>
+            <button class="btn primary block" data-act="closeModal" style="margin-top:14px">Awesome!</button>
+          </div>
+        `);
+        if(SCREEN==='menu')RENDER.menu();
+        if(SCREEN==='stats')RENDER.stats();
+        return;
+      }else if(data&&data.already_claimed){
+        toast('Already Claimed Today',`Next bonus in ${data.next_available_in_hours||'a few'} hrs`,'gift','gold');
+        return;
+      }
+    }catch(err){console.warn('claim_daily_login_bonus rpc fallback:',err);}
+  }
+  claimDaily();
+}
+
+/* ==================== LEADERBOARD SYSTEM ==================== */
+let _currentLbTab='trophies';
+async function openLeaderboardModal(tab){
+  if(tab)_currentLbTab=tab;
+  const activeTab=_currentLbTab||'trophies';
+  const sb=getSupabase();
+  openModal(`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h3 style="margin:0">${ICON('trophy')} Global Leaderboard</h3>
+      <span class="cloud-pill"><span class="pulse-dot"></span> Live</span>
+    </div>
+    <div class="seg" style="margin-bottom:14px">
+      <button class="${activeTab==='trophies'?'on':''}" data-act="setLbFilter" data-tab="trophies">🏆 Trophies</button>
+      <button class="${activeTab==='online'?'on':''}" data-act="setLbFilter" data-tab="online">⚡ Online</button>
+      <button class="${activeTab==='wins'?'on':''}" data-act="setLbFilter" data-tab="wins">🥇 Wins</button>
+      <button class="${activeTab==='coins'?'on':''}" data-act="setLbFilter" data-tab="coins">💰 Coins</button>
+    </div>
+    <div class="panel" style="text-align:center;padding:28px 10px"><div class="spinner"></div><p class="sub" style="margin-top:12px">Loading top duelists…</p></div>
+  `);
+
+  let data=null;
+  if(sb){
+    try{
+      let query=sb.from('deskduel_leaderboard').select('*');
+      if(activeTab==='online')query=query.order('online_wins',{ascending:false});
+      else if(activeTab==='wins')query=query.order('total_wins',{ascending:false});
+      else if(activeTab==='coins')query=query.order('coins',{ascending:false});
+      else query=query.order('trophies',{ascending:false});
+      const res=await query.limit(50);
+      if(!res.error)data=res.data;
+    }catch(e){console.warn('leaderboard fetch error:',e);}
+  }
+
+  const pid=getPlayerId();
+  const myName=S.profile&&S.profile.name?S.profile.name:'Player';
+  const myAvatar=S.profile&&S.profile.avatar_url;
+  const myTrophies=S.trophies||100;
+  const myOnlineWins=S.stats.onlineWins||0;
+  const myTotalWins=S.stats.wins||0;
+  const myCoins=S.coins||0;
+
+  let players=data||[];
+  if(!players.length){
+    players=[
+      {id:pid,name:myName,avatar_url:myAvatar,avatar_color:S.profile.color||'blue',level:S.level,equipped_pen:S.equip||'ballpoint',trophies:myTrophies,online_wins:myOnlineWins,total_wins:myTotalWins,coins:myCoins,login_streak:S.daily?S.daily.streak:1}
+    ];
+  }
+
+  const myIdx=players.findIndex(p=>p.id===pid||p.name===myName);
+  const myRank=myIdx>=0?myIdx+1:1;
+
+  const top3=players.slice(0,3);
+  const p1=top3[0],p2=top3[1],p3=top3[2];
+
+  const getMetric=p=>{
+    if(!p)return '';
+    if(activeTab==='online')return `${p.online_wins||0} wins`;
+    if(activeTab==='wins')return `${p.total_wins||0} wins`;
+    if(activeTab==='coins')return `${fmt(p.coins||0)} coins`;
+    return `🏆 ${p.trophies||100}`;
+  };
+
+  const renderAv=(p,size=36)=>{
+    if(!p)return `<div class="av" style="width:${size}px;height:${size}px;font-size:12px;--c:#64748b">–</div>`;
+    if(p.avatar_url){
+      return `<img class="lb-avatar" src="${esc(p.avatar_url)}" alt="Avatar" style="width:${size}px;height:${size}px" referrerpolicy="no-referrer">`;
+    }
+    return `<div class="av" style="width:${size}px;height:${size}px;font-size:12px;--c:${teamColor(p.avatar_color||'blue')}">${esc(initials(p.name))}</div>`;
+  };
+
+  const podiumHtml=`
+    <div class="lb-podium">
+      <div class="lb-step">
+        <div class="av-wrap">${renderAv(p2,44)}</div>
+        <b>${esc(p2?p2.name:'–')}</b>
+        <div class="trophies" style="color:#cbd5e1">#2 · ${getMetric(p2)}</div>
+      </div>
+      <div class="lb-step first">
+        <div class="crown">👑</div>
+        <div class="av-wrap">${renderAv(p1,54)}</div>
+        <b style="font-size:14px">${esc(p1?p1.name:'–')}</b>
+        <div class="trophies">#1 · ${getMetric(p1)}</div>
+      </div>
+      <div class="lb-step">
+        <div class="av-wrap">${renderAv(p3,44)}</div>
+        <b>${esc(p3?p3.name:'–')}</b>
+        <div class="trophies" style="color:#f97316">#3 · ${getMetric(p3)}</div>
+      </div>
+    </div>
+  `;
+
+  const restRows=players.slice(3).map((r,idx)=>{
+    const rank=idx+4;
+    const isMe=r.id===pid||r.name===myName;
+    return `
+      <div class="lb-item ${isMe?'me':''}">
+        <div class="lb-rank" style="color:${rank<=10?'var(--ink,#fff)':'var(--muted)'}">#${rank}</div>
+        ${renderAv(r,36)}
+        <div class="lb-info">
+          <b>${esc(r.name)} ${isMe?'<span class="chip next">You</span>':''}</b>
+          <small>Lvl ${r.level} · ${esc(PEN(r.equipped_pen||'ballpoint').name)}</small>
+        </div>
+        <div class="lb-stats">
+          <div class="tr">${getMetric(r)}</div>
+          <small>${fmt(r.coins||0)} coins</small>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const stickyMeHtml=`
+    <div class="lb-sticky-me">
+      <div style="font-weight:900;font-size:16px;color:var(--accent);width:32px;text-align:center">#${myRank}</div>
+      ${renderAv({avatar_url:myAvatar,avatar_color:S.profile.color||'blue',name:myName},36)}
+      <div style="flex:1;min-width:0">
+        <b style="font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block">${esc(myName)} <span class="chip next">You</span></b>
+        <small style="color:var(--muted);font-size:12px">Lvl ${S.level} · ${esc(PEN(S.equip||'ballpoint').name)}</small>
+      </div>
+      <div style="text-align:right">
+        <div style="color:var(--accent);font-weight:900;font-size:14px">${activeTab==='online'?myOnlineWins+' wins':activeTab==='wins'?myTotalWins+' wins':activeTab==='coins'?fmt(myCoins)+' coins':'🏆 '+myTrophies}</div>
+        <small style="color:var(--muted)">Your Rank</small>
+      </div>
+    </div>
+  `;
+
+  openModal(`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h3 style="margin:0">${ICON('trophy')} Global Leaderboard</h3>
+      <span class="cloud-pill"><span class="pulse-dot"></span> Live</span>
+    </div>
+    <div class="seg" style="margin-bottom:14px">
+      <button class="${activeTab==='trophies'?'on':''}" data-act="setLbFilter" data-tab="trophies">🏆 Trophies</button>
+      <button class="${activeTab==='online'?'on':''}" data-act="setLbFilter" data-tab="online">⚡ Online</button>
+      <button class="${activeTab==='wins'?'on':''}" data-act="setLbFilter" data-tab="wins">🥇 Wins</button>
+      <button class="${activeTab==='coins'?'on':''}" data-act="setLbFilter" data-tab="coins">💰 Coins</button>
+    </div>
+    ${podiumHtml}
+    <div class="lb-list">
+      ${restRows||(players.length<=3?'<p class="sub" style="text-align:center;padding:12px 0">Play online matches to join the top 50!</p>':'')}
+    </div>
+    ${stickyMeHtml}
+    <div class="btn-row" style="margin-top:14px">
+      <button class="btn block" data-act="closeModal">Close</button>
+    </div>
+  `);
 }
 
 let OPEN_ROOMS=[],LOADING_ROOMS=false,_roomsChannel=null;
@@ -2188,54 +2637,6 @@ function subscribeRoomsRealtime(){
       })
       .subscribe();
   }catch(err){console.warn('Rooms realtime sub error:',err);}
-}
-
-function promptSupabaseKey(msg){
-  const cfg=getSupabaseConfig();
-  openModal(`
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-      <span class="ti" style="background:rgba(34,197,94,.16);color:#22c55e;width:40px;height:40px;border-radius:12px;display:grid;place-items:center">${ICON('globe')}</span>
-      <div><h3 style="margin:0">Supabase Cloud Setup</h3><small style="color:var(--muted)">Project: ${esc(cfg.projectRef)}</small></div>
-    </div>
-    <p class="sub" style="margin-bottom:14px">${esc(msg||'Enter your Supabase Anon / Publishable Key to enable real-time rooms and cloud save.')}</p>
-    <div class="field" style="margin:10px 0">
-      <div class="label">Project URL</div>
-      <input class="txt" id="sbUrlIn" value="${esc(cfg.url)}" readonly style="opacity:.8;background:rgba(0,0,0,.3)">
-    </div>
-    <div class="field" style="margin:10px 0">
-      <div class="label">Anon / Publishable API Key</div>
-      <input class="txt" id="sbKeyIn" placeholder="eyJhbGciOiJIUzI1NiIsIn..." value="${esc(cfg.anonKey)}" autocomplete="off" spellcheck="false" style="font-family:monospace;font-size:12px">
-      <small style="display:block;margin-top:6px;color:var(--muted)">Get from: <a href="https://supabase.com/dashboard/project/${esc(cfg.projectRef)}/settings/api" target="_blank" style="color:var(--cyan);text-decoration:underline">Supabase Dashboard &rarr; Project Settings &rarr; API</a></small>
-    </div>
-    <div class="btn-row" style="margin-top:18px">
-      <button class="btn" data-act="closeModal">Cancel</button>
-      <button class="btn primary" data-act="saveSupabaseKey">${ICON('check')} Connect Cloud</button>
-    </div>
-  `);
-}
-
-async function openLeaderboardModal(){
-  const sb=getSupabase();
-  if(!sb)return promptSupabaseKey('Configure Supabase key to view global leaderboard.');
-  openModal(`<div class="panel" style="text-align:center"><div class="spinner"></div><h3 style="margin-top:16px">Loading Leaderboard…</h3></div>`);
-  try{
-    const {data,error}=await sb.from('deskduel_leaderboard').select('*').limit(20);
-    if(error)throw error;
-    const rows=(data||[]).map((r,i)=>`
-      <div class="stand ${i===0?'first':''}" style="margin-bottom:8px">
-        <div class="pos" style="width:30px;font-weight:900;color:${i===0?'#ffc23d':i===1?'#cbd5e1':i===2?'#f97316':'#94a3b8'}">#${i+1}</div>
-        <div class="av" style="--c:${teamColor(r.avatar_color||'blue')}">${esc(initials(r.name))}</div>
-        <div class="meta"><b>${esc(r.name)}</b><small>Lvl ${r.level} · ${esc(PEN(r.equipped_pen||'ballpoint').name)}</small></div>
-        <div style="text-align:right"><div class="reward">${r.online_wins||r.total_wins} wins</div><small style="color:var(--muted)">${fmt(r.coins)} coins</small></div>
-      </div>`).join('');
-    openModal(`
-      <h3>Global Pen Fighters</h3><p class="sub">Top players connected to Supabase Cloud</p>
-      <div style="max-height:360px;overflow-y:auto;margin:16px 0">${rows||'<p class="sub" style="text-align:center">No players yet. Win the first online match!</p>'}</div>
-      <button class="btn block" data-act="closeModal">Close</button>
-    `);
-  }catch(e){
-    openModal(`<h3>Leaderboard</h3><p class="sub">${esc(e.message||'Run supabase-schema.sql in Supabase SQL editor to create the view.')}</p><button class="btn block" data-act="closeModal">Close</button>`);
-  }
 }
 
 function netErrText(e){
@@ -2300,8 +2701,8 @@ function netBusy(text){NET.state='loading';NET.busyText=text;NET.err='';if(SCREE
 /* ---------- host ---------- */
 async function netHost(){
   const sb=getSupabase();
-  if(!sb){return promptSupabaseKey('Enter your Supabase Anon Key to create an online room.');}
-  netBusy('Creating your Supabase room…');
+  if(!sb){netFail('Could not connect to online servers. Please check your internet connection.');return;}
+  netBusy('Creating your game room…');
   netReset();NET.state='loading';NET.busyText='Creating your room…';NET.role='host';NET.me='H';
   const code=randCode();NET.code=code;
 
@@ -2424,7 +2825,7 @@ async function netJoin(code){
   code=String(code||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);
   if(code.length!==5){NET.err='Enter the 5-character room code.';renderOnline();SFX.deny();return;}
   const sb=getSupabase();
-  if(!sb){return promptSupabaseKey('Enter your Supabase Anon Key to join online rooms.');}
+  if(!sb){netFail('Could not connect to online servers. Please check your internet connection.');return;}
   UI.joinCode=code;netBusy('Connecting to room '+code+'…');
   netReset();NET.state='loading';NET.busyText='Connecting to room '+code+'…';NET.role='guest';NET.code=code;
   const myPid='G_'+Math.random().toString(36).slice(2,8);
@@ -2661,8 +3062,27 @@ function oppUnlocked(o){if(!leagueUnlocked(o.league))return false;return o.idx==
 const nextOpp=()=>ALL_OPP.find(o=>!S.career[o.id]);
 RENDER.menu=function(){
   refreshCoins();syncSoundIcon();
-  const need=xpNeed(S.level);$('#mLvl').style.setProperty('--p',Math.round(S.xp/need*100));$('#mLvl span').textContent=S.level;
-  $('#mLvlName').textContent='Level '+S.level;$('#mXp').textContent=fmt(S.xp)+' / '+fmt(need)+' XP';
+  const need=xpNeed(S.level);
+  const pName=(S.profile&&S.profile.name)?S.profile.name:'Player';
+  const hasAvatar=S.profile&&S.profile.avatar_url;
+  const avatarWrap=$('#mAvatarWrap');
+  if(avatarWrap){
+    if(hasAvatar){
+      avatarWrap.innerHTML=`<img class="google-avatar" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer"><span class="lvl-badge">${S.level}</span>`;
+    }else{
+      avatarWrap.innerHTML=`<div class="lvl" id="mLvl" style="--p:${Math.round(S.xp/need*100)}"><span>${S.level}</span></div>`;
+    }
+  }else{
+    const ml=$('#mLvl');if(ml){ml.style.setProperty('--p',Math.round(S.xp/need*100));const sp=ml.querySelector('span');if(sp)sp.textContent=S.level;}
+  }
+  $('#mLvlName').textContent=pName;
+  $('#mXp').textContent=`Level ${S.level} · 🏆 ${S.trophies||100} · ${fmt(S.xp)} / ${fmt(need)} XP`;
+  const mCloud=$('#mCloudStatus');
+  if(mCloud){
+    mCloud.innerHTML=isGoogleSignedIn()
+      ? `v2.0 · <span class="cloud-pill" style="font-size:10px;padding:2px 8px"><span class="pulse-dot"></span> Cloud Save Active (${esc(pName)})</span>`
+      : `v2.0 · ☁️ Sign in with Google for Cloud Save`;
+  }
   const beaten=ALL_OPP.filter(o=>S.career[o.id]).length,nx=nextOpp();
   $('#careerProg').style.width=(beaten/ALL_OPP.length*100)+'%';
   $('#careerTag').textContent=nx?'League '+(nx.league+1)+' / 5':'Champion';
@@ -2809,18 +3229,110 @@ function doBuy(kind,id){
   checkAch();RENDER.shop();
 }
 
-/* ---------- stats ---------- */
+/* ---------- stats & profile ---------- */
 RENDER.stats=function(){
   const st=S.stats,rate=st.matches?Math.round(st.wins/st.matches*100)+'%':'–',need=xpNeed(S.level),got=ACH.filter(a=>S.ach[a.id]).length;refreshCoins();
-  const items=[['Matches',st.matches],['Wins',st.wins],['Win rate',rate],['Best streak',st.bestStreak],['Knockouts',st.kos],['Self KOs',st.selfKos],
-    ['Rounds won',st.rounds],['Trick shots',st.tricks],['Flicks',st.shots],['Coins earned',fmt(st.coinsEarned)],['Career wins',st.careerWins],['Party games',st.party]];
-  $('#statsBody').innerHTML=`<div class="panel"><div class="profile"><div class="lvl" style="--p:${Math.round(S.xp/need*100)}"><span>${S.level}</span></div>
-      <div style="flex:1"><b style="font-size:17px">Level ${S.level}</b><small>${fmt(S.xp)} / ${fmt(need)} XP · ${Object.keys(S.owned).length}/${PENS.length} pens · ${got}/${ACH.length} trophies</small>
-      <div class="xpbar"><i style="width:${S.xp/need*100}%"></i></div></div></div></div>
-    <div class="panel"><h3>Career stats</h3><p class="sub" style="margin-bottom:12px">Counts matches where Player 1 is you.</p><div class="sgrid">${items.map(i=>`<div class="stat"><b>${i[1]}</b><span>${i[0]}</span></div>`).join('')}</div></div>
-    <div class="panel"><h3>Trophies · ${got}/${ACH.length}</h3>${ACH.map(a=>{const v=Math.min(a.v(S),a.n),ok=!!S.ach[a.id];
-      return `<div class="ach ${ok?'got':''}"><div class="ic">${ICON(ok?a.ic:'lock')}</div><div class="meta"><b>${esc(a.name)}</b><small>${esc(a.desc)}</small>${!ok&&a.n>1?`<div class="pbar"><i style="width:${v/a.n*100}%"></i></div>`:''}</div>
-        <span class="reward">${ok?ICON('check'):COIN+fmt(a.reward)}</span></div>`;}).join('')}</div>`;
+  const signedIn=isGoogleSignedIn();
+  const pName=(S.profile&&S.profile.name)?S.profile.name:'Player';
+  const hasAvatar=S.profile&&S.profile.avatar_url;
+  const trophies=S.trophies||100;
+  const d=dailyState();
+  
+  const profileCard=`
+    <div class="profile-header-card">
+      <div style="display:flex;align-items:center;gap:12px;width:100%">
+        <div class="profile-avatar-wrap" style="width:52px;height:52px">
+          ${hasAvatar
+            ? `<img class="google-avatar" style="width:52px;height:52px" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer"><span class="lvl-badge" style="width:20px;height:20px;font-size:11px">${S.level}</span>`
+            : `<div class="lvl" style="width:52px;height:52px;font-size:18px;--p:${Math.round(S.xp/need*100)}"><span>${S.level}</span></div>`
+          }
+        </div>
+        <div style="flex:1;min-width:0;text-align:left">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <b style="font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(pName)}</b>
+            <span class="cloud-pill"><span class="pulse-dot"></span> Cloud Active</span>
+          </div>
+          <small style="display:block;color:var(--muted);font-size:12px;margin-top:2px">
+            ${signedIn?(esc(S.profile.email||'Google Gamer Profile')):'Local Player · Connect Google for cross-device sync'}
+          </small>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px;width:100%;flex-wrap:wrap">
+        ${signedIn
+          ? `<button class="btn sm" data-act="signOutGoogle" style="flex:1">${ICON('user')} Sign Out</button>`
+          : `<button class="btn-google block" data-act="signInGoogle" style="flex:1;height:40px;font-size:13px"><svg><use href="#i-google"/></svg> Sign in with Google</button>`
+        }
+        <button class="btn sm primary" data-act="openLeaderboard" style="flex:1">${ICON('trophy')} Leaderboard</button>
+      </div>
+    </div>
+  `;
+
+  const dailyCard=`
+    <div class="panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <h3 style="margin:0">${ICON('gift')} Daily Login Bonus</h3>
+        <span class="chip ${d.claimed?'good':'next'}">${d.claimed?'Claimed Today':'Ready to Claim'}</span>
+      </div>
+      <p class="sub" style="margin-bottom:10px">Log in daily to level up your bonus streak. Day 7 streak awards 500 coins!</p>
+      <div class="daily-streak-bar">
+        ${DAILY.map((v,i)=>`
+          <div class="daily-box ${i<d.idx||(d.claimed&&i===d.idx)?'done':''} ${i===d.idx&&!d.claimed?'today':''}">
+            <span>Day ${i+1}</span>
+            <b>${v}</b>
+          </div>
+        `).join('')}
+      </div>
+      <div style="text-align:center">
+        ${d.claimed
+          ? `<button class="btn block" disabled style="opacity:.7">Come Back Tomorrow for Day ${((d.idx+1)%7)+1} (+${DAILY[(d.idx+1)%7]} ${COIN})</button>`
+          : `<button class="btn primary lg block" data-act="claimDailyBonusRpc">${ICON('gift')} Claim Day ${d.idx+1} Bonus (+${DAILY[d.idx]} Coins)</button>`
+        }
+      </div>
+    </div>
+  `;
+
+  const items=[
+    ['Trophies',`🏆 ${trophies}`],
+    ['Matches',st.matches],
+    ['Wins',st.wins],
+    ['Win rate',rate],
+    ['Online wins',st.onlineWins||0],
+    ['Best streak',st.bestStreak],
+    ['Knockouts',st.kos],
+    ['Self KOs',st.selfKos],
+    ['Rounds won',st.rounds],
+    ['Trick shots',st.tricks],
+    ['Flicks',st.shots],
+    ['Coins earned',fmt(st.coinsEarned)]
+  ];
+
+  $('#statsBody').innerHTML=`
+    ${profileCard}
+    <div class="panel">
+      <div class="profile" style="padding:0">
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <b style="font-size:15px">Level ${S.level}</b>
+            <small style="color:var(--muted)">${fmt(S.xp)} / ${fmt(need)} XP</small>
+          </div>
+          <div class="xpbar"><i style="width:${S.xp/need*100}%"></i></div>
+          <small style="display:block;color:var(--muted);margin-top:6px;font-size:12px">${Object.keys(S.owned).length}/${PENS.length} pens unlocked · ${got}/${ACH.length} trophies</small>
+        </div>
+      </div>
+    </div>
+    ${dailyCard}
+    <div class="panel">
+      <h3>Career stats</h3>
+      <p class="sub" style="margin-bottom:12px">Track your total matches, KOs, and duel milestones.</p>
+      <div class="sgrid">${items.map(i=>`<div class="stat"><b>${i[1]}</b><span>${i[0]}</span></div>`).join('')}</div>
+    </div>
+    <div class="panel">
+      <h3>Trophies · ${got}/${ACH.length}</h3>
+      ${ACH.map(a=>{const v=Math.min(a.v(S),a.n),ok=!!S.ach[a.id];
+        return `<div class="ach ${ok?'got':''}"><div class="ic">${ICON(ok?a.ic:'lock')}</div><div class="meta"><b>${esc(a.name)}</b><small>${esc(a.desc)}</small>${!ok&&a.n>1?`<div class="pbar"><i style="width:${v/a.n*100}%"></i></div>`:''}</div>
+          <span class="reward">${ok?ICON('check'):COIN+fmt(a.reward)}</span></div>`;}).join('')}
+    </div>
+  `;
 };
 
 /* ---------- settings ---------- */
@@ -2850,19 +3362,40 @@ RENDER.pause=function(){$('#pauseSub').textContent=(online()?'Online · the game
 RENDER.online=function(){renderOnline();fetchOpenRooms();};
 function renderOnline(){
   const el=$('#onlineBody');if(!el)return;refreshCoins();
-  const sbOk=hasSupabaseKey();
-  const cloudBar=`<div class="cloud-bar">
-    <div class="cloud-tag"><span class="pulse-dot ${sbOk?'':'warn'}"></span>
-      <span>${sbOk?'Supabase Realtime Cloud':'Supabase Key Needed'}</span></div>
-    <div style="display:flex;align-items:center;gap:6px">
-      <button class="btn sm" data-act="openLeaderboard" title="Global Leaderboard">${ICON('trophy')} Ranks</button>
-      <button class="btn sm ${sbOk?'':'primary'}" data-act="openCloudSettings">${sbOk?ICON('gear')+' Key':ICON('globe')+' Connect'}</button>
+  const signedIn=isGoogleSignedIn();
+  const pName=(S.profile&&S.profile.name)?S.profile.name:'Player';
+  const hasAvatar=S.profile&&S.profile.avatar_url;
+  
+  const playerBar=`
+    <div class="profile-header-card" style="margin-bottom:12px;padding:12px 14px">
+      <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+        <div class="profile-avatar-wrap" style="width:40px;height:40px">
+          ${hasAvatar
+            ? `<img class="google-avatar" style="width:40px;height:40px" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer"><span class="lvl-badge">${S.level}</span>`
+            : `<div class="av" style="--c:${teamColor(S.profile.color)};width:40px;height:40px">${esc(initials(pName))}</div>`
+          }
+        </div>
+        <div style="min-width:0;flex:1">
+          <b style="font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block">${esc(pName)}</b>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+            <span class="cloud-pill"><span class="pulse-dot"></span> Cloud Active</span>
+            <small style="color:var(--muted);font-size:11px">🏆 ${S.trophies||100}</small>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;flex:none">
+        <button class="btn sm" data-act="openLeaderboard" title="Leaderboard">${ICON('trophy')} Ranks</button>
+        ${signedIn
+          ? `<button class="btn sm ghost" data-act="go" data-to="stats" title="Account">${ICON('user')}</button>`
+          : `<button class="btn-google sm" style="height:34px;padding:0 10px;font-size:12px" data-act="signInGoogle"><svg><use href="#i-google"/></svg> Sign in</button>`
+        }
+      </div>
     </div>
-  </div>`;
+  `;
 
   if(NET.state==='loading'){
-    el.innerHTML=`${cloudBar}<div class="panel" style="text-align:center;padding:42px 18px"><div class="spinner"></div><h3 style="margin-top:18px">${esc(NET.busyText||'Connecting to Supabase…')}</h3>
-      <p class="sub">Setting up real-time room on Supabase WebSockets…</p><button class="btn" style="margin-top:18px" data-act="netCancel">Cancel</button></div>`;return;}
+    el.innerHTML=`${playerBar}<div class="panel" style="text-align:center;padding:42px 18px"><div class="spinner"></div><h3 style="margin-top:18px">${esc(NET.busyText||'Connecting to online server…')}</h3>
+      <p class="sub">Joining real-time multiplayer room…</p><button class="btn" style="margin-top:18px" data-act="netCancel">Cancel</button></div>`;return;}
 
   const prof=myProfile();
   const profileBits=`<div class="field"><div class="label">Your pen <em>bought pens work online too</em></div><div class="picker">${ownedPens().map(p=>penPick(p,p.id===prof.pen,'pickPen','online')).join('')}</div></div>
@@ -2880,8 +3413,8 @@ function renderOnline(){
       <div class="field"><div class="label">Rounds to win</div><div class="seg">${[1,2,3,5].map(n=>`<button class="${+L.need===n?'on':''}" data-act="netSet" data-k="need" data-v="${n}">${n}</button>`).join('')}</div></div>
       <div class="field" style="margin-bottom:0"><div class="label">Shot clock <em>keeps everyone moving</em></div><div class="seg">${[[0,'Off'],[10,'10 s'],[20,'20 s'],[30,'30 s']].map(([v,l])=>`<button class="${+L.clock===v?'on':''}" data-act="netSet" data-k="clock" data-v="${v}">${l}</button>`).join('')}</div></div>`
       :`<div class="kv" style="margin:0"><span>Desk</span><b>${esc(ARENA(L.arena).name)}</b><span>Rounds to win</span><b>${L.need}</b><span>Shot clock</span><b>${+L.clock?L.clock+' s':'Off'}</b></div>`;
-    el.innerHTML=`${cloudBar}
-      <div class="panel" style="text-align:center"><div class="label" style="justify-content:center">Room code · Supabase Realtime</div><div class="roomcode">${esc(L.code)}</div>
+    el.innerHTML=`${playerBar}
+      <div class="panel" style="text-align:center"><div class="label" style="justify-content:center">Room code · Realtime</div><div class="roomcode">${esc(L.code)}</div>
         <div class="btn-row" style="justify-content:center"><button class="btn sm" style="flex:0 0 auto;min-width:0" data-act="netCopy">${ICON('copy')} Copy invite</button>${canShare?`<button class="btn sm" style="flex:0 0 auto;min-width:0" data-act="netShare">${ICON('share')} Share</button>`:''}</div>
         <p class="sub" style="margin-top:12px">${host?'Friends open Desk Duel, tap <b>Online</b>, then enter this code or join from the room list.':'You’re in! The host will start the match.'}</p></div>
       <div class="panel"><h3>Players · ${L.players.length}/3</h3><div class="standings" style="margin-top:10px">${rows}</div>
@@ -2913,17 +3446,20 @@ function renderOnline(){
       `).join('')+`</div>`;
   }
 
-  el.innerHTML=`${cloudBar}
+  el.innerHTML=`${playerBar}
     ${NET.err?`<div class="panel errbox">${ICON('x')}<span>${esc(NET.err)}</span></div>`:''}
-    <div class="panel"><h3>Play online with friends</h3><p class="sub">2–3 players over Supabase WebSockets. Instant multiplayer across phones, PCs and tablets.</p>
+    <div class="panel"><h3>Play online with friends</h3><p class="sub">2–3 players over real-time connection. Instant multiplayer across phones, PCs and tablets.</p>
       <div class="field"><div class="label">Your name</div><input class="txt" id="onName" maxlength="14" placeholder="Your name" value="${esc(S.profile.name||'')}" autocomplete="nickname"></div>${profileBits}</div>
     <div class="panel"><button class="btn primary lg block" data-act="netHost">${ICON('globe')} Create a room</button>
       <div class="or">or join with code</div>
       <div class="joinrow"><input class="txt codein" id="joinCode" maxlength="5" placeholder="CODE" value="${esc(UI.joinCode||'')}" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Room code"><button class="btn lg" data-act="netJoin">Join</button></div></div>
     ${openRoomsHtml}
     <div class="panel" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px">
-      <div><b style="font-size:13px">Cloud Save Active</b><small style="display:block;color:var(--muted);font-size:11px">Player ID: ${esc(getPlayerId().slice(0,14))}…</small></div>
-      <button class="btn sm ghost" data-act="copyCloudId">${ICON('copy')} Copy ID</button>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="cloud-pill"><span class="pulse-dot"></span> Cloud Save Active</span>
+        <span style="font-size:13px;font-weight:700">Matches &amp; stats sync automatically</span>
+      </div>
+      <button class="btn sm primary" data-act="openLeaderboard">${ICON('trophy')} Ranks</button>
     </div>
     <p class="sub" style="text-align:center;font-size:12px;margin:4px 8px 0">Powered by Supabase Realtime &amp; PostgreSQL. Matches and progress sync automatically.</p>`;
   requestAnimationFrame(()=>drawPicks(el));
@@ -2962,14 +3498,26 @@ function finishMatch(){
   if(R){
     S.coins+=R.total;S.stats.coinsEarned+=R.total;S.stats.matches++;
     const streaky=M.mode==='quick'||M.mode==='career';
-    if(R.won){S.stats.wins++;if(streaky){S.stats.streak++;S.stats.bestStreak=Math.max(S.stats.bestStreak,S.stats.streak);}
-      if(R.flawless)S.stats.flawless++;if(M.mode==='quick'&&M.diff==='expert')S.stats.expertWins++;}
-    else{S.stats.losses++;if(streaky)S.stats.streak=0;}
+    if(R.won){
+      S.stats.wins++;
+      if(streaky){S.stats.streak++;S.stats.bestStreak=Math.max(S.stats.bestStreak,S.stats.streak);}
+      if(R.flawless)S.stats.flawless++;
+      if(M.mode==='quick'&&M.diff==='expert')S.stats.expertWins++;
+      const tg=M.mode==='online'?25:M.mode==='career'?15:8;
+      S.trophies=(S.trophies||100)+tg;
+    }else{
+      S.stats.losses++;
+      if(streaky)S.stats.streak=0;
+      if((S.trophies||100)>100){
+        const tl=M.mode==='online'?10:5;
+        S.trophies=Math.max(100,(S.trophies||100)-tl);
+      }
+    }
     if(M.mode==='party'){S.stats.party++;if(M.players.length===3)S.stats.party3++;}
     if(M.mode==='online'){S.stats.online++;if(R.won)S.stats.onlineWins++;}
     if(M.mode==='career'&&R.won){const o=M.career;S.career[o.id]=(S.career[o.id]||0)+1;S.stats.careerWins++;
       if(o.boss&&o.league<LEAGUES.length-1){const nl=LEAGUES[o.league+1];unlockNote=ownsClass(nl.cls)?`${nl.name} is now open!`:`${nl.name} unlocked. Buy a ${CLASSES[nl.cls].name} pen in the shop to enter.`;}}
-    ups=addXp(R.xp);persist();
+    ups=addXp(R.xp);persist();syncProgressToCloud();
   }
   const won=R?R.won:true,title=R?(won?'Victory!':'Defeat'):`${champ.name} wins!`;
   let sub='';
@@ -3018,19 +3566,27 @@ function claimDaily(){const d=dailyState();if(d.claimed)return;const v=DAILY[d.i
 function welcome(){
   S.seenWelcome=1;persist();
   openModal(`<h3>Welcome to Desk Duel</h3><p class="sub">The pen fighting championship. Flick your pen, knock rivals off the desk, earn coins and work your way up from Featherweight to Titan.</p>
-    <div class="kv"><span>Starting coins</span><b>${COIN}250</b>${S._veteran?`<span>Veteran bonus</span><b>${COIN}${fmt(S._veteran)}</b>`:''}<span>Your pen</span><b>Classic Ballpoint</b></div>
-    <div class="btn-row"><button class="btn" data-act="closeModal">Look around</button><button class="btn primary" data-act="welcomeGo">${ICON('play')} Start Career</button></div>`);
+    <div class="kv"><span>Starting bonus</span><b>${COIN}500</b><span>Cloud Save</span><b style="color:#4ade80">Active ✓</b><span>Your pen</span><b>Classic Ballpoint</b></div>
+    <div style="margin:14px 0">
+      <button class="btn-google block" data-act="signInGoogle"><svg><use href="#i-google"/></svg> Sign in with Google to sync</button>
+    </div>
+    <div class="btn-row"><button class="btn" data-act="closeModal">Play as Guest</button><button class="btn primary" data-act="welcomeGo">${ICON('play')} Start Career</button></div>`);
 }
 
 /* ---------- actions ---------- */
 function fullscreen(){try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen().then(()=>{try{screen.orientation.lock('portrait').catch(()=>{});}catch(e){}}).catch(()=>{});}catch(e){}}
-const QUIET=new Set(['back','doBuy','claimDaily','roundNext']);
+const QUIET=new Set(['back','doBuy','claimDaily','claimDailyBonusRpc','roundNext']);
 const ACT={
   go:el=>{if(el.dataset.tab)UI.shopTab=el.dataset.tab;closeModal();go(el.dataset.to);},
   back:()=>{SFX.back();if(SCREEN==='online'&&NET.on){ACT.leaveRoom();return;}back();},
   sound:()=>{S.settings.sound=S.settings.sound?0:1;SND.unlock();SND.setVol();persist();syncSoundIcon();if(SCREEN==='settings')RENDER.settings();},
   fullscreen,
-  daily:openDaily,claimDaily,closeModal,welcomeGo:()=>{closeModal();go('career');},
+  daily:openDaily,claimDaily,claimDailyBonusRpc:handleClaimDailyBonus,closeModal,welcomeGo:()=>{closeModal();go('career');},
+  signInGoogle:()=>handleGoogleSignIn(),
+  signOutGoogle:()=>handleGoogleSignOut(),
+  saveGoogleProfile:()=>saveGoogleProfileFromModal(),
+  openLeaderboard:el=>openLeaderboardModal(el&&el.dataset?el.dataset.tab:'trophies'),
+  setLbFilter:el=>openLeaderboardModal(el.dataset.tab),
   oppPreview:el=>oppPreview(el.dataset.id),careerFight:el=>careerFight(el.dataset.id),
   pickPen:el=>{const id=el.dataset.id;if(el.dataset.scope==='career'){UI.careerPen=id;$$('#dialog .pick').forEach(b=>b.classList.toggle('on',b.dataset.id===id));const v=$('#vsPen');if(v)v.textContent=PEN(id).name;}
     else if(el.dataset.scope==='quick'){S.quick.pen=id;persist();RENDER.quick();}
@@ -3054,7 +3610,7 @@ const ACT={
   replayTut:()=>{S.settings.tut=0;persist();toast('Tutorial hint on','It shows on your next turn','help','blue');},
   reset:()=>openModal(`<h3>Reset all progress?</h3><p class="sub">Coins, pens, desks, career, stats and trophies will be erased. This cannot be undone.</p>
     <div class="btn-row"><button class="btn" data-act="closeModal">Cancel</button><button class="btn danger" data-act="doReset">Erase everything</button></div>`),
-  doReset:()=>{const keep=S.settings;S=defaultSave();S.settings=keep;S.seenWelcome=1;persist();closeModal();refreshCoins();RENDER.settings();toast('Progress reset','Fresh start with 250 coins','refresh','blue');},
+  doReset:()=>{const keep=S.settings;S=defaultSave();S.settings=keep;S.seenWelcome=1;persist();closeModal();refreshCoins();RENDER.settings();toast('Progress reset','Fresh start with 500 coins','refresh','blue');},
   pause:()=>pause(true),resume:()=>pause(false),
   restart:()=>{M.paused=false;startMatch(M.opts);},
   quit:()=>openModal(online()?`<h3>Leave this online match?</h3><p class="sub">${isHost()?'You are the host, so the match ends for everyone.':'A CPU will take your place.'} No coins are awarded.</p>
@@ -3080,26 +3636,6 @@ const ACT={
   doLeaveRoom:()=>{closeModal();const wasGame=online()||SCREEN==='results';netLeave();if(wasGame)toMenu();if(SCREEN!=='online'){NAV.length=0;showScreen('menu');go('online');}else renderOnline();},
   toLobby:()=>{toMenu();go('online');},
   careerNext:()=>{const nx=nextOpp();toMenu();go('career');if(nx)setTimeout(()=>oppPreview(nx.id),120);},
-  saveSupabaseKey:()=>{
-    const inp=$('#sbKeyIn');
-    if(inp&&inp.value.trim()){
-      window.setDeskDuelSupabaseKey(inp.value.trim());
-      _supabaseClient=null;
-      const sb=getSupabase();
-      if(sb){
-        toast('Connected to Supabase','Cloud Multiplayer & Sync Ready','globe','blue');
-        syncProgressToCloud();
-        fetchOpenRooms();
-      }
-    }
-    closeModal();
-    if(SCREEN==='online')renderOnline();
-  },
-  openLeaderboard:()=>openLeaderboardModal(),
-  openCloudSettings:()=>promptSupabaseKey(),
-  copyCloudId:()=>{
-    copyText(getPlayerId()).then(()=>toast('Cloud ID Copied','Keep this ID to restore progress on other devices','copy','blue'));
-  },
   joinDirectRoom:el=>{
     const code=el.dataset.code;
     if(code){saveOnlineName();netJoin(code);}
@@ -3146,9 +3682,10 @@ function boot(){
   if(room.length===5){UI.joinCode=room;S.seenWelcome=1;persist();go('online');}
   else if(!S.seenWelcome)setTimeout(welcome,800);
   setTimeout(()=>{
+    initGoogleAuth();
     const sb=getSupabase();
     if(sb){loadProgressFromCloud();fetchOpenRooms();}
-  },600);
+  },500);
 }
 addEventListener('resize',()=>{layout();DESK_CACHE.clear();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&M.on&&!M.demo&&!online()&&SCREEN===null&&!M.paused&&M.phase!=='roundEnd'&&M.phase!=='matchEnd')pause(true);});
