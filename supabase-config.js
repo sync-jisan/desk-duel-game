@@ -9,9 +9,7 @@ window.DESKDUEL_SUPABASE_CONFIG = {
   url: 'https://iipbtnpdkmklbwoxrmig.supabase.co',
 
   // Your Supabase Publishable / Anon Key.
-  // You can paste it here, OR enter it directly in the in-game Online settings!
-  // Find your key at: https://supabase.com/dashboard/project/iipbtnpdkmklbwoxrmig/settings/api
-  anonKey: localStorage.getItem('deskduel_supabase_key') || '',
+  anonKey: localStorage.getItem('deskduel_supabase_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlpcGJ0bnBka21rbGJ3b3hybWlnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1MTM1ODIsImV4cCI6MjEwODA4OTU4Mn0.TX9tlM717RBaNxgiDYnTyTpAORt_YJdsFz2Rt02U9pM',
 
   // Project Reference ID
   projectRef: 'iipbtnpdkmklbwoxrmig'

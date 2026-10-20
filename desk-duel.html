@@ -2162,7 +2162,7 @@ async function loadProgressFromCloud(forcedId){
   return false;
 }
 
-let OPEN_ROOMS=[],LOADING_ROOMS=false;
+let OPEN_ROOMS=[],LOADING_ROOMS=false,_roomsChannel=null;
 async function fetchOpenRooms(){
   const sb=getSupabase();if(!sb)return [];
   LOADING_ROOMS=true;
@@ -2172,7 +2172,22 @@ async function fetchOpenRooms(){
   }catch(e){console.warn('fetchOpenRooms error:',e);}
   LOADING_ROOMS=false;
   if(SCREEN==='online')renderOnline();
+  subscribeRoomsRealtime();
   return OPEN_ROOMS;
+}
+
+function subscribeRoomsRealtime(){
+  const sb=getSupabase();
+  if(!sb||_roomsChannel)return;
+  try{
+    _roomsChannel=sb.channel('deskduel_open_rooms_realtime')
+      .on('postgres_changes',{event:'*',schema:'public',table:'deskduel_rooms'},()=>{
+        if(SCREEN==='online'&&NET.state==='idle'){
+          fetchOpenRooms();
+        }
+      })
+      .subscribe();
+  }catch(err){console.warn('Rooms realtime sub error:',err);}
 }
 
 function promptSupabaseKey(msg){

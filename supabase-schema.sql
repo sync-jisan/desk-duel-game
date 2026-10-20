@@ -77,9 +77,12 @@ create table if not exists public.deskduel_matches (
 create index if not exists idx_deskduel_matches_created on public.deskduel_matches(created_at desc);
 
 -- =====================================================================
--- 4. REALTIME PUBLICATION
--- Enable Realtime Broadcast & Database changes on rooms
+-- 4. REALTIME PUBLICATION & REPLICA IDENTITY
+-- Enable Realtime Broadcast & Database changes
 -- =====================================================================
+alter table public.deskduel_rooms replica identity full;
+alter table public.deskduel_profiles replica identity full;
+
 do $$
 begin
   if not exists (
@@ -87,6 +90,18 @@ begin
     where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'deskduel_rooms'
   ) then
     alter publication supabase_realtime add table public.deskduel_rooms;
+  end if;
+  if not exists (
+    select 1 from pg_publication_tables 
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'deskduel_profiles'
+  ) then
+    alter publication supabase_realtime add table public.deskduel_profiles;
+  end if;
+  if not exists (
+    select 1 from pg_publication_tables 
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'deskduel_matches'
+  ) then
+    alter publication supabase_realtime add table public.deskduel_matches;
   end if;
 end $$;
 
@@ -172,7 +187,9 @@ grant select on public.deskduel_leaderboard to anon, authenticated;
 -- Rooms older than 2 hours that are idle can be pruned
 -- =====================================================================
 create or replace function public.cleanup_stale_deskduel_rooms()
-returns integer language plpgsql security invoker as $$
+returns integer language plpgsql security invoker 
+set search_path = ''
+as $$
 declare
   deleted_count integer;
 begin
