@@ -15,6 +15,20 @@ window.DESKDUEL_SUPABASE_CONFIG = {
   projectRef: 'iipbtnpdkmklbwoxrmig'
 };
 
+// Fetch dynamic environment variables from Next.js server when hosted on Vercel / web server
+if (typeof window !== 'undefined' && window.location && /^https?:/.test(window.location.protocol)) {
+  fetch('/api/config')
+    .then(function(res) { return res.ok ? res.json() : null; })
+    .then(function(cfg) {
+      if (cfg && cfg.url && cfg.anonKey) {
+        window.DESKDUEL_SUPABASE_CONFIG.url = cfg.url;
+        window.DESKDUEL_SUPABASE_CONFIG.anonKey = localStorage.getItem('deskduel_supabase_key') || cfg.anonKey;
+        window.DESKDUEL_SUPABASE_CONFIG.projectRef = cfg.projectRef || window.DESKDUEL_SUPABASE_CONFIG.projectRef;
+      }
+    })
+    .catch(function() {});
+}
+
 // Helper to save key from UI
 window.setDeskDuelSupabaseKey = function(key) {
   if (!key) return;

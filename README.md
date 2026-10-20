@@ -1,60 +1,83 @@
 # 🖋️ Desk Duel — Pen Fighting Championship
 
-> **Desk Duel** is an authentic physics-based pen fighting arcade game with online room multiplayer powered by **Supabase Realtime & PostgreSQL**, 5-league single-player Career mode, Quick match against intelligent CPU bots, and multi-player pass-and-play Party mode.
+> **Desk Duel** is an authentic physics-based pen fighting arcade game with online room multiplayer powered by **Supabase Realtime & PostgreSQL**, Google Authentication, 5-league single-player Career mode, Quick match against intelligent CPU bots, and multi-player pass-and-play Party mode. Built with **Next.js** for effortless 1-click deployment to **Vercel**.
 
 ![Desk Duel Banner](https://img.shields.io/badge/Desk%20Duel-v2.0-ffc23d?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=next.js)
+![Vercel Ready](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel)
 ![Supabase Realtime](https://img.shields.io/badge/Multiplayer-Supabase%20Realtime-3ecf8e?style=for-the-badge&logo=supabase)
-![Pure Web Tech](https://img.shields.io/badge/Stack-HTML5%20%7C%20Canvas%20%7C%20JS-38bdf8?style=for-the-badge)
 
 ---
 
 ## 🌟 Highlights & Features
 
+- 🔒 **Google Auth Landing Screen & Game Gate**:
+  - Unauthenticated players land on a sleek Google Auth Page before entering.
+  - Links display name and avatar directly to in-game identity and leaderboards.
+  - **+500 Coins Starter Bonus** for new Google duelists.
 - 🌐 **Online Multiplayer (Supabase Realtime)**:
-  - Create or join private 5-letter rooms (`ABCDE`) across any device or browser.
+  - Create or join private 5-letter rooms (`ABCDE`) across any phone, tablet, or desktop.
   - **Live Room Browser**: Browse active public lobbies and join with one click.
   - Sub-50ms latency peer synchronization over secure WebSockets (`broadcast` + `presence`).
   - Automatic disconnection detection and smart CPU substitution for dropouts.
-- 🏆 **Career Mode**:
-  - Climb through 5 weight-class leagues: *Featherweight, Light, Middle, Heavy, and Titan*.
-  - Defeat 20 unique rivals and dethrone **The Chairman** in Titan Tower.
-- ⚡ **Quick Match & Pass-and-Play Party**:
+- 🏆 **Global Leaderboard & Daily Streaks**:
+  - Live top-duelist podium and rankings for *Trophies, Online Wins, Total Wins, and Coins*.
+  - Daily login bonus streak (+150 to +500 coins).
+- ⚡ **Career Mode, Quick Match & Party**:
+  - 5 weight-class leagues: *Featherweight, Light, Middle, Heavy, and Titan*.
+  - 20 unique rivals and boss fight against **The Chairman** in Titan Tower.
   - 1-on-1 matches against 4 tiers of CPU bots (*Easy, Medium, Hard, Expert*).
   - 2 to 3 players on a single shared device or screen.
 - 🛒 **Pen & Desk Shop**:
   - Unlock and equip distinct pens ranging from 5g lightweight racers to 62g titan crushers.
   - Realistic mass, grip, inertia, and spin dynamics.
-  - Unlockable desks: *Classroom Wood, Lab Glass, Cafeteria Formica, Boardroom Mahogany, and Titan Concrete*.
-- ☁️ **Cloud Save & Global Leaderboard**:
-  - Player level, XP, coins, unlocks, and match statistics sync to Supabase database.
-  - In-game global rankings view.
+  - Desks: *Classroom Wood, Lab Glass, Cafeteria Formica, Boardroom Mahogany, and Titan Concrete*.
 
 ---
 
-## 🎮 How to Play
+## 🚀 Deploy to Vercel
 
-1. **Aim & Power**: Press on your pen and pull back like a slingshot. Drag further for more power.
-2. **Add Spin**: Grab near the tip or tail of your pen to impart spin. Spinning pens curve across the table and sweep opponents off edges.
-3. **Knockout**: A pen falls off when its center of mass leaves the desk perimeter. Last pen standing wins the round!
-4. **Trick Shots**: Earn bonus coins for *Double KO*, *Bank Shots*, *Spin KO*, *Sniper KO*, and *Close Calls*.
+Deploying Desk Duel to Vercel takes less than a minute:
+
+### Option 1: Automatic GitHub Import (Recommended)
+1. Push your repository to GitHub:
+   ```bash
+   git push origin main
+   ```
+2. Go to [vercel.com/new](https://vercel.com/new) and select your `desk-duel-game` repository.
+3. Vercel automatically detects **Next.js**.
+4. *(Optional)* Add your Supabase environment variables in the **Environment Variables** section:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   *(If omitted, it automatically falls back to your configured Supabase project).*
+5. Click **Deploy**. Vercel will build and launch your live URL!
+
+### Option 2: Deploy with Vercel CLI
+```bash
+npx vercel
+```
 
 ---
 
-## 🚀 Supabase Backend Setup
+## 🛠️ Running Locally (Next.js)
 
-1. **Create Tables & Realtime**:
-   - Open your [Supabase Dashboard](https://supabase.com/dashboard) and go to the **SQL Editor**.
-   - Run the script located in [`supabase-schema.sql`](./supabase-schema.sql).
-   - This creates:
-     - `deskduel_profiles`: Cloud saves for player level, coins, and unlocks.
-     - `deskduel_rooms`: Live lobby registry for multiplayer.
-     - `deskduel_matches`: Match logs and champion records.
-     - `deskduel_leaderboard`: Global leaderboard view.
-     - Enables Realtime publication on `deskduel_rooms`.
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-2. **Configure Credentials**:
-   - Copy your **Project URL** and **Anon Key** from *Project Settings &rarr; API*.
-   - Either enter them into [`supabase-config.js`](./supabase-config.js) or paste your Anon Key into the in-game **Online &rarr; Connect** setup dialog.
+2. **Start the local development server**:
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+4. **Production Build Validation**:
+   ```bash
+   npm run build
+   npm run start
+   ```
 
 ---
 
@@ -62,27 +85,22 @@
 
 ```text
 Desk Duel/
-├── desk-duel.html         # Complete single-file game client (UI, Canvas, Physics, AI, Supabase Realtime)
-├── supabase-config.js     # Supabase client configuration
-├── supabase-schema.sql    # PostgreSQL schema, RLS policies & Realtime setup
-└── README.md              # Project documentation
+├── app/
+│   ├── layout.jsx            # Next.js App Router root layout (SEO metadata & fonts)
+│   ├── page.jsx              # Game launcher & redirect
+│   └── api/
+│       └── config/
+│           └── route.js      # Dynamic Supabase config API route (reads Vercel env vars)
+├── public/
+│   ├── desk-duel.html        # High-performance physics engine & game UI
+│   └── supabase-config.js    # Client-side Supabase configuration
+├── next.config.mjs           # Next.js rewrites & optimization configuration
+├── vercel.json               # Vercel deployment presets & security headers
+├── .env.example              # Environment variables template
+├── package.json              # Next.js dependencies & scripts
+├── supabase-schema.sql       # PostgreSQL schema, RLS policies & Realtime setup
+└── README.md                 # Project documentation
 ```
-
----
-
-## 🛠️ Running Locally
-
-Simply open `desk-duel.html` in any modern web browser, or serve it using any static HTTP server:
-
-```bash
-# Using Python
-python -m http.server 8080
-
-# Using Node.js
-npx serve .
-```
-
-Open `http://localhost:8080/desk-duel.html` in your browser.
 
 ---
 

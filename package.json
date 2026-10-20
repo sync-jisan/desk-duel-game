@@ -1,0 +1,18 @@
+{
+  "name": "desk-duel",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Desk Duel — Pen Fighting Championship. Physics-based battle game with real-time multiplayer and cloud progression.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "next": "^15.1.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
