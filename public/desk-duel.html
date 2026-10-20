@@ -589,34 +589,15 @@ body.in-match #hud{display:block}
       <div class="auth-card">
         <div class="auth-bonus-badge">
           <svg class="coin" style="width:16px;height:16px"><use href="#i-coin"/></svg>
-          <span>New Player Bonus: +500 Coins</span>
+          <span>Welcome Bonus: +500 Coins</span>
         </div>
         <div class="auth-logo">
           <svg class="i"><use href="#i-pen"/></svg>
         </div>
         <h1 class="auth-title">Desk Duel</h1>
-        <p class="auth-sub">Pen Fighting Championship · Real-Time Physics &amp; Cloud Multiplayer</p>
+        <p class="auth-sub">Pen Fighting Championship · Real-Time Physics Battle</p>
 
-        <div class="auth-features">
-          <div class="auth-feat">
-            <b>🎁 +500 Coins</b>
-            <small>Instant starter wallet</small>
-          </div>
-          <div class="auth-feat">
-            <b>☁️ Cloud Save</b>
-            <small>Sync progress anywhere</small>
-          </div>
-          <div class="auth-feat">
-            <b>🏆 Global Ranks</b>
-            <small>Live world leaderboard</small>
-          </div>
-          <div class="auth-feat">
-            <b>⚡ Multiplayer</b>
-            <small>Online room duels</small>
-          </div>
-        </div>
-
-        <div class="auth-btn-wrap">
+        <div class="auth-btn-wrap" style="margin:26px 0 14px">
           <button class="btn-google block hero" data-act="signInGoogle">
             <svg><use href="#i-google"/></svg>
             <span>Continue with Google</span>
@@ -624,7 +605,7 @@ body.in-match #hud{display:block}
         </div>
 
         <p class="auth-footnote">
-          🔒 Sign in with Google is required to play. It syncs your pen collection, coins, trophies, and duel stats.
+          🔒 Sign in with Google to play and sync your pens, trophies, and stats.
         </p>
       </div>
     </div>
@@ -2124,8 +2105,14 @@ function computeRewards(){
 
 /* ---------- HUD ---------- */
 function buildHud(){
-  $('#hudPlayers').innerHTML=M.players.map((p,i)=>`<div class="pc" id="pc${i}" style="--c:${p.col}"><div class="av" style="--c:${p.col}">${esc(initials(p.name))}</div>
-    <div class="nm"><b>${esc(p.name)}</b><small id="pcs${i}">${pcSub(p)}</small></div><div class="pips" id="pips${i}"></div></div>`).join('');
+  $('#hudPlayers').innerHTML=M.players.map((p,i)=>{
+    const isMe=(p.human&&(online()?p.pid===NET.me:i===0));
+    const avHtml=(isMe&&S.profile&&S.profile.avatar_url)
+      ?`<img class="google-avatar" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer">`
+      :`<div class="av" style="--c:${p.col}">${esc(initials(p.name))}</div>`;
+    return `<div class="pc" id="pc${i}" style="--c:${p.col}">${avHtml}
+      <div class="nm"><b>${esc(p.name)}</b><small id="pcs${i}">${pcSub(p)}</small></div><div class="pips" id="pips${i}"></div></div>`;
+  }).join('');
 }
 const pcSub=p=>(online()&&p.pid===NET.me?'You · ':p.human?'':'CPU · ')+esc(PEN(p.pen).name);
 function updateHud(){
@@ -2167,7 +2154,13 @@ function showRoundCard(w){
   const action=isGuest()?`<p class="sub" style="margin-top:4px">${ICON('users')} The host starts the next round…</p>`
     :`<button class="btn primary block" data-act="roundNext">${M.matchOver?'See results':'Next round'} ${ICON('arrow')}</button>`;
   el.innerHTML=`<h3 style="color:${w?w.col:'#fff'}">${esc(title)}</h3><p class="sub">${esc(sub)}</p>
-    <div class="board">${M.players.map(p=>`<div class="${p===w?'win':''}"><div class="av" style="--c:${p.col}">${esc(initials(p.name))}</div><b>${p.score}</b><small>${esc(p.name)}</small></div>`).join('')}</div>
+    <div class="board">${M.players.map(p=>{
+      const isMe=(p.human&&(online()?p.pid===NET.me:(p.name===(S.profile&&S.profile.name)||p.name==='You')));
+      const avHtml=(isMe&&S.profile&&S.profile.avatar_url)
+        ?`<img class="google-avatar" style="width:28px;height:28px;border-radius:50%;object-fit:cover;margin:0 auto 4px;display:block" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer">`
+        :`<div class="av" style="--c:${p.col}">${esc(initials(p.name))}</div>`;
+      return `<div class="${p===w?'win':''}">${avHtml}<b>${p.score}</b><small>${esc(p.name)}</small></div>`;
+    }).join('')}</div>
     ${action}<div class="bar2"><i></i></div>`;
   el.style.setProperty('--dur','3.1s');el.classList.remove('show');void el.offsetWidth;el.classList.add('show');
 }
@@ -2291,7 +2284,7 @@ async function loadProgressFromCloud(forcedId){
     const {data,error}=await sb.from('deskduel_profiles').select('*').eq('id',pid).single();
     if(!error&&data){
       let changed=false;
-      if(data.name&&(!S.profile.name||S.profile.name==='Player')){S.profile.name=data.name;changed=true;}
+      if(data.name){S.profile.name=data.name;S.profile.name_customized=true;changed=true;}
       if(data.avatar_url&&!S.profile.avatar_url){S.profile.avatar_url=data.avatar_url;changed=true;}
       if(data.trophies&&data.trophies>=(S.trophies||0)){S.trophies=data.trophies;changed=true;}
       if(data.coins>S.coins){S.coins=data.coins;changed=true;}
@@ -2338,12 +2331,14 @@ function applyGoogleUser(user,showNotice){
   const gEmail=user.email||'';
   const wasSigned=isGoogleSignedIn();
   S.profile.google_id=user.id;
-  if(gName)S.profile.name=gName;
+  if(gName&&(!S.profile.name||S.profile.name==='Player'||!S.profile.name_customized)){
+    S.profile.name=gName;
+  }
   if(gAvatar)S.profile.avatar_url=gAvatar;
   if(gEmail)S.profile.email=gEmail;
   if(!wasSigned){
     S.coins=(S.coins||0)+500;
-    openWelcomeBonusModal(gName,500);
+    openWelcomeBonusModal(S.profile.name||gName,500);
   }
   persist();
   syncProgressToCloud();
@@ -2477,6 +2472,24 @@ async function handleGoogleSignOut(){
   const sb=getSupabase();
   if(sb){try{await sb.auth.signOut();}catch(e){}}
   applySignedOut();
+}
+
+function saveProfileName(newName){
+  newName=(newName||'').trim().replace(/[\r\n\t]/g,'').slice(0,14);
+  if(!newName){
+    toast('Invalid Name','Name cannot be blank','x','gold');
+    return;
+  }
+  S.profile.name=newName;
+  S.profile.name_customized=true;
+  persist();
+  syncProgressToCloud();
+  if(SCREEN==='stats')RENDER.stats();
+  if(SCREEN==='menu')RENDER.menu();
+  if(SCREEN==='online')renderOnline();
+  const topLvlName=$('#mLvlName');
+  if(topLvlName)topLvlName.textContent=newName;
+  toast('Name Updated','Display name changed to '+S.profile.name,'check','blue');
 }
 
 function openWelcomeBonusModal(name,bonus){
@@ -3198,8 +3211,12 @@ function oppPreview(id){
   const elig=ownedPens().filter(p=>classOf(p.mass)>=L.cls);if(!elig.length){go('shop');return;}
   if(!UI.careerPen||!elig.some(p=>p.id===UI.careerPen))UI.careerPen=(elig.find(p=>p.id===S.equip)||elig[0]).id;
   const first=!S.career[o.id],me=teamColor(S.profile.color);
+  const myName=(S.profile&&S.profile.name)?S.profile.name:'You';
+  const myAv=(S.profile&&S.profile.avatar_url)
+    ?`<img class="google-avatar" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex:none" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer">`
+    :`<div class="av" style="--c:${me}">${esc(initials(myName))}</div>`;
   openModal(`<h3>${o.boss?'Boss fight':'Career match'} · ${esc(L.name)}</h3>
-    <div class="vs"><div class="side"><div class="av" style="--c:${me}">YOU</div><b>You</b><small id="vsPen">${esc(PEN(UI.careerPen).name)}</small></div><div class="x">VS</div>
+    <div class="vs"><div class="side">${myAv}<b>${esc(myName)}</b><small id="vsPen">${esc(PEN(UI.careerPen).name)}</small></div><div class="x">VS</div>
       <div class="side"><div class="av ${o.boss?'boss':''}" style="--c:${o.col}">${esc(initials(o.name))}</div><b>${esc(o.name)}</b><small>${esc(PEN(o.pen).name)}</small></div></div>
     <p class="quote">“${esc(o.quote)}”</p>
     <div class="label" style="margin-top:14px">Your pen <em>${CLASSES[L.cls].name} or heavier</em></div>
@@ -3210,8 +3227,9 @@ function oppPreview(id){
 }
 function careerFight(id){
   const o=ALL_OPP.find(x=>x.id===id),L=LEAGUES[o.league];closeModal();
+  const myName=(S.profile&&S.profile.name)?S.profile.name:'You';
   startMatch({mode:'career',career:o,arena:L.arena,need:o.need,players:[
-    {name:'You',color:S.profile.color,pen:UI.careerPen||S.equip,human:true},
+    {name:myName,color:S.profile.color,pen:UI.careerPen||S.equip,human:true},
     {name:o.name,col:o.col,pen:o.pen,human:false,skill:o.skill,boss:o.boss}]});
 }
 
@@ -3232,8 +3250,9 @@ RENDER.quick=function(){
 function startQuick(){
   const q=S.quick,pen=PEN(q.pen),cls=classOf(pen.mass),pool=PENS.filter(p=>classOf(p.mass)===cls),cpu=pool[Math.random()*pool.length|0],d=QUICK_DIFF[q.diff];
   const cpuColor=S.profile.color==='red'?'blue':'red';persist();
+  const myName=(S.profile&&S.profile.name)?S.profile.name:'You';
   startMatch({mode:'quick',diff:q.diff,arena:q.arena,need:+q.need,players:[
-    {name:'You',color:S.profile.color,pen:pen.id,human:true},
+    {name:myName,color:S.profile.color,pen:pen.id,human:true},
     {name:CPU_NAMES[Math.random()*CPU_NAMES.length|0],color:cpuColor,pen:cpu.id,human:false,skill:clamp(d.skill+cls*.03,0,1)}]});
 }
 
@@ -3316,34 +3335,50 @@ RENDER.stats=function(){
   const signedIn=isGoogleSignedIn();
   const pName=(S.profile&&S.profile.name)?S.profile.name:'Player';
   const hasAvatar=S.profile&&S.profile.avatar_url;
+  const pEmail=S.profile&&S.profile.email;
   const trophies=S.trophies||100;
   const d=dailyState();
   
   const profileCard=`
     <div class="profile-header-card">
-      <div style="display:flex;align-items:center;gap:12px;width:100%">
-        <div class="profile-avatar-wrap" style="width:52px;height:52px">
+      <div style="display:flex;align-items:center;gap:14px;width:100%">
+        <div class="profile-avatar-wrap" style="width:58px;height:58px;flex:none">
           ${hasAvatar
-            ? `<img class="google-avatar" style="width:52px;height:52px" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer"><span class="lvl-badge" style="width:20px;height:20px;font-size:11px">${S.level}</span>`
-            : `<div class="lvl" style="width:52px;height:52px;font-size:18px;--p:${Math.round(S.xp/need*100)}"><span>${S.level}</span></div>`
+            ? `<img class="google-avatar" style="width:58px;height:58px;border-radius:50%;object-fit:cover" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer"><span class="lvl-badge" style="width:22px;height:22px;font-size:11px">${S.level}</span>`
+            : `<div class="lvl" style="width:58px;height:58px;font-size:20px;--p:${Math.round(S.xp/need*100)}"><span>${S.level}</span></div>`
           }
         </div>
         <div style="flex:1;min-width:0;text-align:left">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-            <b style="font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(pName)}</b>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <b style="font-size:19px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(pName)}</b>
             <span class="cloud-pill"><span class="pulse-dot"></span> Cloud Active</span>
           </div>
-          <small style="display:block;color:var(--muted);font-size:12px;margin-top:2px">
-            ${signedIn?(esc(S.profile.email||'Google Gamer Profile')):'Local Player · Connect Google for cross-device sync'}
-          </small>
+          <div class="gmail-pill" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:3px 10px;margin-top:5px;max-width:100%">
+            <svg style="width:13px;height:13px;flex:none"><use href="#i-google"/></svg>
+            <span style="font-size:12px;color:#e2e8f0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(pEmail || 'Google Gamer Profile')}</span>
+            <span class="chip good" style="font-size:9px;padding:1px 6px;flex:none">Verified</span>
+          </div>
         </div>
       </div>
-      <div style="display:flex;gap:8px;margin-top:12px;width:100%;flex-wrap:wrap">
+      <div style="display:flex;gap:8px;margin-top:14px;width:100%;flex-wrap:wrap">
         ${signedIn
           ? `<button class="btn sm" data-act="signOutGoogle" style="flex:1">${ICON('user')} Sign Out</button>`
           : `<button class="btn-google block" data-act="signInGoogle" style="flex:1;height:40px;font-size:13px"><svg><use href="#i-google"/></svg> Sign in with Google</button>`
         }
         <button class="btn sm primary" data-act="openLeaderboard" style="flex:1">${ICON('trophy')} Leaderboard</button>
+      </div>
+    </div>
+  `;
+
+  const editNameCard=`
+    <div class="panel" style="margin-top:12px">
+      <div class="label" style="margin-bottom:8px">
+        <span>Change Gamer Name</span>
+        <em>Updates in duels &amp; leaderboards</em>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input class="txt" id="profileNameIn" maxlength="14" value="${esc(pName)}" placeholder="Your Name" style="font-size:15px;font-weight:700">
+        <button class="btn primary" data-act="updateProfileName" style="flex:none;height:40px;padding:0 16px">${ICON('check')} Save</button>
       </div>
     </div>
   `;
@@ -3389,6 +3424,7 @@ RENDER.stats=function(){
 
   $('#statsBody').innerHTML=`
     ${profileCard}
+    ${editNameCard}
     <div class="panel">
       <div class="profile" style="padding:0">
         <div style="flex:1">
@@ -3485,7 +3521,10 @@ function renderOnline(){
   if(NET.state==='lobby'&&NET.lobby){
     const L=NET.lobby,host=NET.role==='host',canShare=!!navigator.share;
     const rows=L.players.map(p=>{const col=teamColor(p.color),me=p.pid===NET.me;
-      return `<div class="stand ${me?'first':''}"><div class="av" style="--c:${col}">${p.cpu?ICON('cpu'):esc(initials(p.name))}</div>
+      const avHtml=(me&&S.profile&&S.profile.avatar_url)
+        ?`<img class="google-avatar" style="width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer">`
+        :`<div class="av" style="--c:${col}">${p.cpu?ICON('cpu'):esc(initials(p.name))}</div>`;
+      return `<div class="stand ${me?'first':''}">${avHtml}
         <div class="meta"><b>${esc(p.name)} ${me?'<span class="chip next">You</span>':''}${p.host?' <span class="chip">Host</span>':''}${p.cpu?' <span class="chip">CPU</span>':''}</b>
         <small>${esc(PEN(p.pen).name)} · ${CLASSES[classOf(PEN(p.pen).mass)].name}</small></div>
         ${host&&p.cpu?`<select class="sel" style="width:auto" data-cpu="${p.pid}" aria-label="CPU level">${Object.entries(QUICK_DIFF).map(([k,d])=>`<option value="${k}" ${k===p.cpu?'selected':''}>${d.n}</option>`).join('')}</select>
@@ -3614,8 +3653,14 @@ function finishMatch(){
       :`<button class="btn primary lg" data-act="toMenu">${ICON('home')} Menu</button>`;
   else btns=`<button class="btn primary lg" data-act="rematch">${ICON('refresh')} Rematch</button><button class="btn lg" data-act="toMenu">${ICON('home')} Menu</button>`;
   $('#resultsBody').innerHTML=`<div class="result-hero"><div class="medal ${won?'':'lose'}">${ICON(won?'trophy':'flag')}</div><h2>${esc(title)}</h2><p>${esc(sub)}</p></div>
-    <div class="standings">${sorted.map((p,i)=>`<div class="stand ${i===0?'first':''}"><div class="pos">${i+1}</div><div class="av" style="--c:${p.col}">${esc(initials(p.name))}</div>
-      <div class="meta"><b>${esc(p.name)}</b><small>${esc(PEN(p.pen).name)} · ${p.kos} KO${p.kos===1?'':'s'}${p.selfKos?` · ${p.selfKos} self`:''}</small></div><div class="sc">${p.score}</div></div>`).join('')}</div>
+    <div class="standings">${sorted.map((p,i)=>{
+      const isMe=(p.human&&(online()?p.pid===NET.me:(p.name===(S.profile&&S.profile.name)||p.name==='You')));
+      const avHtml=(isMe&&S.profile&&S.profile.avatar_url)
+        ?`<img class="google-avatar" style="width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none" src="${esc(S.profile.avatar_url)}" alt="Avatar" referrerpolicy="no-referrer">`
+        :`<div class="av" style="--c:${p.col}">${esc(initials(p.name))}</div>`;
+      return `<div class="stand ${i===0?'first':''}"><div class="pos">${i+1}</div>${avHtml}
+        <div class="meta"><b>${esc(p.name)}</b><small>${esc(PEN(p.pen).name)} · ${p.kos} KO${p.kos===1?'':'s'}${p.selfKos?` · ${p.selfKos} self`:''}</small></div><div class="sc">${p.score}</div></div>`;
+    }).join('')}</div>
     ${R?`<div class="panel" style="margin-top:14px"><h3>Rewards</h3><div class="rewards">${R.lines.map(l=>`<div class="rw"><span>${esc(l[0])}</span><b>+${fmt(l[1])} ${COIN}</b></div>`).join('')}
       <div class="rw total"><span>Total</span><b><span id="rwTotal">0</span> ${COIN}</b></div></div>
       <div class="label" style="margin-top:14px">Level ${S.level}${ups.length?' · level up!':''} <em>+${fmt(R.xp)} XP · balance ${fmt(S.coins)} coins</em></div><div class="xpbar"><i id="xpFill" style="width:${ups.length?0:xpBefore}%"></i></div></div>`:''}
@@ -3723,6 +3768,10 @@ const ACT={
   },
   refreshRooms:()=>{
     fetchOpenRooms().then(()=>toast('Rooms Refreshed','','refresh','blue'));
+  },
+  updateProfileName:()=>{
+    const inp=$('#profileNameIn');
+    if(inp)saveProfileName(inp.value);
   }
 };
 document.addEventListener('click',e=>{
@@ -3730,7 +3779,12 @@ document.addEventListener('click',e=>{
   const f=ACT[el.dataset.act];if(!f)return;SND.unlock();if(!QUIET.has(el.dataset.act))SFX.ui();f(el,e);
 });
 addEventListener('keydown',e=>{
-  if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'))return;
+  if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')){
+    if(e.key==='Enter'&&e.target.id==='profileNameIn'){
+      saveProfileName(e.target.value);
+    }
+    return;
+  }
   if(e.key==='Escape'){
     if(modalOpen()){closeModal();return;}
     if(M.on&&!M.demo&&M.phase!=='matchEnd'){if(DRAG){DRAG=null;hidePower();return;}if(SCREEN==='pause')pause(false);else if(SCREEN===null)pause(true);else back();}
