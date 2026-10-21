@@ -805,7 +805,111 @@ body.in-match #hud{display:block}
 .friend-card .actions{display:flex;align-items:center;gap:6px;flex:none}
 .friend-code-box{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(255,194,61,.12));border:1px dashed rgba(255,194,61,.45);margin-bottom:14px}
 .friend-code-box b{font-size:18px;letter-spacing:.08em;color:var(--accent);font-variant-numeric:tabular-nums}
-.duel-challenge-card{border:2px solid var(--accent);background:linear-gradient(135deg,rgba(255,194,61,.18),rgba(18,27,58,.95));box-shadow:0 0 25px rgba(255,194,61,.25)}
+/* ==================== 5-PLAYER MULTIPLAYER & SPECTATOR MODE ==================== */
+.hud-row.five-p{gap:4px;max-width:960px}
+.hud-row.five-p .pc{padding:4px 6px;max-width:180px}
+.hud-row.five-p .pc .av{width:28px;height:28px;font-size:11px}
+.hud-row.five-p .pc .nm b{font-size:12px}
+.hud-row.five-p .pc .nm small{font-size:9.5px}
+.hud-row.five-p .pip{width:7px;height:7px;border-width:1.5px}
+
+.spectator-live-bar{position:fixed;top:calc(12px + var(--st));left:50%;transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:12px;padding:6px 14px;border-radius:999px;background:rgba(8,13,28,.92);border:1px solid rgba(239,68,68,.55);box-shadow:0 8px 30px rgba(0,0,0,.6),0 0 20px rgba(239,68,68,.25);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.spec-badge{display:flex;align-items:center;gap:6px}
+.spec-dot{width:10px;height:10px;border-radius:50%;background:#ef4444;box-shadow:0 0 10px #ef4444}
+.spec-label{font-size:11px;font-weight:900;letter-spacing:.12em;color:#f87171}
+.spec-info{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text);font-weight:600}
+.spec-sep{color:var(--dim)}
+.spec-exit-btn{height:28px;padding:0 12px;font-size:11.5px;font-weight:800;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background-color .15s}
+.spec-exit-btn:hover{background:rgba(239,68,68,.3);border-color:#ef4444}
+
+/* ==================== MATCHMAKING RADAR ==================== */
+.matchmaking-overlay{position:fixed;inset:0;z-index:100;background:rgba(3,6,15,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px}
+.matchmaking-modal{width:min(400px,100%);background:linear-gradient(180deg,#182654,#0e1531);border:1px solid rgba(56,189,248,.4);border-radius:24px;padding:24px;text-align:center;box-shadow:var(--shadow),0 0 40px rgba(56,189,248,.25)}
+.mm-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.mm-pill{padding:4px 10px;border-radius:999px;background:rgba(56,189,248,.18);border:1px solid rgba(56,189,248,.35);color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.mm-timer{font-size:16px;font-weight:900;color:var(--accent);font-variant-numeric:tabular-nums;background:rgba(255,194,61,.14);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,194,61,.3)}
+.radar-container{position:relative;width:150px;height:150px;margin:0 auto 18px;border-radius:50%;border:1px solid rgba(56,189,248,.3);background:radial-gradient(circle,rgba(56,189,248,.08),transparent 70%);display:grid;place-items:center;overflow:hidden}
+.radar-wave{position:absolute;inset:0;border-radius:50%;border:2px solid var(--cyan);pointer-events:none}
+.radar-scanner{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 60%,rgba(56,189,248,.45) 100%);pointer-events:none}
+.radar-center{position:relative;z-index:2;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#38bdf8,#1d4ed8);border:2px solid #fff;display:grid;place-items:center;font-size:20px;box-shadow:0 0 20px rgba(56,189,248,.8)}
+.mm-title{margin:0 0 6px;font-size:20px;font-weight:900;color:#fff}
+.mm-sub{margin:0 0 20px;font-size:13px;color:var(--muted);line-height:1.4}
+.mm-btn-wrap{display:flex;justify-content:center}
+
+/* ==================== REALTIME DUEL CHALLENGE MODAL ==================== */
+.duel-overlay{position:fixed;inset:0;z-index:110;background:rgba(2,5,14,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px}
+.duel-modal{width:min(390px,100%);background:linear-gradient(135deg,rgba(255,194,61,.15),rgba(18,27,58,.97));border:2px solid var(--accent);border-radius:24px;padding:26px 20px;text-align:center;box-shadow:0 0 45px rgba(255,194,61,.35)}
+.duel-icon-wrap{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(255,194,61,.28),rgba(239,68,68,.28));border:2px solid var(--accent);display:grid;place-items:center;margin:0 auto 12px;box-shadow:0 0 24px rgba(255,194,61,.5)}
+.duel-title{margin:0 0 6px;font-size:22px;font-weight:900;color:#fff}
+.duel-sub{margin:0 0 20px;font-size:14px;color:var(--muted);line-height:1.45}
+/* ==================== REALTIME CHAT, VOICE CHAT & EMOJI REACTIONS ==================== */
+.hud-actions{position:absolute;top:calc(8px + var(--st));right:12px;display:flex;align-items:center;gap:6px;z-index:20}
+.hud-actions .icon-btn{width:36px;height:36px;border-radius:50%;background:rgba(8,13,28,.82);border:1px solid rgba(255,255,255,.16);color:var(--text);display:grid;place-items:center;cursor:pointer;position:relative;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .12s,border-color .15s,background-color .15s,box-shadow .15s}
+.hud-actions .icon-btn:hover{transform:scale(1.06);border-color:rgba(255,194,61,.5);color:#fff}
+.hud-actions .icon-btn:active{transform:scale(.94)}
+
+.hud-actions .hud-voice.connected{background:rgba(34,197,94,.18);border-color:#22c55e;color:#4ade80}
+.hud-actions .hud-voice.speaking{animation:voicePulse 1.2s infinite alternate;box-shadow:0 0 14px rgba(34,197,94,.7)}
+.hud-actions .hud-voice.muted{background:rgba(239,68,68,.18);border-color:#ef4444;color:#f87171}
+@keyframes voicePulse{0%{box-shadow:0 0 6px rgba(34,197,94,.4)}100%{box-shadow:0 0 18px rgba(34,197,94,.95)}}
+
+#chatBadge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:#ef4444;color:#fff;font-size:10px;font-weight:900;display:grid;place-items:center;padding:0 4px;border:2px solid #080d1c}
+
+/* Quick Emoji Tray */
+.emoji-tray{position:absolute;top:calc(50px + var(--st));right:12px;background:rgba(10,16,35,.92);border:1px solid rgba(255,194,61,.35);border-radius:18px;padding:6px;display:none;grid-template-columns:repeat(4,1fr);gap:4px;box-shadow:0 12px 30px rgba(0,0,0,.6),0 0 20px rgba(255,194,61,.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:25}
+.emoji-tray.open{display:grid}
+.emoji-btn{width:36px;height:36px;border-radius:10px;border:none;background:rgba(255,255,255,.06);font-size:19px;cursor:pointer;display:grid;place-items:center;transition:transform .12s,background-color .12s}
+.emoji-btn:hover{transform:scale(1.22);background:rgba(255,194,61,.22)}
+.emoji-btn:active{transform:scale(.92)}
+
+/* In-Game Slide-in Chat Overlay */
+.game-chat-overlay{position:fixed;top:calc(56px + var(--st));right:12px;width:min(320px,calc(100vw - 24px));height:min(360px,50dvh);background:rgba(8,13,28,.95);border:1px solid rgba(56,189,248,.35);border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.7),0 0 30px rgba(56,189,248,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:28;display:none;flex-direction:column;overflow:hidden}
+.game-chat-overlay.open{display:flex}
+.game-chat-box{display:flex;flex-direction:column;height:100%}
+.game-chat-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+.game-chat-messages{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
+.game-chat-input-row{display:flex;gap:6px;padding:8px 10px;border-top:1px solid var(--line);background:rgba(0,0,0,.25)}
+.game-chat-input-row input{flex:1}
+
+/* Chat Message Bubbles */
+.chat-msg{display:flex;flex-direction:column;max-width:88%;margin-bottom:2px}
+.chat-msg.mine{align-self:flex-end}
+.chat-msg.other{align-self:flex-start}
+.chat-author{font-size:10.5px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:4px}
+.chat-bubble{padding:6px 11px;border-radius:14px;font-size:12.5px;line-height:1.35;word-break:break-word}
+.chat-msg.mine .chat-bubble{background:linear-gradient(135deg,rgba(59,130,246,.85),rgba(37,99,235,.9));color:#fff;border-bottom-right-radius:4px}
+.chat-msg.other .chat-bubble{background:var(--surface-lo);border:1px solid var(--line);color:var(--text);border-bottom-left-radius:4px}
+.chat-empty{text-align:center;padding:24px 10px;color:var(--muted);font-size:12px}
+
+/* In-game floating message preview */
+.game-chat-preview{position:absolute;top:calc(64px + var(--st));left:16px;max-width:280px;padding:6px 12px;border-radius:12px;background:rgba(8,13,28,.88);border:1px solid rgba(56,189,248,.4);box-shadow:0 8px 24px rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;z-index:22;pointer-events:none;animation:previewFade 3.5s forwards}
+@keyframes previewFade{0%{opacity:0;transform:translateY(-8px)}10%{opacity:1;transform:translateY(0)}80%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
+
+/* Emoji Floating Stage */
+.emoji-stage{position:fixed;inset:0;pointer-events:none;z-index:96;overflow:hidden}
+.floating-emoji{position:absolute;font-size:36px;transform:translate(-50%,-50%);animation:floatUpAnim 2.2s cubic-bezier(.22,1,.36,1) forwards;filter:drop-shadow(0 6px 16px rgba(0,0,0,.6))}
+@keyframes floatUpAnim{0%{opacity:0;transform:translate(-50%,0) scale(.4)}15%{opacity:1;transform:translate(-50%,-20px) scale(1.35)}30%{transform:translate(-50%,-35px) scale(1)}80%{opacity:1;transform:translate(-50%,-100px) scale(1)}100%{opacity:0;transform:translate(-50%,-140px) scale(.7)}}
+
+.emoji-reaction-pill{position:absolute;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(8,13,28,.92);border:1px solid rgba(255,194,61,.5);box-shadow:0 8px 25px rgba(0,0,0,.6);transform:translate(-50%,-50%);font-size:12px;font-weight:800;animation:pillFloat 2.4s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes pillFloat{0%{opacity:0;transform:translate(-50%,10px) scale(.8)}15%{opacity:1;transform:translate(-50%,-15px) scale(1)}80%{opacity:1;transform:translate(-50%,-55px) scale(1)}100%{opacity:0;transform:translate(-50%,-80px) scale(.85)}}
+
+/* Lobby Room Chat Panel */
+.lobby-chat-panel{margin-top:14px;border-radius:18px;background:var(--surface);border:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:10px}
+.lobby-chat-header{display:flex;align-items:center;justify-content:space-between}
+.lobby-chat-header b{display:flex;align-items:center;gap:6px;font-size:14px}
+.lobby-chat-msgs{max-height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:12px;background:var(--surface-lo);border:1px solid var(--line)}
+
+/* Lobby Voice Chat Bar */
+.lobby-voice-box{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(56,189,248,.08));border:1px solid rgba(34,197,94,.35);margin-top:10px}
+.lobby-voice-status{display:flex;align-items:center;gap:8px}
+.voice-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
+.voice-dot.off{background:var(--dim);box-shadow:none}
+
+/* Duo vs Squad Mode Switcher */
+.mode-toggle-group{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--surface-lo);border:1px solid var(--line);margin-bottom:12px}
+.mode-toggle-btn{flex:1;height:34px;border:none;border-radius:10px;background:transparent;color:var(--muted);font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:all .15s}
+.mode-toggle-btn.on{background:linear-gradient(135deg,rgba(255,194,61,.22),rgba(255,194,61,.1));color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3);border:1px solid rgba(255,194,61,.45)}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
 

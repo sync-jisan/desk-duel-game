@@ -1,3 +1,4 @@
+'use client';
 /* All static screens, the HUD, Auth Gate, and the icon sprite.
    The engine (lib/game/engine.js) fills in dynamic content and switches screens by toggling classes. */
 export default function GameMarkup() {
@@ -232,6 +233,12 @@ export default function GameMarkup() {
           <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.2" /></symbol>
           <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2.5 4.5L17 13H5" /></symbol>
           <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+          <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></symbol>
+          <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M19 10v2a7 7 0 0 1-14 0v-2" fill="none" stroke="currentColor" strokeWidth="2"/><line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" strokeWidth="2"/><line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" strokeWidth="2"/></symbol>
+          <symbol id="i-mic-off" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" strokeWidth="2"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23" fill="none" stroke="currentColor" strokeWidth="2"/><line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" strokeWidth="2"/><line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" strokeWidth="2"/></symbol>
+          <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M8 14s1.5 2 4 2 4-2 4-2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><line x1="9" y1="9" x2="9.01" y2="9" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/></symbol>
+          <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="2"/></symbol>
+          <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor"/></symbol>
           <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1.5-5L16 4.5a2.1 2.1 0 0 1 3 3L8.5 18z" /><path d="M14 6.5l3 3" /></symbol>
           <symbol id="i-desk" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path d="M7 10h6M7 14h3" /></symbol>
           <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" /></symbol>
@@ -255,7 +262,58 @@ export default function GameMarkup() {
           <div className="hud-meta"><div className="pillx"><span id="hudRound">Round 1</span><span className="sep"></span><span id="hudGoal">First to 2</span></div></div>
           <div className="hud-row" id="hudPlayers"></div>
         </div>
-        <button className="icon-btn hud-pause" id="pauseBtn" data-act="pause" aria-label="Pause"><svg className="i"><use href="#i-pause" /></svg></button>
+
+        <div className="hud-actions" id="hudActions">
+          <button className="icon-btn hud-voice" id="voiceToggleBtn" data-act="toggleVoice" aria-label="Voice Chat" title="Voice Chat">
+            <svg className="i"><use href="#i-mic-off" /></svg>
+          </button>
+          <button className="icon-btn hud-emoji" id="emojiToggleBtn" data-act="toggleEmojiTray" aria-label="Reaction Emojis" title="Emoji Reactions">
+            <svg className="i"><use href="#i-smile" /></svg>
+          </button>
+          <button className="icon-btn hud-chat" id="chatToggleBtn" data-act="toggleGameChat" aria-label="Room Chat" title="Room Chat">
+            <svg className="i"><use href="#i-chat" /></svg>
+            <span className="badge" id="chatBadge" style={{ display: 'none' }}>0</span>
+          </button>
+          <button className="icon-btn hud-pause" id="pauseBtn" data-act="pause" aria-label="Pause"><svg className="i"><use href="#i-pause" /></svg></button>
+        </div>
+
+        {/* Emoji Quick-Reaction Tray */}
+        <div className="emoji-tray" id="emojiTray">
+          {['🔥', '😂', '🎯', '💀', '👏', '😱', '⚡', '👑', '🥳', '💩', '🚀', '💯'].map(e => (
+            <button key={e} className="emoji-btn" data-act="sendEmoji" data-emoji={e} aria-label={`Reaction ${e}`}>{e}</button>
+          ))}
+        </div>
+
+        {/* In-Game Slide-In Chat Overlay */}
+        <div className="game-chat-overlay" id="gameChatOverlay">
+          <div className="game-chat-box">
+            <div className="game-chat-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg className="i" style={{ width: '18px', height: '18px', color: 'var(--c1)' }}><use href="#i-chat" /></svg>
+                <b>Room Chat</b>
+              </div>
+              <button className="icon-btn sm" data-act="toggleGameChat" aria-label="Close Chat">
+                <svg className="i"><use href="#i-x" /></svg>
+              </button>
+            </div>
+            <div className="game-chat-messages" id="gameChatMessages">
+              <div className="chat-empty">No messages yet. Say hello!</div>
+            </div>
+            <form className="game-chat-input-row" id="gameChatForm" onSubmit={(e) => { e.preventDefault(); }}>
+              <input type="text" className="txt sm" id="gameChatInput" placeholder="Send a message…" maxLength={180} autoComplete="off" />
+              <button type="submit" className="btn sm primary" data-act="sendChatMsg">
+                <svg className="i"><use href="#i-send" /></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* In-game Floating Chat Message Preview */}
+        <div className="game-chat-preview" id="gameChatPreview" style={{ display: 'none' }}></div>
+
+        {/* Emoji Floating Stage (renders animated reactions) */}
+        <div className="emoji-stage" id="emojiStage"></div>
+
         <div className="hud-bottom" id="hudBottom">
           <div className="power" id="power"><i></i><span><b id="powerTxt">POWER 0%</b><em id="spinTxt"></em></span></div>
           <div className="turn-pill" id="turnPill"><span className="dot"></span><span id="turnText">Your turn</span><span className="clock" id="clock"></span></div>
