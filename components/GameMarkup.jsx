@@ -282,7 +282,7 @@ export default function GameMarkup() {
                 <div className="auth-feat"><b>5 Leagues</b><small>Fight your way to the top</small></div>
                 <div className="auth-feat"><b>Online Matches</b><small>Play with friends anywhere</small></div>
                 <div className="auth-feat"><b>Lots of Pens</b><small>Unlock bigger &amp; heavier pens</small></div>
-                <div className="auth-feat"><b>Cloud Save</b><small>Play on any phone or PC</small></div>
+                <div className="auth-feat"><b>Save Progress</b><small>Keep your coins &amp; pens</small></div>
               </div>
 
               <div className="auth-btn-wrap">
@@ -340,7 +340,7 @@ export default function GameMarkup() {
             <button className="btn" data-act="go" data-to="stats"><svg className="i"><use href="#i-chart" /></svg>Profile &amp; Stats</button>
             <button className="btn" data-act="fullscreen"><svg className="i"><use href="#i-expand" /></svg>Fullscreen</button>
           </div>
-          <div className="version" id="mCloudStatus">v2.0 · ☁️ Sign in with Google for Cloud Save</div>
+          <div className="version" id="mCloudStatus">v2.1 · Desk Duel</div>
         </div>
       </section>
 
