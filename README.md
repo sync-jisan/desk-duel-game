@@ -40,10 +40,13 @@
 Deploying Desk Duel to Vercel takes less than a minute:
 
 ### Option 1: Automatic GitHub Import (Recommended)
+
 1. Push your repository to GitHub:
+
    ```bash
    git push origin main
    ```
+
 2. Go to [vercel.com/new](https://vercel.com/new) and select your `desk-duel-game` repository.
 3. Vercel automatically detects **Next.js**.
 4. *(Optional)* Add your Supabase environment variables in the **Environment Variables** section:
@@ -53,6 +56,7 @@ Deploying Desk Duel to Vercel takes less than a minute:
 5. Click **Deploy**. Vercel will build and launch your live URL!
 
 ### Option 2: Deploy with Vercel CLI
+
 ```bash
 npx vercel
 ```
@@ -62,11 +66,13 @@ npx vercel
 ## 🛠️ Running Locally (Next.js)
 
 1. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 2. **Start the local development server**:
+
    ```bash
    npm run dev
    ```
@@ -74,6 +80,7 @@ npx vercel
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 4. **Production Build Validation**:
+
    ```bash
    npm run build
    npm run start
