@@ -1,6 +1,8 @@
 -- =====================================================================
 -- DESK DUEL v2 — SUPABASE BACKEND SCHEMA & REALTIME SETUP
 -- Project: Desk Duel (Pen Fighting Championship)
+-- IMPORTANT: after this file, run supabase/migrations/20261021120000_secure_rls_and_realtime.sql
+-- (it replaces the open "anyone can write" policies below with owner-only ones).
 -- =====================================================================
 
 -- Enable pgcrypto for UUID generation if not already enabled

@@ -81,6 +81,16 @@ npx vercel
 
 ---
 
+## 🗄️ Database Setup (Supabase)
+
+1. In the Supabase SQL Editor run `supabase-schema.sql` (tables, view, functions).
+2. Then run `supabase/migrations/20261021120000_secure_rls_and_realtime.sql`. It locks the tables down:
+   players can only write their own profile, emails are no longer public, the daily bonus can only be
+   claimed for yourself, only a room's host can change it, and stale lobbies are cleaned up every 5 minutes
+   (needs the `pg_cron` extension).
+
+Cloud save requires a real Google sign-in; offline profiles stay on the device.
+
 ## 📦 Project Structure
 
 ```text

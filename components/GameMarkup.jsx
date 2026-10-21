@@ -10,6 +10,196 @@ export default function GameMarkup() {
             <stop offset=".5" stopColor="#ffc23d" />
             <stop offset="1" stopColor="#e58a00" />
           </linearGradient>
+
+          {/* ---- shared illustration gradients (dd-*) ---- */}
+          <linearGradient id="dd-gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#fff3c4" /><stop offset=".38" stopColor="#ffcf4d" /><stop offset="1" stopColor="#e07b00" />
+          </linearGradient>
+          <linearGradient id="dd-goldD" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#ffc23d" /><stop offset="1" stopColor="#a85a00" />
+          </linearGradient>
+          <linearGradient id="dd-blue" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#9cc8ff" /><stop offset=".42" stopColor="#3b82f6" /><stop offset="1" stopColor="#1e3a8a" />
+          </linearGradient>
+          <linearGradient id="dd-red" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#ffb0b0" /><stop offset=".42" stopColor="#ef4444" /><stop offset="1" stopColor="#8f1414" />
+          </linearGradient>
+          <linearGradient id="dd-green" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#bbf7d0" /><stop offset=".42" stopColor="#22c55e" /><stop offset="1" stopColor="#14532d" />
+          </linearGradient>
+          <linearGradient id="dd-violet" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#e9d5ff" /><stop offset=".42" stopColor="#a78bfa" /><stop offset="1" stopColor="#4c1d95" />
+          </linearGradient>
+          <linearGradient id="dd-pink" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#fbcfe8" /><stop offset=".42" stopColor="#f472b6" /><stop offset="1" stopColor="#9d174d" />
+          </linearGradient>
+          <linearGradient id="dd-cyan" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#cffafe" /><stop offset=".42" stopColor="#38bdf8" /><stop offset="1" stopColor="#075985" />
+          </linearGradient>
+          <linearGradient id="dd-steel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#ffffff" /><stop offset=".5" stopColor="#cbd5e1" /><stop offset="1" stopColor="#64748b" />
+          </linearGradient>
+          <linearGradient id="dd-bag" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#c4b5fd" /><stop offset=".45" stopColor="#8b5cf6" /><stop offset="1" stopColor="#4c1d95" />
+          </linearGradient>
+          <linearGradient id="dd-wood" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#e7b876" /><stop offset="1" stopColor="#b0763a" />
+          </linearGradient>
+          <radialGradient id="dd-globe" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stopColor="#bae6fd" /><stop offset=".45" stopColor="#3b82f6" /><stop offset="1" stopColor="#172554" />
+          </radialGradient>
+          <radialGradient id="dd-burst" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stopColor="#ffffff" /><stop offset=".3" stopColor="#fff1b0" /><stop offset=".65" stopColor="#ffb21f" stopOpacity=".75" /><stop offset="1" stopColor="#ff7a00" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="dd-glow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stopColor="#ffffff" stopOpacity=".55" /><stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="dd-glowGold" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stopColor="#ffc23d" stopOpacity=".5" /><stop offset="1" stopColor="#ffc23d" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="dd-shadow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stopColor="#000" stopOpacity=".45" /><stop offset="1" stopColor="#000" stopOpacity="0" />
+          </radialGradient>
+
+          {/* sparkle + pens (tip points right, viewBox 100x20) */}
+          <symbol id="dd-spark" viewBox="-6 -6 12 12"><path d="M0-6 1.4-1.4 6 0 1.4 1.4 0 6-1.4 1.4-6 0-1.4-1.4z" fill="#fff" /></symbol>
+          <symbol id="dd-pen-base" viewBox="0 0 100 20">
+            <rect x="6" y="0.6" width="26" height="4.4" rx="2.2" fill="url(#dd-steel)" />
+            <rect x="69" y="3.2" width="6" height="13.6" fill="url(#dd-steel)" />
+            <path d="M75 3.6 92 8.4v3.2L75 16.4z" fill="url(#dd-steel)" />
+            <path d="M92 8.4 99.4 10 92 11.6z" fill="#1e293b" />
+            <rect x="8" y="5" width="60" height="2.6" rx="1.3" fill="#fff" opacity=".5" />
+          </symbol>
+          <symbol id="dd-pen-blue" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-blue)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#0b1020" opacity=".3" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+          <symbol id="dd-pen-red" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-red)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#0b1020" opacity=".3" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+          <symbol id="dd-pen-green" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-green)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#0b1020" opacity=".3" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+          <symbol id="dd-pen-violet" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-violet)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#0b1020" opacity=".3" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+          <symbol id="dd-pen-pink" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-pink)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#0b1020" opacity=".3" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+          <symbol id="dd-pen-cyan" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-cyan)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#0b1020" opacity=".3" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+          <symbol id="dd-pen-gold" viewBox="0 0 100 20"><rect x="1" y="3" width="70" height="14" rx="7" fill="url(#dd-gold)" /><rect x="1" y="3" width="22" height="14" rx="7" fill="#3a1d00" opacity=".25" /><use href="#dd-pen-base" width="100" height="20" /></symbol>
+
+          {/* ---- mode tile illustrations (viewBox 120x100) ---- */}
+          <symbol id="art-career" viewBox="0 0 120 100">
+            <circle cx="60" cy="46" r="46" fill="url(#dd-glow)" />
+            <use href="#dd-pen-blue" x="6" y="36" width="108" height="22" transform="rotate(-38 60 47)" />
+            <use href="#dd-pen-red" x="6" y="36" width="108" height="22" transform="translate(120 0) scale(-1 1) rotate(-38 60 47)" />
+            <path d="M40 30H30a12 12 0 0 0 13 15M80 30h10a12 12 0 0 1-13 15" fill="none" stroke="#b86d04" strokeWidth="5.5" strokeLinecap="round" />
+            <path d="M40 30H30a12 12 0 0 0 13 15M80 30h10a12 12 0 0 1-13 15" fill="none" stroke="url(#dd-gold)" strokeWidth="3.4" strokeLinecap="round" />
+            <path d="M38 22h44v18c0 14-9.5 23-22 23S38 54 38 40z" fill="url(#dd-gold)" stroke="#a35f00" strokeWidth="1.4" />
+            <ellipse cx="60" cy="22.5" rx="22" ry="3.2" fill="#ffe9a3" stroke="#a35f00" strokeWidth="1.2" />
+            <path d="M45 27c0 13 3 22 9 28" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" opacity=".55" />
+            <path d="m60 31 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4-3.9-3.8 5.4-.8z" fill="#fff7d6" stroke="#b86d04" strokeWidth=".8" />
+            <path d="M55 62h10l1.5 10h-13z" fill="url(#dd-goldD)" />
+            <rect x="42" y="71" width="36" height="7" rx="3" fill="url(#dd-gold)" stroke="#a35f00" strokeWidth="1.1" />
+            <rect x="37" y="78" width="46" height="11" rx="3.5" fill="#3b2410" />
+            <rect x="37" y="78" width="46" height="3" rx="1.5" fill="#6b4220" />
+            <rect x="50" y="81.5" width="20" height="4.6" rx="1.2" fill="url(#dd-gold)" />
+            <use href="#dd-spark" x="88" y="8" width="12" height="12" />
+            <use href="#dd-spark" x="20" y="14" width="8" height="8" />
+            <use href="#dd-spark" x="94" y="52" width="7" height="7" opacity=".8" />
+          </symbol>
+
+          <symbol id="art-quick" viewBox="0 0 120 100">
+            <circle cx="60" cy="52" r="40" fill="url(#dd-burst)" opacity=".85" />
+            <path d="M60 22l6 18 18-8-10 16 20 6-20 5 10 17-18-9-6 19-6-19-18 9 10-17-20-5 20-6-10-16 18 8z" fill="#ffd76a" opacity=".35" />
+            <use href="#dd-pen-blue" x="-6" y="44" width="70" height="15" transform="rotate(-14 60 52)" />
+            <use href="#dd-pen-red" x="-6" y="44" width="70" height="15" transform="translate(120 0) scale(-1 1) rotate(-14 60 52)" />
+            <path d="M8 36h14M4 46h12M10 72h12M98 36h14M104 64h12M96 74h12" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" opacity=".35" />
+            <path d="M68 6 45 50h14l-8 44 31-52H66z" fill="url(#dd-gold)" stroke="#7a4300" strokeWidth="1.6" strokeLinejoin="round" />
+            <path d="M66 12 51 44" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" opacity=".7" />
+            <use href="#dd-spark" x="84" y="14" width="10" height="10" />
+            <use href="#dd-spark" x="26" y="78" width="8" height="8" opacity=".85" />
+          </symbol>
+
+          <symbol id="art-party" viewBox="0 0 120 100">
+            <ellipse cx="60" cy="92" rx="40" ry="6" fill="url(#dd-shadow)" />
+            <circle cx="60" cy="50" r="40" fill="url(#dd-glow)" opacity=".7" />
+            <use href="#dd-pen-violet" x="58" y="83" width="80" height="16" transform="rotate(-124 60 91)" />
+            <use href="#dd-pen-green" x="58" y="83" width="80" height="16" transform="rotate(-56 60 91)" />
+            <use href="#dd-pen-blue" x="58" y="83" width="86" height="17" transform="rotate(-90 60 91)" />
+            <rect x="18" y="20" width="6" height="3.4" rx="1" fill="#f472b6" transform="rotate(30 21 22)" />
+            <rect x="96" y="16" width="6" height="3.4" rx="1" fill="#ffc23d" transform="rotate(-25 99 18)" />
+            <rect x="88" y="44" width="5" height="3" rx="1" fill="#38bdf8" transform="rotate(50 90 45)" />
+            <rect x="24" y="52" width="5" height="3" rx="1" fill="#22c55e" transform="rotate(-40 26 53)" />
+            <circle cx="34" cy="10" r="2.2" fill="#38bdf8" />
+            <circle cx="104" cy="32" r="2" fill="#f472b6" />
+            <circle cx="14" cy="38" r="1.8" fill="#ffc23d" />
+            <use href="#dd-spark" x="70" y="2" width="10" height="10" />
+            <use href="#dd-spark" x="38" y="24" width="7" height="7" opacity=".8" />
+          </symbol>
+
+          <symbol id="art-online" viewBox="0 0 120 100">
+            <circle cx="60" cy="50" r="44" fill="url(#dd-glow)" opacity=".6" />
+            <ellipse cx="60" cy="50" rx="54" ry="15" fill="none" stroke="#ffd76a" strokeWidth="1.6" strokeDasharray="3 5" opacity=".55" transform="rotate(-18 60 50)" />
+            <circle cx="60" cy="50" r="31" fill="url(#dd-globe)" stroke="#0f1f4d" strokeWidth="1.2" />
+            <path d="M44 30c6 2 9 7 6 11s-9 3-10 9 4 9 2 13c-4-3-11-10-11-17 0-6 5-13 13-16zM66 22c6 1 13 5 17 12-4 2-9 0-12 3s0 9-4 11-8-3-8-8 4-6 4-11-2-5 3-7zM70 64c4-3 10-3 13 0-2 6-8 11-14 13-1-5-3-10 1-13z" fill="#34d399" opacity=".88" />
+            <path d="M29 50h62M60 19c9 9 9 53 0 62M60 19c-9 9-9 53 0 62" fill="none" stroke="#fff" strokeWidth="1" opacity=".22" />
+            <ellipse cx="49" cy="34" rx="10" ry="6" fill="#fff" opacity=".28" transform="rotate(-30 49 34)" />
+            <path d="M8 62c22 12 82 0 104-26" fill="none" stroke="#ffd76a" strokeWidth="1.6" strokeDasharray="3 5" opacity=".7" />
+            <use href="#dd-pen-red" x="70" y="10" width="42" height="9" transform="rotate(-24 91 14)" />
+            <use href="#dd-pen-gold" x="4" y="70" width="42" height="9" transform="rotate(14 25 74)" />
+            <circle cx="96" cy="70" r="5" fill="#22c55e" stroke="#0b1020" strokeWidth="2" />
+            <circle cx="96" cy="70" r="9" fill="none" stroke="#22c55e" strokeWidth="1.4" opacity=".5" />
+            <use href="#dd-spark" x="14" y="16" width="9" height="9" />
+          </symbol>
+
+          <symbol id="art-shop" viewBox="0 0 120 100">
+            <ellipse cx="58" cy="93" rx="38" ry="5" fill="url(#dd-shadow)" />
+            <circle cx="60" cy="48" r="42" fill="url(#dd-glow)" opacity=".6" />
+            <use href="#dd-pen-cyan" x="50" y="40" width="62" height="13" transform="rotate(-72 50 46)" />
+            <use href="#dd-pen-pink" x="50" y="40" width="58" height="13" transform="rotate(-112 56 46)" />
+            <path d="M47 40v-7a13 13 0 0 1 26 0v7" fill="none" stroke="#ede9fe" strokeWidth="4" strokeLinecap="round" />
+            <path d="M28 40h64l-5 50a3 3 0 0 1-3 3H36a3 3 0 0 1-3-3z" fill="url(#dd-bag)" stroke="#2e1065" strokeWidth="1.3" />
+            <path d="M28 40h64l-.7 7H28.7z" fill="#2e1065" opacity=".35" />
+            <path d="M35 50c1 12 2 26 4 37" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" opacity=".35" />
+            <circle cx="47" cy="40" r="2.4" fill="#2e1065" /><circle cx="73" cy="40" r="2.4" fill="#2e1065" />
+            <use href="#i-coin" x="48" y="56" width="24" height="24" />
+            <use href="#i-coin" x="86" y="70" width="22" height="22" />
+            <use href="#i-coin" x="92" y="58" width="17" height="17" />
+            <use href="#dd-spark" x="16" y="30" width="9" height="9" />
+            <use href="#dd-spark" x="98" y="30" width="7" height="7" opacity=".85" />
+          </symbol>
+
+          {/* ---- brand mark (viewBox 160x84) ---- */}
+          <symbol id="art-brand" viewBox="0 0 160 84">
+            <circle cx="80" cy="42" r="40" fill="url(#dd-glowGold)" />
+            <use href="#dd-pen-blue" x="4" y="30" width="142" height="28" transform="rotate(-16 80 44)" />
+            <use href="#dd-pen-red" x="4" y="30" width="142" height="28" transform="translate(160 0) scale(-1 1) rotate(-16 80 44)" />
+            <circle cx="80" cy="40" r="18" fill="url(#dd-burst)" />
+            <use href="#dd-spark" x="68" y="28" width="24" height="24" />
+            <use href="#dd-spark" x="112" y="6" width="10" height="10" opacity=".85" />
+            <use href="#dd-spark" x="34" y="10" width="8" height="8" opacity=".7" />
+          </symbol>
+
+          {/* ---- auth hero (viewBox 320x180) ---- */}
+          <symbol id="art-auth" viewBox="0 0 320 180">
+            <ellipse cx="160" cy="88" rx="150" ry="80" fill="url(#dd-glowGold)" opacity=".7" />
+            <path d="M52 108h216l34 52H18z" fill="url(#dd-wood)" />
+            <path d="M18 160h284v9a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4z" fill="#6e4219" />
+            <path d="M60 120c50-4 120 4 190-2M44 136c70-5 150 5 232-1M32 150c80-4 170 4 258 0" fill="none" stroke="#8a5a2b" strokeWidth="1.2" opacity=".35" />
+            <path d="M52 108h216l3 4H49z" fill="#fff" opacity=".22" />
+            <ellipse cx="104" cy="130" rx="58" ry="7" fill="url(#dd-shadow)" />
+            <ellipse cx="216" cy="130" rx="58" ry="7" fill="url(#dd-shadow)" />
+            <use href="#dd-pen-blue" x="44" y="104" width="116" height="23" transform="rotate(-10 102 116)" />
+            <use href="#dd-pen-red" x="44" y="104" width="116" height="23" transform="translate(320 0) scale(-1 1) rotate(-10 102 116)" />
+            <circle cx="160" cy="102" r="28" fill="url(#dd-burst)" />
+            <path d="M160 74l4 14 12-6-6 12 14 4-14 4 6 12-12-6-4 14-4-14-12 6 6-12-14-4 14-4-6-12 12 6z" fill="#fff6d0" opacity=".7" />
+            <path d="M132 86l-12-8M188 86l12-8M140 70l-5-12M180 70l5-12" stroke="#ffd76a" strokeWidth="2.4" strokeLinecap="round" />
+            <path d="M138 26h44v14c0 12-9 19-22 19s-22-7-22-19z" fill="url(#dd-gold)" stroke="#a35f00" strokeWidth="1.3" />
+            <path d="M138 30h-8a10 10 0 0 0 11 12M182 30h8a10 10 0 0 1-11 12" fill="none" stroke="url(#dd-gold)" strokeWidth="3.4" strokeLinecap="round" />
+            <path d="M154 58h12l1 6h-14z" fill="url(#dd-goldD)" />
+            <rect x="148" y="63" width="24" height="5" rx="2" fill="url(#dd-gold)" />
+            <path d="M145 30c0 9 2 16 7 21" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" opacity=".55" />
+            <use href="#i-coin" x="56" y="34" width="30" height="30" />
+            <use href="#i-coin" x="236" y="26" width="34" height="34" />
+            <use href="#i-coin" x="262" y="70" width="22" height="22" />
+            <use href="#i-coin" x="30" y="76" width="20" height="20" />
+            <use href="#dd-spark" x="104" y="16" width="12" height="12" />
+            <use href="#dd-spark" x="208" y="60" width="10" height="10" />
+            <use href="#dd-spark" x="286" y="20" width="9" height="9" opacity=".8" />
+            <use href="#dd-spark" x="22" y="40" width="8" height="8" opacity=".7" />
+          </symbol>
+
           <symbol id="i-coin" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10.6" fill="url(#gcoin)" stroke="#a35f00" strokeWidth="1.1" />
             <circle cx="12" cy="12" r="7.4" fill="none" stroke="#b86d04" strokeWidth="1.3" opacity=".75" />
@@ -83,13 +273,19 @@ export default function GameMarkup() {
                 <svg className="coin" style={{ width: '16px', height: '16px' }}><use href="#i-coin" /></svg>
                 <span>Welcome Bonus: +500 Coins</span>
               </div>
-              <div className="auth-logo">
-                <svg className="i"><use href="#i-pen" /></svg>
+              <div className="auth-hero" aria-hidden="true">
+                <svg viewBox="0 0 320 180"><use href="#art-auth" width="320" height="180" /></svg>
               </div>
               <h1 className="auth-title">Desk Duel</h1>
               <p className="auth-sub">Pen Fighting Championship · Real-Time Physics Battle</p>
+              <div className="auth-features">
+                <div className="auth-feat"><b>5 Leagues</b><small>Climb to The Chairman</small></div>
+                <div className="auth-feat"><b>Online Duels</b><small>Play friends anywhere</small></div>
+                <div className="auth-feat"><b>Pen Arsenal</b><small>Unlock &amp; upgrade</small></div>
+                <div className="auth-feat"><b>Cloud Save</b><small>Every device, synced</small></div>
+              </div>
 
-              <div className="auth-btn-wrap" style={{ margin: '26px 0 14px' }}>
+              <div className="auth-btn-wrap">
                 <button className="btn-google block hero" data-act="signInGoogle">
                   <svg><use href="#i-google" /></svg>
                   <span>Continue with Google</span>
@@ -122,34 +318,20 @@ export default function GameMarkup() {
         </header>
         <div className="menu-body">
           <div className="brand">
-            <svg viewBox="0 0 150 64" aria-hidden="true">
-              <g transform="rotate(-14 75 32)">
-                <rect x="8" y="22" width="104" height="17" rx="8.5" fill="#3b82f6" />
-                <rect x="10" y="23.5" width="100" height="5" rx="2.5" fill="#bfdbfe" opacity=".75" />
-                <rect x="8" y="22" width="26" height="17" rx="8.5" fill="#1e40af" />
-                <rect x="12" y="19" width="30" height="5" rx="2.5" fill="#e2e8f0" />
-                <path d="M110 22.5 L130 28.6 L130 32.4 L110 38.5Z" fill="#e8ebf1" />
-                <path d="M130 28.6 L142 30.5 L130 32.4Z" fill="#334155" />
-              </g>
-              <g transform="rotate(18 75 32)">
-                <rect x="26" y="40" width="98" height="15" rx="7.5" fill="#ef4444" />
-                <rect x="28" y="41.3" width="94" height="4.5" rx="2.2" fill="#fecaca" opacity=".75" />
-                <rect x="26" y="40" width="22" height="15" rx="7.5" fill="#991b1b" />
-              </g>
-            </svg>
+            <svg className="brand-mark" viewBox="0 0 160 84" aria-hidden="true"><use href="#art-brand" width="160" height="84" /></svg>
             <h1>DESK<em>DUEL</em></h1>
             <p>Pen Fighting Championship</p>
           </div>
           <nav className="tiles" aria-label="Game modes">
             <button className="tile hero" data-act="go" data-to="career">
-              <span className="ti"><svg className="i"><use href="#i-trophy" /></svg></span><span className="tag" id="careerTag">League 1</span>
+              <span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-career" width="120" height="100" /></svg></span><span className="tag" id="careerTag">League 1</span>
               <b>Career</b><small id="careerSub">Climb five weight-class leagues and dethrone The Chairman.</small>
               <div className="prog"><i id="careerProg" style={{ width: '0' }}></i></div>
             </button>
-            <button className="tile" data-act="go" data-to="quick"><span className="ti"><svg className="i"><use href="#i-bolt" /></svg></span><b>Quick Match</b><small>1 vs CPU · win coins</small></button>
-            <button className="tile" data-act="go" data-to="party"><span className="ti"><svg className="i"><use href="#i-users" /></svg></span><b>Party</b><small>2–3 players on one device</small></button>
-            <button className="tile" data-act="go" data-to="online"><span className="ti"><svg className="i"><use href="#i-globe" /></svg></span><span className="tag" id="onlineTag">New</span><b>Online</b><small>Friends on their own devices</small></button>
-            <button className="tile" id="shopTile" data-act="go" data-to="shop"><span className="ti"><svg className="i"><use href="#i-bag" /></svg></span><b>Pen Shop</b><small>Heavier pens, tougher leagues</small></button>
+            <button className="tile" data-act="go" data-to="quick"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-quick" width="120" height="100" /></svg></span><b>Quick Match</b><small>1 vs CPU · win coins</small></button>
+            <button className="tile" data-act="go" data-to="party"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-party" width="120" height="100" /></svg></span><b>Party</b><small>2–3 players on one device</small></button>
+            <button className="tile" data-act="go" data-to="online"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-online" width="120" height="100" /></svg></span><span className="tag" id="onlineTag">New</span><b>Online</b><small>Friends on their own devices</small></button>
+            <button className="tile" id="shopTile" data-act="go" data-to="shop"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-shop" width="120" height="100" /></svg></span><b>Pen Shop</b><small>Heavier pens, tougher leagues</small></button>
           </nav>
           <div className="menu-links">
             <button className="btn" data-act="openLeaderboard"><svg className="i"><use href="#i-trophy" /></svg>Leaderboard</button>
@@ -247,23 +429,23 @@ export default function GameMarkup() {
           <div className="how">
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
-                <rect x="60" y="44" width="110" height="12" rx="6" fill="#3b82f6" />
-                <rect x="62" y="45.5" width="104" height="3.5" rx="1.7" fill="#bfdbfe" opacity=".7" />
-                <path d="M170 44 L186 48.5 L186 51.5 L170 56Z" fill="#e2e8f0" />
-                <circle cx="98" cy="50" r="4" fill="#ffc23d" />
-                <path d="M98 50 L60 84" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeDasharray="5 5" />
-                <circle cx="60" cy="84" r="8" fill="#fff" opacity=".9" />
-                <circle cx="60" cy="84" r="8" fill="none" stroke="#3b82f6" strokeWidth="3" />
+                <ellipse cx="122" cy="58" rx="62" ry="5" fill="url(#dd-shadow)" />
+                <use href="#dd-pen-blue" x="56" y="40" width="132" height="22" />
+                <path d="M98 50 62 82" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeDasharray="5 6" opacity=".9" />
+                <circle cx="98" cy="50" r="4.5" fill="#ffc23d" stroke="#7a4300" strokeWidth="1.2" />
+                <circle cx="60" cy="84" r="11" fill="#3b82f6" opacity=".25" />
+                <circle cx="60" cy="84" r="7.5" fill="#fff" stroke="#3b82f6" strokeWidth="3" />
               </svg>
               <b><span>1</span>Grab &amp; pull back</b>
               <p>Press on your pen and drag away from where you want it to go, like a slingshot. Pull further for more power.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
-                <rect x="40" y="58" width="100" height="12" rx="6" fill="#3b82f6" opacity=".35" />
-                <rect x="92" y="34" width="100" height="12" rx="6" fill="#3b82f6" transform="rotate(-18 142 40)" />
-                <path d="M60 64 C 100 60, 120 50, 160 30" stroke="#ffc23d" strokeWidth="3" fill="none" strokeDasharray="2 8" strokeLinecap="round" />
-                <path d="M160 30 l-10 2 l5 8z" fill="#ffc23d" />
+                <use href="#dd-pen-blue" x="30" y="56" width="110" height="18" opacity=".3" />
+                <use href="#dd-pen-blue" x="92" y="28" width="110" height="18" transform="rotate(-18 147 37)" />
+                <path d="M60 64C100 60 120 50 160 30" stroke="#ffc23d" strokeWidth="3" fill="none" strokeDasharray="2 8" strokeLinecap="round" />
+                <path d="m160 30-11 2 6 8z" fill="#ffc23d" />
+                <use href="#dd-spark" x="184" y="12" width="10" height="10" />
               </svg>
               <b><span>2</span>Let go to flick</b>
               <p>Your pen slides, spins and collides with real physics. The dotted line predicts your path.</p>
@@ -271,40 +453,50 @@ export default function GameMarkup() {
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
                 <g transform="rotate(-20 110 50)">
-                  <rect x="55" y="44" width="110" height="12" rx="6" fill="#22c55e" />
-                  <circle cx="152" cy="50" r="4" fill="#ffc23d" />
+                  <use href="#dd-pen-green" x="52" y="40" width="124" height="20" />
+                  <circle cx="152" cy="50" r="4.5" fill="#ffc23d" stroke="#7a4300" strokeWidth="1.2" />
                 </g>
-                <path d="M150 18 A 46 46 0 0 1 176 64" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" />
-                <path d="M176 64 l-9 -3 l8 -7z" fill="#fff" />
+                <path d="M150 16a46 46 0 0 1 26 48" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" opacity=".9" />
+                <path d="m176 64-9-3 8-7z" fill="#fff" />
+                <path d="M70 80a46 46 0 0 1-26-40" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" opacity=".35" />
               </svg>
               <b><span>3</span>Add spin</b>
               <p>Grab near the end of your pen to make it spin. Spinning pens sweep a wider area and curve as they slide.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
-                <rect x="10" y="12" width="150" height="72" rx="8" fill="#cf9a55" />
-                <rect x="128" y="40" width="80" height="11" rx="5.5" fill="#ef4444" transform="rotate(12 168 45)" opacity=".85" />
-                <circle cx="168" cy="46" r="4" fill="#fff" stroke="#000" strokeOpacity=".4" />
-                <path d="M160 12 v72" stroke="#fff" strokeDasharray="4 4" opacity=".6" />
+                <rect x="10" y="12" width="150" height="72" rx="8" fill="url(#dd-wood)" />
+                <path d="M20 34c40-3 90 3 130-1M20 60c40-3 90 3 130-1" stroke="#8a5a2b" strokeWidth="1.2" fill="none" opacity=".35" />
+                <rect x="10" y="12" width="150" height="4" rx="2" fill="#fff" opacity=".25" />
+                <path d="M160 12v72" stroke="#fff" strokeDasharray="4 4" opacity=".6" />
+                <use href="#dd-pen-red" x="124" y="36" width="92" height="18" transform="rotate(14 170 45)" />
+                <circle cx="168" cy="45" r="4.5" fill="#fff" stroke="#000" strokeOpacity=".45" />
+                <path d="M188 22l6-6M196 32l8-2M182 16l1-8" stroke="#ffd76a" strokeWidth="2" strokeLinecap="round" />
               </svg>
               <b><span>4</span>Knock them off</b>
               <p>A pen falls when its <b>center dot</b> leaves the desk. Last pen standing wins the round.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
-                <rect x="20" y="30" width="80" height="9" rx="4.5" fill="#7dd3fc" />
-                <text x="60" y="62" fill="#97a4c8" fontSize="12" fontFamily="Rubik,sans-serif" textAnchor="middle">6 g · fast</text>
-                <rect x="120" y="27" width="84" height="15" rx="7.5" fill="#f472b6" />
-                <text x="162" y="62" fill="#97a4c8" fontSize="12" fontFamily="Rubik,sans-serif" textAnchor="middle">62 g · heavy</text>
+                <use href="#dd-pen-cyan" x="16" y="28" width="92" height="12" />
+                <text x="60" y="64" fill="#c9d3f0" fontSize="12" fontWeight="700" fontFamily="Rubik,sans-serif" textAnchor="middle">6 g · fast</text>
+                <use href="#dd-pen-pink" x="116" y="22" width="96" height="24" />
+                <text x="162" y="64" fill="#c9d3f0" fontSize="12" fontWeight="700" fontFamily="Rubik,sans-serif" textAnchor="middle">62 g · heavy</text>
+                <path d="M30 76h60M130 76h60" stroke="#fff" strokeOpacity=".18" strokeWidth="6" strokeLinecap="round" />
+                <path d="M30 76h52M130 76h20" stroke="#38bdf8" strokeWidth="6" strokeLinecap="round" />
+                <path d="M130 76h20" stroke="#f472b6" strokeWidth="6" strokeLinecap="round" />
               </svg>
               <b><span>5</span>Weight matters</b>
               <p>Heavy pens hit harder and are tough to shove, but slide shorter and need precise shots. Heavier classes face tougher rivals.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
+                <circle cx="104" cy="48" r="44" fill="url(#dd-glowGold)" />
                 <use href="#i-coin" x="70" y="18" width="60" height="60" />
                 <use href="#i-coin" x="112" y="28" width="44" height="44" />
                 <use href="#i-coin" x="50" y="40" width="34" height="34" />
+                <use href="#dd-spark" x="150" y="12" width="12" height="12" />
+                <use href="#dd-spark" x="44" y="16" width="8" height="8" />
               </svg>
               <b><span>6</span>Earn &amp; upgrade</b>
               <p>Win matches, land knockouts and trick shots to earn coins. Spend them on pens and desks in the shop.</p>
