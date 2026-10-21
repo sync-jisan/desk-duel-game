@@ -8,9 +8,9 @@ const rubik = Rubik({
 });
 
 export const metadata = {
-  title: 'Desk Duel — Pen Fighting Championship',
+  title: 'Desk Duel — Pen Fighting Game',
   description:
-    'Flick your pen, knock rivals off the desk, earn coins and unlock heavier pens. Play solo, with friends on one device, or online.',
+    'Shoot your pen, knock other pens off the table, earn coins, and unlock new pens. Play solo, with friends on one phone, or online with friends.',
   applicationName: 'Desk Duel',
   appleWebApp: { capable: true, title: 'Desk Duel', statusBarStyle: 'black-translucent' },
   other: { 'mobile-web-app-capable': 'yes' },

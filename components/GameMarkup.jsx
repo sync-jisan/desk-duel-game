@@ -277,12 +277,12 @@ export default function GameMarkup() {
                 <svg viewBox="0 0 320 180"><use href="#art-auth" width="320" height="180" /></svg>
               </div>
               <h1 className="auth-title">Desk Duel</h1>
-              <p className="auth-sub">Pen Fighting Championship · Real-Time Physics Battle</p>
+              <p className="auth-sub">Fun Pen Battles · Knock Your Friends Off The Desk!</p>
               <div className="auth-features">
-                <div className="auth-feat"><b>5 Leagues</b><small>Climb to The Chairman</small></div>
-                <div className="auth-feat"><b>Online Duels</b><small>Play friends anywhere</small></div>
-                <div className="auth-feat"><b>Pen Arsenal</b><small>Unlock &amp; upgrade</small></div>
-                <div className="auth-feat"><b>Cloud Save</b><small>Every device, synced</small></div>
+                <div className="auth-feat"><b>5 Leagues</b><small>Fight your way to the top</small></div>
+                <div className="auth-feat"><b>Online Matches</b><small>Play with friends anywhere</small></div>
+                <div className="auth-feat"><b>Lots of Pens</b><small>Unlock bigger &amp; heavier pens</small></div>
+                <div className="auth-feat"><b>Cloud Save</b><small>Play on any phone or PC</small></div>
               </div>
 
               <div className="auth-btn-wrap">
@@ -293,7 +293,7 @@ export default function GameMarkup() {
               </div>
 
               <p className="auth-footnote">
-                🔒 Sign in with Google to play and sync your pens, trophies, and stats.
+                🔒 Sign in with Google to save your pens, coins, and wins.
               </p>
             </div>
           </div>
@@ -320,18 +320,18 @@ export default function GameMarkup() {
           <div className="brand">
             <svg className="brand-mark" viewBox="0 0 160 84" aria-hidden="true"><use href="#art-brand" width="160" height="84" /></svg>
             <h1>DESK<em>DUEL</em></h1>
-            <p>Pen Fighting Championship</p>
+            <p>The Desk Pen Battle Game</p>
           </div>
           <nav className="tiles" aria-label="Game modes">
             <button className="tile hero" data-act="go" data-to="career">
               <span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-career" width="120" height="100" /></svg></span><span className="tag" id="careerTag">League 1</span>
-              <b>Career</b><small id="careerSub">Climb five weight-class leagues and dethrone The Chairman.</small>
+              <b>Career</b><small id="careerSub">Beat 5 leagues and become the champion.</small>
               <div className="prog"><i id="careerProg" style={{ width: '0' }}></i></div>
             </button>
-            <button className="tile" data-act="go" data-to="quick"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-quick" width="120" height="100" /></svg></span><b>Quick Match</b><small>1 vs CPU · win coins</small></button>
-            <button className="tile" data-act="go" data-to="party"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-party" width="120" height="100" /></svg></span><b>Party</b><small>2–3 players on one device</small></button>
-            <button className="tile" data-act="go" data-to="online"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-online" width="120" height="100" /></svg></span><span className="tag" id="onlineTag">New</span><b>Online</b><small>Friends on their own devices</small></button>
-            <button className="tile" id="shopTile" data-act="go" data-to="shop"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-shop" width="120" height="100" /></svg></span><b>Pen Shop</b><small>Heavier pens, tougher leagues</small></button>
+            <button className="tile" data-act="go" data-to="quick"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-quick" width="120" height="100" /></svg></span><b>Quick Match</b><small>Play against the computer</small></button>
+            <button className="tile" data-act="go" data-to="party"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-party" width="120" height="100" /></svg></span><b>Party Mode</b><small>2 to 3 players on this device</small></button>
+            <button className="tile" data-act="go" data-to="online"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-online" width="120" height="100" /></svg></span><span className="tag" id="onlineTag">New</span><b>Online Mode</b><small>Play with friends on other devices</small></button>
+            <button className="tile" id="shopTile" data-act="go" data-to="shop"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-shop" width="120" height="100" /></svg></span><b>Pen Shop</b><small>Buy new pens and battle desks</small></button>
           </nav>
           <div className="menu-links">
             <button className="btn" data-act="openLeaderboard"><svg className="i"><use href="#i-trophy" /></svg>Leaderboard</button>
@@ -436,8 +436,8 @@ export default function GameMarkup() {
                 <circle cx="60" cy="84" r="11" fill="#3b82f6" opacity=".25" />
                 <circle cx="60" cy="84" r="7.5" fill="#fff" stroke="#3b82f6" strokeWidth="3" />
               </svg>
-              <b><span>1</span>Grab &amp; pull back</b>
-              <p>Press on your pen and drag away from where you want it to go, like a slingshot. Pull further for more power.</p>
+              <b><span>1</span>Pull back like a slingshot</b>
+              <p>Touch or click your pen, then pull back. Pull further back to shoot with more power.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
@@ -447,8 +447,8 @@ export default function GameMarkup() {
                 <path d="m160 30-11 2 6 8z" fill="#ffc23d" />
                 <use href="#dd-spark" x="184" y="12" width="10" height="10" />
               </svg>
-              <b><span>2</span>Let go to flick</b>
-              <p>Your pen slides, spins and collides with real physics. The dotted line predicts your path.</p>
+              <b><span>2</span>Let go to shoot</b>
+              <p>Release your finger to shoot your pen across the desk. The dotted line shows where your pen will go.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
@@ -460,8 +460,8 @@ export default function GameMarkup() {
                 <path d="m176 64-9-3 8-7z" fill="#fff" />
                 <path d="M70 80a46 46 0 0 1-26-40" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" opacity=".35" />
               </svg>
-              <b><span>3</span>Add spin</b>
-              <p>Grab near the end of your pen to make it spin. Spinning pens sweep a wider area and curve as they slide.</p>
+              <b><span>3</span>Spin your shot</b>
+              <p>Pull from the tip or back of your pen to make it spin. Spinning pens can hit around corners and cover more area.</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
@@ -473,8 +473,8 @@ export default function GameMarkup() {
                 <circle cx="168" cy="45" r="4.5" fill="#fff" stroke="#000" strokeOpacity=".45" />
                 <path d="M188 22l6-6M196 32l8-2M182 16l1-8" stroke="#ffd76a" strokeWidth="2" strokeLinecap="round" />
               </svg>
-              <b><span>4</span>Knock them off</b>
-              <p>A pen falls when its <b>center dot</b> leaves the desk. Last pen standing wins the round.</p>
+              <b><span>4</span>Knock enemy pens off</b>
+              <p>A pen falls when its center leaves the desk. The last pen remaining on the desk wins the round!</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
@@ -486,8 +486,8 @@ export default function GameMarkup() {
                 <path d="M30 76h52M130 76h20" stroke="#38bdf8" strokeWidth="6" strokeLinecap="round" />
                 <path d="M130 76h20" stroke="#f472b6" strokeWidth="6" strokeLinecap="round" />
               </svg>
-              <b><span>5</span>Weight matters</b>
-              <p>Heavy pens hit harder and are tough to shove, but slide shorter and need precise shots. Heavier classes face tougher rivals.</p>
+              <b><span>5</span>Light vs Heavy pens</b>
+              <p>Heavy pens hit harder and are hard to push, but light pens slide faster and farther. Choose the best pen for your play style!</p>
             </div>
             <div className="card">
               <svg className="ill" viewBox="0 0 220 96">
@@ -498,37 +498,37 @@ export default function GameMarkup() {
                 <use href="#dd-spark" x="150" y="12" width="12" height="12" />
                 <use href="#dd-spark" x="44" y="16" width="8" height="8" />
               </svg>
-              <b><span>6</span>Earn &amp; upgrade</b>
-              <p>Win matches, land knockouts and trick shots to earn coins. Spend them on pens and desks in the shop.</p>
+              <b><span>6</span>Win coins &amp; unlock pens</b>
+              <p>Win rounds and knock enemy pens off the table to earn coins. Use your coins in the shop to buy cool pens and tables.</p>
             </div>
           </div>
           <div className="panel" style={{ marginTop: '14px' }}>
-            <h3>Rules</h3>
+            <h3>Game Rules</h3>
             <ul className="rules">
-              <li>Players take turns, <b>one flick each</b>. In Party mode, play rotates between all players.</li>
-              <li>Knock rivals off and stay on yourself. If your own pen falls, <b>you are out</b> for the round.</li>
-              <li>If every remaining pen falls on the same flick, the round is replayed.</li>
-              <li>First to the target number of round wins takes the match.</li>
-              <li>With a shot clock, a turn is skipped when time runs out.</li>
-              <li><b>Online:</b> One player creates a room and shares the 5-letter code or invite link. Up to 3 players across any device.</li>
+              <li>Players take turns, <b>one shot each</b>. In Party mode, players take turns one by one.</li>
+              <li>Knock enemy pens off the table while keeping your pen on. If your pen falls off, <b>you lose the round</b>.</li>
+              <li>If both pens fall off at the same time, the round is a tie and played again.</li>
+              <li>First player to reach the target number of round wins takes the match.</li>
+              <li>If you run out of time on your turn, your turn is skipped.</li>
+              <li><b>Online Mode:</b> One player creates a room and shares the 5-letter code or invite link. Up to 3 players can join from any phone or PC.</li>
             </ul>
           </div>
           <div className="panel">
-            <h3>Trick shots (bonus coins)</h3>
+            <h3>Bonus Coins (Trick Shots)</h3>
             <ul className="rules">
-              <li><b>Double KO</b>: knock two rivals off with one flick.</li>
-              <li><b>Bank shot</b>: bounce off an obstacle before the knockout.</li>
-              <li><b>Spin KO</b>: knock out a rival with a fast-spinning pen.</li>
-              <li><b>Sniper</b>: knock out a rival from long range.</li>
-              <li><b>Chain KO</b>: your pen hits a rival who knocks out another.</li>
-              <li><b>Close call</b>: your pen stops within 1 cm of the edge.</li>
+              <li><b>Double KO</b>: Knock 2 enemy pens off with 1 shot (+20 coins).</li>
+              <li><b>Bank Shot</b>: Bounce off an obstacle before knocking a pen off (+12 coins).</li>
+              <li><b>Spin KO</b>: Knock out an enemy pen while your pen is spinning (+8 coins).</li>
+              <li><b>Sniper Shot</b>: Knock out an enemy pen from far away (+8 coins).</li>
+              <li><b>Chain Hit</b>: Hit an enemy pen into another pen to knock it off (+12 coins).</li>
+              <li><b>Close Call</b>: Your pen stops right at the edge without falling (+6 coins).</li>
             </ul>
           </div>
           <div className="panel">
             <h3>Controls</h3>
             <ul className="rules">
-              <li>Touch or mouse: press on your pen, drag back, release.</li>
-              <li>Drag back to the pen to cancel a shot. <span className="kbd">Esc</span> pauses. <span className="kbd">Space</span> continues after a round.</li>
+              <li>Touch or Mouse: Press on your pen, pull back, and release to shoot.</li>
+              <li>Move your finger back to your pen to cancel a shot. Press <span className="kbd">Esc</span> to pause. Press <span className="kbd">Space</span> to continue to the next round.</li>
             </ul>
           </div>
         </div></div>
