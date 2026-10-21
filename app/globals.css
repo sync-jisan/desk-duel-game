@@ -541,6 +541,39 @@ body.in-match #hud{display:block}
 .pulse-dot.warn{background:#f59e0b;box-shadow:0 0 0 2px rgba(245,158,11,.3)}
 @keyframes pulse-glow{0%{transform:scale(.95);opacity:1}70%{transform:scale(1.2);opacity:.7}100%{transform:scale(.95);opacity:1}}
 
+/* ========== Friends & Social System ========== */
+.friend-card{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 3px 0 rgba(4,7,20,.85);transition:border-color .15s,transform .14s var(--ease-out),box-shadow .14s var(--ease-out)}
+.friend-card:hover{border-color:rgba(255,194,61,.35);transform:translateY(-1px)}
+.friend-card .info{flex:1;min-width:0}
+.friend-card .actions{display:flex;gap:6px;align-items:center;flex:none}
+.name-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:14px}
+.name-row b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.meta-row{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:3px}
+.code-tag{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--dim);background:rgba(150,172,235,.1);border:1px solid var(--line);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.friend-code-box{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-radius:16px;margin-bottom:14px;
+  background:linear-gradient(135deg,rgba(255,194,61,.12),rgba(56,189,248,.08));border:1px solid rgba(255,194,61,.3);box-shadow:var(--hl)}
+.friend-code-box b{font-size:18px;font-weight:900;color:var(--accent);letter-spacing:.06em}
+
+/* Online status indicator (sidebar / friends list) */
+.status-online{color:#4ade80}
+.status-offline{color:var(--muted)}
+.status-in-match{color:#f87171}
+.status-in-lobby{color:#38bdf8}
+
+/* Friends count badge on topbar */
+.friends-online-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(34,197,94,.18);color:#4ade80;border:1px solid rgba(34,197,94,.35);border-radius:999px;font-size:10px;font-weight:800;padding:2px 7px}
+
+/* Duel challenge notification pulse */
+@keyframes duel-ping{0%,100%{box-shadow:0 0 0 0 rgba(255,194,61,.6)}50%{box-shadow:0 0 0 10px rgba(255,194,61,0)}}
+.duel-challenge-card{animation:duel-ping 1.2s ease-in-out 3}
+
+/* Online presence indicator bar — small row on menu */
+.friends-bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:13px;background:var(--surface-lo);border:1px solid var(--line);margin-top:8px;overflow:hidden}
+.friends-bar .av-strip{display:flex;gap:-4px}
+.friends-bar .av-strip .av{width:26px;height:26px;font-size:9px;border:2px solid var(--bg0)}
+
+
 /* Multiplayer Room Cards */
 .room-card{--lip:3px;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:15px;background:var(--surface);border:1px solid var(--line);margin-bottom:10px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 var(--lip) 0 rgba(4,7,20,.9);transition:border-color .15s,transform .14s var(--ease-out),box-shadow .14s var(--ease-out)}
@@ -761,4 +794,18 @@ body.in-match #hud{display:block}
   .auth-features{display:none}
 }
 
+/* ==================== FRIENDS SYSTEM & REALTIME PRESENCE ==================== */
+.friend-card{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);margin-bottom:8px;box-shadow:var(--hl),0 2px 4px rgba(0,0,0,.3);transition:border-color .15s,transform .12s}
+.friend-card:hover{border-color:rgba(255,194,61,.45)}
+.friend-card .info{flex:1;min-width:0}
+.friend-card .name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.friend-card .name-row b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.friend-card .code-tag{font-size:11px;color:var(--muted);font-weight:700}
+.friend-card .meta-row{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:11.5px;color:var(--muted)}
+.friend-card .actions{display:flex;align-items:center;gap:6px;flex:none}
+.friend-code-box{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(255,194,61,.12));border:1px dashed rgba(255,194,61,.45);margin-bottom:14px}
+.friend-code-box b{font-size:18px;letter-spacing:.08em;color:var(--accent);font-variant-numeric:tabular-nums}
+.duel-challenge-card{border:2px solid var(--accent);background:linear-gradient(135deg,rgba(255,194,61,.18),rgba(18,27,58,.95));box-shadow:0 0 25px rgba(255,194,61,.25)}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
