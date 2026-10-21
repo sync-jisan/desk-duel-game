@@ -206,6 +206,7 @@ export default function GameMarkup() {
             <path d="m12 7.6 1.35 2.75 3.03.44-2.19 2.14.52 3.02L12 14.52l-2.71 1.43.52-3.02-2.19-2.14 3.03-.44z" fill="#a35f00" opacity=".85" />
           </symbol>
           <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" /></symbol>
+          <symbol id="i-swords" viewBox="0 0 24 24"><path d="M14.5 4l5.5 5.5-10.5 10.5-3.5.5.5-3.5zM4 14.5l5.5-5.5M7 11.5L5 9.5M12.5 17l-2-2M18 4l2 2" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/></symbol>
           <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" /><circle cx="17" cy="9" r="2.8" /><path d="M16.5 14.2c2.8.3 5 2.4 5 5.3" /></symbol>
           <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" /></symbol>
           <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4.5" y="7" width="15" height="12" rx="3.2" /><path d="M12 3.2V7M9 12.2h.01M15 12.2h.01M9.5 15.8h5M2.5 12v3M21.5 12v3" /></symbol>
@@ -311,6 +312,7 @@ export default function GameMarkup() {
           </button>
           <div className="sp"></div>
           <button className="coin-pill" data-act="go" data-to="shop" aria-label="Coins — open shop"><svg className="coin"><use href="#i-coin" /></svg><span className="coins">0</span></button>
+          <button className="icon-btn" id="friendsBtn" data-act="openFriends" aria-label="Friends" title="Friends"><svg className="i"><use href="#i-users" /></svg><span className="dot hidden" id="friendsBadge"></span></button>
           <button className="icon-btn" data-act="openLeaderboard" aria-label="Global Leaderboard" title="Leaderboard"><svg className="i"><use href="#i-trophy" /></svg></button>
           <button className="icon-btn" id="giftBtn" data-act="daily" aria-label="Daily reward" title="Daily Reward"><svg className="i"><use href="#i-gift" /></svg><span className="dot hidden"></span></button>
           <button className="icon-btn" data-act="sound" aria-label="Toggle sound"><svg className="i"><use className="sndic" href="#i-vol" /></svg></button>
@@ -334,6 +336,7 @@ export default function GameMarkup() {
             <button className="tile" id="shopTile" data-act="go" data-to="shop"><span className="ti tile-art" aria-hidden="true"><svg viewBox="0 0 120 100"><use href="#art-shop" width="120" height="100" /></svg></span><b>Pen Shop</b><small>Buy new pens and battle desks</small></button>
           </nav>
           <div className="menu-links">
+            <button className="btn" data-act="openFriends"><svg className="i"><use href="#i-users" /></svg>Friends<span className="chip good hidden" id="mOnlineFriendsPill" style={{ marginLeft: '4px', fontSize: '11px', padding: '1px 6px' }}>0 Online</span></button>
             <button className="btn" data-act="openLeaderboard"><svg className="i"><use href="#i-trophy" /></svg>Leaderboard</button>
             <button className="btn" data-act="daily"><svg className="i"><use href="#i-gift" /></svg>Daily Bonus</button>
             <button className="btn" data-act="go" data-to="how"><svg className="i"><use href="#i-help" /></svg>How to play</button>
