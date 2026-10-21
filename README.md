@@ -83,8 +83,8 @@ npx vercel
 
 ## 🗄️ Database Setup (Supabase)
 
-1. In the Supabase SQL Editor run `supabase-schema.sql` (tables, view, functions).
-2. Then run `supabase/migrations/20261021120000_secure_rls_and_realtime.sql`. It locks the tables down:
+1. In the Supabase SQL Editor run `supabase/schema.sql` (tables, view, functions).
+2. Then run the migrations in `supabase/migrations/`. They lock the tables down:
    players can only write their own profile, emails are no longer public, the daily bonus can only be
    claimed for yourself, only a room's host can change it, and stale lobbies are cleaned up every 5 minutes
    (needs the `pg_cron` extension).
@@ -97,18 +97,30 @@ Cloud save requires a real Google sign-in; offline profiles stay on the device.
 Desk Duel/
 ├── app/
 │   ├── layout.jsx            # Next.js App Router root layout (SEO metadata & fonts)
-│   ├── page.jsx              # Game launcher & redirect
+│   ├── page.jsx              # Main game page
+│   ├── globals.css           # 3D game UI design system & responsive styling
 │   └── api/
 │       └── config/
-│           └── route.js      # Dynamic Supabase config API route (reads Vercel env vars)
-├── public/
-│   ├── desk-duel.html        # High-performance physics engine & game UI
-│   └── supabase-config.js    # Client-side Supabase configuration
-├── next.config.mjs           # Next.js rewrites & optimization configuration
+│           └── route.js      # Dynamic Supabase config API route (reads env vars)
+├── components/
+│   ├── GameMarkup.jsx        # Complete game HUD, screens, modals & SVG icons
+│   └── GameBoot.jsx          # Engine hydration & bootstrap loader
+├── lib/
+│   ├── supabase.js           # Supabase client singleton & auth detector
+│   └── game/
+│       ├── audio.js          # Synthesized WebAudio sound FX engine
+│       ├── data.js           # Pen classes, arenas, leagues, daily quests & achievements
+│       ├── engine.js         # Core game loop, UI state machine, multiplayer & cloud sync
+│       ├── physics.js        # Deterministic 2D pen fighting physics & collision solver
+│       └── utils.js          # Vector math, math helpers & formatters
+├── public/                   # Static assets
+├── supabase/
+│   ├── schema.sql            # Base PostgreSQL schema, tables, views & functions
+│   └── migrations/           # Hardened RLS security & trigger migration scripts
+├── next.config.mjs           # Next.js optimization configuration
 ├── vercel.json               # Vercel deployment presets & security headers
 ├── .env.example              # Environment variables template
 ├── package.json              # Next.js dependencies & scripts
-├── supabase-schema.sql       # PostgreSQL schema, RLS policies & Realtime setup
 └── README.md                 # Project documentation
 ```
 
