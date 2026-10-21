@@ -290,9 +290,6 @@ export default function GameMarkup() {
                   <svg><use href="#i-google" /></svg>
                   <span>Continue with Google</span>
                 </button>
-                <button className="btn lg block ghost" style={{ marginTop: '10px' }} data-act="playGuest">
-                  Play as Guest
-                </button>
               </div>
 
               <p className="auth-footnote">
