@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.penfight.game",
+      "sha256_cert_fingerprints": [
+        "AA:96:5C:64:72:2D:05:26:8C:3F:AA:63:27:C6:80:68:8B:54:51:A5:93:02:01:B6:29:82:9A:B1:66:F0:4D:70"
+      ]
+    }
+  }
+]

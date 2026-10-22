@@ -1,19 +1,36 @@
 {
-  "name": "desk-duel",
-  "version": "2.0.0",
+  "name": "pen-fight",
+  "version": "2.1.0",
   "private": true,
-  "description": "Desk Duel — Pen Fighting Championship. Physics-based battle game with real-time multiplayer and cloud progression.",
+  "description": "Pen Fight \u2014 Desk Battle Championship. Physics-based battle game with real-time multiplayer and cloud progression.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:app": "BUILD_TARGET=app next build",
+    "cap:sync": "npm run build:app && cap sync android",
+    "android:open": "cap open android",
+    "android:apk": "npm run cap:sync && cd android && ./gradlew assembleDebug",
+    "android:bundle": "npm run cap:sync && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
+    "@capacitor-community/keep-awake": "8.0.1",
+    "@capacitor/android": "8.5.3",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/haptics": "8.0.2",
+    "@capacitor/splash-screen": "8.0.2",
+    "@capacitor/status-bar": "8.0.4",
+    "@capgo/capacitor-social-login": "8.5.13",
     "@supabase/supabase-js": "^2.49.1",
     "next": "^15.1.4",
     "peerjs": "^1.5.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "3.0.5",
+    "@capacitor/cli": "8.5.3"
   }
 }

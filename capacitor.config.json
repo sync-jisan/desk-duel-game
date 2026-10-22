@@ -1,0 +1,23 @@
+{
+  "appId": "com.penfight.game",
+  "appName": "Pen Fight",
+  "webDir": "out",
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#070b16"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "launchAutoHide": true,
+      "backgroundColor": "#070b16",
+      "showSpinner": false,
+      "androidScaleType": "CENTER_CROP"
+    },
+    "StatusBar": {
+      "overlaysWebView": true,
+      "style": "DARK",
+      "backgroundColor": "#00000000"
+    }
+  }
+}

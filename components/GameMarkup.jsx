@@ -246,7 +246,7 @@ export default function GameMarkup() {
         </defs>
       </svg>
 
-      <canvas id="game" aria-label="Desk Duel game board"></canvas>
+      <canvas id="game" aria-label="Pen Fight game board"></canvas>
 
       {/* ============ HUD ============ */}
       <div id="hud">
@@ -276,8 +276,8 @@ export default function GameMarkup() {
               <div className="auth-hero" aria-hidden="true">
                 <svg viewBox="0 0 320 180"><use href="#art-auth" width="320" height="180" /></svg>
               </div>
-              <h1 className="auth-title">Desk Duel</h1>
-              <p className="auth-sub">Pen Fighting Championship · Real-Time Physics Battle</p>
+              <h1 className="auth-title">Pen Fight</h1>
+              <p className="auth-sub">Desk Battle Championship · Real-Time Physics</p>
               <div className="auth-features">
                 <div className="auth-feat"><b>5 Leagues</b><small>Climb to The Chairman</small></div>
                 <div className="auth-feat"><b>Online Duels</b><small>Play friends anywhere</small></div>
@@ -319,8 +319,8 @@ export default function GameMarkup() {
         <div className="menu-body">
           <div className="brand">
             <svg className="brand-mark" viewBox="0 0 160 84" aria-hidden="true"><use href="#art-brand" width="160" height="84" /></svg>
-            <h1>DESK<em>DUEL</em></h1>
-            <p>Pen Fighting Championship</p>
+            <h1>PEN<em>FIGHT</em></h1>
+            <p>Desk Battle Championship</p>
           </div>
           <nav className="tiles" aria-label="Game modes">
             <button className="tile hero" data-act="go" data-to="career">

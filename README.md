@@ -1,8 +1,8 @@
-# 🖋️ Desk Duel — Pen Fighting Championship
+# 🖋️ Pen Fight — Desk Battle Championship
 
-> **Desk Duel** is an authentic physics-based pen fighting arcade game with online room multiplayer powered by **Supabase Realtime & PostgreSQL**, Google Authentication, 5-league single-player Career mode, Quick match against intelligent CPU bots, and multi-player pass-and-play Party mode. Built with **Next.js** for effortless 1-click deployment to **Vercel**.
+> **Pen Fight** (formerly Desk Duel) is an authentic physics-based pen fighting arcade game with online room multiplayer powered by **Supabase Realtime & PostgreSQL**, Google Authentication, 5-league single-player Career mode, Quick match against intelligent CPU bots, and multi-player pass-and-play Party mode. Built with **Next.js** for effortless 1-click deployment to **Vercel**.
 
-![Desk Duel Banner](https://img.shields.io/badge/Desk%20Duel-v2.0-ffc23d?style=for-the-badge)
+![Pen Fight Banner](https://img.shields.io/badge/Pen%20Fight-v2.1-ffc23d?style=for-the-badge)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=next.js)
 ![Vercel Ready](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel)
 ![Supabase Realtime](https://img.shields.io/badge/Multiplayer-Supabase%20Realtime-3ecf8e?style=for-the-badge&logo=supabase)
@@ -37,7 +37,7 @@
 
 ## 🚀 Deploy to Vercel
 
-Deploying Desk Duel to Vercel takes less than a minute:
+Deploying Pen Fight to Vercel takes less than a minute:
 
 ### Option 1: Automatic GitHub Import (Recommended)
 1. Push your repository to GitHub:

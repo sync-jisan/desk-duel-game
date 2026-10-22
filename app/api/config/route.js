@@ -1,3 +1,5 @@
+// Static at build time so it also works in the Android app build (output: export).
+export const dynamic = 'force-static';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
