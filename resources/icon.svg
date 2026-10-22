@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+<title>Pen Fight — app icon</title>
+<defs>
+  <radialGradient id="nv-bg" cx=".5" cy=".46" r=".72">
+    <stop offset="0" stop-color="#1f2e60"/><stop offset=".45" stop-color="#121b36"/><stop offset="1" stop-color="#070b16"/>
+  </radialGradient>
+  <radialGradient id="nv-rayfade" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="1"/><stop offset=".7" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <mask id="nv-raymask" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <rect width="1024" height="1024" fill="url(#nv-rayfade)"/>
+  </mask>
+  <linearGradient id="pg-steel" gradientUnits="userSpaceOnUse" x1="0" y1="-6" x2="0" y2="6">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".28" stop-color="#d3dae6"/><stop offset=".66" stop-color="#7f8ba2"/><stop offset="1" stop-color="#363f54"/>
+  </linearGradient>
+  <radialGradient id="pg-ball" cx=".35" cy=".3" r=".7">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c2cad8"/><stop offset="1" stop-color="#4f5a70"/>
+  </radialGradient>
+  <linearGradient id="pg-clip" gradientUnits="userSpaceOnUse" x1="0" y1="-3.5" x2="0" y2="-.3">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#cfd8e6"/><stop offset="1" stop-color="#66728a"/>
+  </linearGradient>
+  <linearGradient id="pg-grip" gradientUnits="userSpaceOnUse" x1="0" y1="-6.4" x2="0" y2="6.4">
+    <stop offset="0" stop-color="#55607a"/><stop offset=".35" stop-color="#262d40"/><stop offset="1" stop-color="#0c0f18"/>
+  </linearGradient>
+  <linearGradient id="pg-band" gradientUnits="userSpaceOnUse" x1="0" y1="-7.4" x2="0" y2="7.4">
+    <stop offset="0" stop-color="#fff3c4"/><stop offset=".35" stop-color="#ffcf4d"/><stop offset=".75" stop-color="#e58a00"/><stop offset="1" stop-color="#8a4b00"/>
+  </linearGradient>
+  <linearGradient id="pb-blue" gradientUnits="userSpaceOnUse" x1="0" y1="-7" x2="0" y2="7">
+    <stop offset="0" stop-color="#d6eaff"/><stop offset=".16" stop-color="#7fb5ff"/><stop offset=".48" stop-color="#3b82f6"/>
+    <stop offset=".82" stop-color="#1e48b8"/><stop offset="1" stop-color="#132a6e"/>
+  </linearGradient>
+  <linearGradient id="pgr-blue" gradientUnits="userSpaceOnUse" x1="0" y1="-6.6" x2="0" y2="6.6">
+    <stop offset="0" stop-color="#3b82f6"/><stop offset=".3" stop-color="#1e48b8"/><stop offset="1" stop-color="#070a14"/>
+  </linearGradient>
+  <g id="pen-blue">
+    <!-- outline / silhouette -->
+    <path d="M3.5 -7.9H64V-7.5H77V-6.9L94.6 -3L101.4 0L94.6 3L77 6.9V7.5H64V7.9H3.5A4.4 4.4 0 0 1 -0.9 3.5V-3.5A4.4 4.4 0 0 1 3.5 -7.9Z" fill="#050812"/>
+    <!-- barrel -->
+    <path d="M3.5 -7H64V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="url(#pb-blue)"/>
+    <path d="M3.5 -7H6V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="#03060e" opacity=".38"/>
+    <rect x="6" y="-7.2" width="2.6" height="14.4" fill="url(#pg-band)"/>
+    <path d="M9 -6.1H62" stroke="#ffffff" stroke-width=".6" opacity=".35"/>
+    <path d="M38 -4.4H54" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".6"/>
+    <path d="M10 5.6H62" stroke="#7fb5ff" stroke-width=".9" opacity=".35"/>
+    <!-- front gold band -->
+    <rect x="56" y="-7.3" width="5.4" height="14.6" fill="url(#pg-band)"/>
+    <path d="M56.4 -6.1H61" stroke="#fff8dc" stroke-width=".9" opacity=".85"/>
+    <!-- grip -->
+    <rect x="64" y="-6.6" width="13" height="13.2" fill="url(#pgr-blue)"/>
+    <path d="M66.8 -6.4V6.4M69.6 -6.4V6.4M72.4 -6.4V6.4M75.2 -6.4V6.4" stroke="#000" stroke-width=".9" opacity=".35"/>
+    <path d="M67.4 -6.4V6.4M70.2 -6.4V6.4M73 -6.4V6.4M75.8 -6.4V6.4" stroke="#ffffff" stroke-width=".5" opacity=".2"/>
+    <!-- cone + nib -->
+    <path d="M77 -6L94 -2.3V2.3L77 6Z" fill="url(#pg-steel)"/>
+    <path d="M78.5 -4.3L92.5 -1.6" stroke="#ffffff" stroke-width=".9" stroke-linecap="round" opacity=".9"/>
+    <path d="M94 -2.3L100 0L94 2.3Z" fill="#1b2235"/>
+    <path d="M94.6 -1.2L98.4 -.3" stroke="#ffffff" stroke-width=".45" opacity=".6"/>
+    <!-- clip (lies on the barrel, top side) -->
+    <path d="M8.6 -.1H36" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity=".28"/>
+    <path d="M8.6 -4.1H35.4A2.2 2.2 0 0 1 35.4 .3H8.6Z" fill="#0a0f1c"/>
+    <path d="M8.6 -3.5H35.3A1.6 1.6 0 0 1 35.3 -.3H8.6Z" fill="url(#pg-clip)"/>
+    <path d="M10 -2.6H34.4" stroke="#ffffff" stroke-width=".55" stroke-linecap="round" opacity=".95"/>
+    <circle cx="35.6" cy="-1.9" r="2.3" fill="#0a0f1c"/>
+    <circle cx="35.6" cy="-1.9" r="1.7" fill="url(#pg-ball)"/>
+  </g>
+  <linearGradient id="pb-red" gradientUnits="userSpaceOnUse" x1="0" y1="-7" x2="0" y2="7">
+    <stop offset="0" stop-color="#ffd4d4"/><stop offset=".16" stop-color="#ff8c8c"/><stop offset=".48" stop-color="#ef4444"/>
+    <stop offset=".82" stop-color="#b51d1d"/><stop offset="1" stop-color="#6b0f0f"/>
+  </linearGradient>
+  <linearGradient id="pgr-red" gradientUnits="userSpaceOnUse" x1="0" y1="-6.6" x2="0" y2="6.6">
+    <stop offset="0" stop-color="#ef4444"/><stop offset=".3" stop-color="#b51d1d"/><stop offset="1" stop-color="#070a14"/>
+  </linearGradient>
+  <g id="pen-red">
+    <!-- outline / silhouette -->
+    <path d="M3.5 -7.9H64V-7.5H77V-6.9L94.6 -3L101.4 0L94.6 3L77 6.9V7.5H64V7.9H3.5A4.4 4.4 0 0 1 -0.9 3.5V-3.5A4.4 4.4 0 0 1 3.5 -7.9Z" fill="#050812"/>
+    <!-- barrel -->
+    <path d="M3.5 -7H64V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="url(#pb-red)"/>
+    <path d="M3.5 -7H6V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="#03060e" opacity=".38"/>
+    <rect x="6" y="-7.2" width="2.6" height="14.4" fill="url(#pg-band)"/>
+    <path d="M9 -6.1H62" stroke="#ffffff" stroke-width=".6" opacity=".35"/>
+    <path d="M38 -4.4H54" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".6"/>
+    <path d="M10 5.6H62" stroke="#ff8c8c" stroke-width=".9" opacity=".35"/>
+    <!-- front gold band -->
+    <rect x="56" y="-7.3" width="5.4" height="14.6" fill="url(#pg-band)"/>
+    <path d="M56.4 -6.1H61" stroke="#fff8dc" stroke-width=".9" opacity=".85"/>
+    <!-- grip -->
+    <rect x="64" y="-6.6" width="13" height="13.2" fill="url(#pgr-red)"/>
+    <path d="M66.8 -6.4V6.4M69.6 -6.4V6.4M72.4 -6.4V6.4M75.2 -6.4V6.4" stroke="#000" stroke-width=".9" opacity=".35"/>
+    <path d="M67.4 -6.4V6.4M70.2 -6.4V6.4M73 -6.4V6.4M75.8 -6.4V6.4" stroke="#ffffff" stroke-width=".5" opacity=".2"/>
+    <!-- cone + nib -->
+    <path d="M77 -6L94 -2.3V2.3L77 6Z" fill="url(#pg-steel)"/>
+    <path d="M78.5 -4.3L92.5 -1.6" stroke="#ffffff" stroke-width=".9" stroke-linecap="round" opacity=".9"/>
+    <path d="M94 -2.3L100 0L94 2.3Z" fill="#1b2235"/>
+    <path d="M94.6 -1.2L98.4 -.3" stroke="#ffffff" stroke-width=".45" opacity=".6"/>
+    <!-- clip (lies on the barrel, top side) -->
+    <path d="M8.6 -.1H36" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity=".28"/>
+    <path d="M8.6 -4.1H35.4A2.2 2.2 0 0 1 35.4 .3H8.6Z" fill="#0a0f1c"/>
+    <path d="M8.6 -3.5H35.3A1.6 1.6 0 0 1 35.3 -.3H8.6Z" fill="url(#pg-clip)"/>
+    <path d="M10 -2.6H34.4" stroke="#ffffff" stroke-width=".55" stroke-linecap="round" opacity=".95"/>
+    <circle cx="35.6" cy="-1.9" r="2.3" fill="#0a0f1c"/>
+    <circle cx="35.6" cy="-1.9" r="1.7" fill="url(#pg-ball)"/>
+  </g>
+  <radialGradient id="bu-fill" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#fff2a8"/><stop offset=".62" stop-color="#ffc23d"/><stop offset="1" stop-color="#ff8a00"/>
+  </radialGradient>
+  <radialGradient id="bu-glow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffd35a" stop-opacity=".75"/><stop offset=".4" stop-color="#ffb21f" stop-opacity=".32"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="bu-core" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#fff6c8" stop-opacity="0"/>
+  </radialGradient>
+  <path id="spark4" d="M0 -1L.24 -.24L1 0L.24 .24L0 1L-.24 .24L-1 0L-.24 -.24Z" fill="#ffffff"/>
+  <filter id="em-shadow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+    <feOffset dx="0" dy="18" result="b"/>
+    <feFlood flood-color="#000000" flood-opacity=".55"/>
+    <feComposite in2="b" operator="in" result="s"/>
+    <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="em-cast" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="7"/>
+    <feOffset dx="6" dy="14" result="b"/>
+    <feFlood flood-color="#000000" flood-opacity=".6"/>
+    <feComposite in2="b" operator="in" result="s"/>
+    <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <clipPath id="ic-shape"><rect width="1024" height="1024" rx="0"/></clipPath>
+  <linearGradient id="ic-rim" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".16"/><stop offset=".5" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+<g clip-path="url(#ic-shape)">
+<rect width="1024" height="1024" fill="url(#nv-bg)"/>
+  <g mask="url(#nv-raymask)"><path d="M512 506L512 -254L619.08 -246.42ZM512 506L746.85 -216.8L846.35 -176.5ZM512 506L958.72 -108.85L1040.89 -39.78ZM512 506L1126.85 59.28L1183.66 150.37ZM512 506L1234.8 271.15L1260.68 375.33ZM512 506L1272 506L1264.42 613.08ZM512 506L1234.8 740.85L1194.5 840.35ZM512 506L1126.85 952.72L1057.78 1034.89ZM512 506L958.72 1120.85L867.63 1177.66ZM512 506L746.85 1228.8L642.67 1254.68ZM512 506L512 1266L404.92 1258.42ZM512 506L277.15 1228.8L177.65 1188.5ZM512 506L65.28 1120.85L-16.89 1051.78ZM512 506L-102.85 952.72L-159.66 861.63ZM512 506L-210.8 740.85L-236.68 636.67ZM512 506L-248 506L-240.42 398.92ZM512 506L-210.8 271.15L-170.5 171.65ZM512 506L-102.85 59.28L-33.78 -22.89ZM512 506L65.28 -108.85L156.37 -165.66ZM512 506L277.15 -216.8L381.33 -242.68Z" fill="#9fc0ff" opacity="0.055"/></g>
+  <circle cx="512" cy="506" r="300" fill="none" stroke="#9fc0ff" stroke-width="3" opacity=".06"/>
+  <circle cx="512" cy="506" r="420" fill="none" stroke="#9fc0ff" stroke-width="2" opacity=".04"/>
+<circle cx="512" cy="506" r="315" fill="url(#bu-glow)"/>
+  <g filter="url(#em-shadow)"><use xlink:href="#pen-red" transform="translate(819 819) rotate(-135) scale(8.68 -7.81)"/></g>
+  <g filter="url(#em-cast)"><use xlink:href="#pen-blue" transform="translate(205 819) rotate(-45) scale(8.68 7.81)"/></g>
+  <polygon points="527.68,356.82 533.5,449.99 564.9,433.19 558.63,468.24 635.33,451.09 571.26,496.61 613.44,516.66 568.01,527.5 645.49,602.98 549.76,552.63 549.83,590.96 521.39,565.26 497.1,647.72 490.5,562.01 450.28,590.95 465.37,543.76 372.23,568.23 452.74,515.39 425.48,496.91 455.99,484.5 407.64,430.18 474.24,459.37 468.07,407.34 502.61,446.74" fill="#7a3a00" stroke="#7a3a00" stroke-width="13.5" stroke-linejoin="round"/><polygon points="527.68,356.82 533.5,449.99 564.9,433.19 558.63,468.24 635.33,451.09 571.26,496.61 613.44,516.66 568.01,527.5 645.49,602.98 549.76,552.63 549.83,590.96 521.39,565.26 497.1,647.72 490.5,562.01 450.28,590.95 465.37,543.76 372.23,568.23 452.74,515.39 425.48,496.91 455.99,484.5 407.64,430.18 474.24,459.37 468.07,407.34 502.61,446.74" fill="url(#bu-fill)"/><polygon points="552.84,429.18 542.21,481.1 574.4,486.92 550.97,509.75 584.98,544.8 536.9,536.21 532.35,572.56 508.25,544.97 471.16,582.82 481.79,530.9 452.1,524.31 473.03,502.25 441.33,468.42 487.1,475.79 492.16,441.11 515.75,467.03" fill="#fffbe6" opacity=".95"/><circle cx="512" cy="506" r="45" fill="url(#bu-core)"/><use xlink:href="#spark4" transform="translate(515 257) scale(25.5)"/><use xlink:href="#spark4" transform="translate(272 524) scale(19.5)"/><use xlink:href="#spark4" transform="translate(749 509) scale(22.5)"/><use xlink:href="#spark4" transform="translate(519.5 749) scale(16.5)"/><circle cx="294.5" cy="434" r="6.75" fill="#ffd35a"/><circle cx="737" cy="590" r="6" fill="#ffd35a"/><circle cx="575" cy="723.5" r="5.7" fill="#ffd35a"/><circle cx="437" cy="281" r="6" fill="#ffd35a"/><circle cx="599" cy="293" r="4.8" fill="#ffd35a"/><circle cx="299" cy="599" r="5.1" fill="#ffd35a"/>
+
+</g>
+</svg>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2732" height="2732" viewBox="0 0 2732 2732">
+<title>Pen Fight — splash</title>
+<defs>
+  <radialGradient id="nv-bg" cx=".5" cy=".46" r=".72">
+    <stop offset="0" stop-color="#1f2e60"/><stop offset=".45" stop-color="#121b36"/><stop offset="1" stop-color="#070b16"/>
+  </radialGradient>
+  <radialGradient id="nv-rayfade" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="1"/><stop offset=".7" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <mask id="nv-raymask" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <rect width="1024" height="1024" fill="url(#nv-rayfade)"/>
+  </mask>
+  <linearGradient id="pg-steel" gradientUnits="userSpaceOnUse" x1="0" y1="-6" x2="0" y2="6">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".28" stop-color="#d3dae6"/><stop offset=".66" stop-color="#7f8ba2"/><stop offset="1" stop-color="#363f54"/>
+  </linearGradient>
+  <radialGradient id="pg-ball" cx=".35" cy=".3" r=".7">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c2cad8"/><stop offset="1" stop-color="#4f5a70"/>
+  </radialGradient>
+  <linearGradient id="pg-clip" gradientUnits="userSpaceOnUse" x1="0" y1="-3.5" x2="0" y2="-.3">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#cfd8e6"/><stop offset="1" stop-color="#66728a"/>
+  </linearGradient>
+  <linearGradient id="pg-grip" gradientUnits="userSpaceOnUse" x1="0" y1="-6.4" x2="0" y2="6.4">
+    <stop offset="0" stop-color="#55607a"/><stop offset=".35" stop-color="#262d40"/><stop offset="1" stop-color="#0c0f18"/>
+  </linearGradient>
+  <linearGradient id="pg-band" gradientUnits="userSpaceOnUse" x1="0" y1="-7.4" x2="0" y2="7.4">
+    <stop offset="0" stop-color="#fff3c4"/><stop offset=".35" stop-color="#ffcf4d"/><stop offset=".75" stop-color="#e58a00"/><stop offset="1" stop-color="#8a4b00"/>
+  </linearGradient>
+  <linearGradient id="pb-blue" gradientUnits="userSpaceOnUse" x1="0" y1="-7" x2="0" y2="7">
+    <stop offset="0" stop-color="#d6eaff"/><stop offset=".16" stop-color="#7fb5ff"/><stop offset=".48" stop-color="#3b82f6"/>
+    <stop offset=".82" stop-color="#1e48b8"/><stop offset="1" stop-color="#132a6e"/>
+  </linearGradient>
+  <linearGradient id="pgr-blue" gradientUnits="userSpaceOnUse" x1="0" y1="-6.6" x2="0" y2="6.6">
+    <stop offset="0" stop-color="#3b82f6"/><stop offset=".3" stop-color="#1e48b8"/><stop offset="1" stop-color="#070a14"/>
+  </linearGradient>
+  <g id="pen-blue">
+    <!-- outline / silhouette -->
+    <path d="M3.5 -7.9H64V-7.5H77V-6.9L94.6 -3L101.4 0L94.6 3L77 6.9V7.5H64V7.9H3.5A4.4 4.4 0 0 1 -0.9 3.5V-3.5A4.4 4.4 0 0 1 3.5 -7.9Z" fill="#050812"/>
+    <!-- barrel -->
+    <path d="M3.5 -7H64V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="url(#pb-blue)"/>
+    <path d="M3.5 -7H6V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="#03060e" opacity=".38"/>
+    <rect x="6" y="-7.2" width="2.6" height="14.4" fill="url(#pg-band)"/>
+    <path d="M9 -6.1H62" stroke="#ffffff" stroke-width=".6" opacity=".35"/>
+    <path d="M38 -4.4H54" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".6"/>
+    <path d="M10 5.6H62" stroke="#7fb5ff" stroke-width=".9" opacity=".35"/>
+    <!-- front gold band -->
+    <rect x="56" y="-7.3" width="5.4" height="14.6" fill="url(#pg-band)"/>
+    <path d="M56.4 -6.1H61" stroke="#fff8dc" stroke-width=".9" opacity=".85"/>
+    <!-- grip -->
+    <rect x="64" y="-6.6" width="13" height="13.2" fill="url(#pgr-blue)"/>
+    <path d="M66.8 -6.4V6.4M69.6 -6.4V6.4M72.4 -6.4V6.4M75.2 -6.4V6.4" stroke="#000" stroke-width=".9" opacity=".35"/>
+    <path d="M67.4 -6.4V6.4M70.2 -6.4V6.4M73 -6.4V6.4M75.8 -6.4V6.4" stroke="#ffffff" stroke-width=".5" opacity=".2"/>
+    <!-- cone + nib -->
+    <path d="M77 -6L94 -2.3V2.3L77 6Z" fill="url(#pg-steel)"/>
+    <path d="M78.5 -4.3L92.5 -1.6" stroke="#ffffff" stroke-width=".9" stroke-linecap="round" opacity=".9"/>
+    <path d="M94 -2.3L100 0L94 2.3Z" fill="#1b2235"/>
+    <path d="M94.6 -1.2L98.4 -.3" stroke="#ffffff" stroke-width=".45" opacity=".6"/>
+    <!-- clip (lies on the barrel, top side) -->
+    <path d="M8.6 -.1H36" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity=".28"/>
+    <path d="M8.6 -4.1H35.4A2.2 2.2 0 0 1 35.4 .3H8.6Z" fill="#0a0f1c"/>
+    <path d="M8.6 -3.5H35.3A1.6 1.6 0 0 1 35.3 -.3H8.6Z" fill="url(#pg-clip)"/>
+    <path d="M10 -2.6H34.4" stroke="#ffffff" stroke-width=".55" stroke-linecap="round" opacity=".95"/>
+    <circle cx="35.6" cy="-1.9" r="2.3" fill="#0a0f1c"/>
+    <circle cx="35.6" cy="-1.9" r="1.7" fill="url(#pg-ball)"/>
+  </g>
+  <linearGradient id="pb-red" gradientUnits="userSpaceOnUse" x1="0" y1="-7" x2="0" y2="7">
+    <stop offset="0" stop-color="#ffd4d4"/><stop offset=".16" stop-color="#ff8c8c"/><stop offset=".48" stop-color="#ef4444"/>
+    <stop offset=".82" stop-color="#b51d1d"/><stop offset="1" stop-color="#6b0f0f"/>
+  </linearGradient>
+  <linearGradient id="pgr-red" gradientUnits="userSpaceOnUse" x1="0" y1="-6.6" x2="0" y2="6.6">
+    <stop offset="0" stop-color="#ef4444"/><stop offset=".3" stop-color="#b51d1d"/><stop offset="1" stop-color="#070a14"/>
+  </linearGradient>
+  <g id="pen-red">
+    <!-- outline / silhouette -->
+    <path d="M3.5 -7.9H64V-7.5H77V-6.9L94.6 -3L101.4 0L94.6 3L77 6.9V7.5H64V7.9H3.5A4.4 4.4 0 0 1 -0.9 3.5V-3.5A4.4 4.4 0 0 1 3.5 -7.9Z" fill="#050812"/>
+    <!-- barrel -->
+    <path d="M3.5 -7H64V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="url(#pb-red)"/>
+    <path d="M3.5 -7H6V7H3.5A3.5 3.5 0 0 1 0 3.5V-3.5A3.5 3.5 0 0 1 3.5 -7Z" fill="#03060e" opacity=".38"/>
+    <rect x="6" y="-7.2" width="2.6" height="14.4" fill="url(#pg-band)"/>
+    <path d="M9 -6.1H62" stroke="#ffffff" stroke-width=".6" opacity=".35"/>
+    <path d="M38 -4.4H54" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".6"/>
+    <path d="M10 5.6H62" stroke="#ff8c8c" stroke-width=".9" opacity=".35"/>
+    <!-- front gold band -->
+    <rect x="56" y="-7.3" width="5.4" height="14.6" fill="url(#pg-band)"/>
+    <path d="M56.4 -6.1H61" stroke="#fff8dc" stroke-width=".9" opacity=".85"/>
+    <!-- grip -->
+    <rect x="64" y="-6.6" width="13" height="13.2" fill="url(#pgr-red)"/>
+    <path d="M66.8 -6.4V6.4M69.6 -6.4V6.4M72.4 -6.4V6.4M75.2 -6.4V6.4" stroke="#000" stroke-width=".9" opacity=".35"/>
+    <path d="M67.4 -6.4V6.4M70.2 -6.4V6.4M73 -6.4V6.4M75.8 -6.4V6.4" stroke="#ffffff" stroke-width=".5" opacity=".2"/>
+    <!-- cone + nib -->
+    <path d="M77 -6L94 -2.3V2.3L77 6Z" fill="url(#pg-steel)"/>
+    <path d="M78.5 -4.3L92.5 -1.6" stroke="#ffffff" stroke-width=".9" stroke-linecap="round" opacity=".9"/>
+    <path d="M94 -2.3L100 0L94 2.3Z" fill="#1b2235"/>
+    <path d="M94.6 -1.2L98.4 -.3" stroke="#ffffff" stroke-width=".45" opacity=".6"/>
+    <!-- clip (lies on the barrel, top side) -->
+    <path d="M8.6 -.1H36" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity=".28"/>
+    <path d="M8.6 -4.1H35.4A2.2 2.2 0 0 1 35.4 .3H8.6Z" fill="#0a0f1c"/>
+    <path d="M8.6 -3.5H35.3A1.6 1.6 0 0 1 35.3 -.3H8.6Z" fill="url(#pg-clip)"/>
+    <path d="M10 -2.6H34.4" stroke="#ffffff" stroke-width=".55" stroke-linecap="round" opacity=".95"/>
+    <circle cx="35.6" cy="-1.9" r="2.3" fill="#0a0f1c"/>
+    <circle cx="35.6" cy="-1.9" r="1.7" fill="url(#pg-ball)"/>
+  </g>
+  <radialGradient id="bu-fill" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#fff2a8"/><stop offset=".62" stop-color="#ffc23d"/><stop offset="1" stop-color="#ff8a00"/>
+  </radialGradient>
+  <radialGradient id="bu-glow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffd35a" stop-opacity=".75"/><stop offset=".4" stop-color="#ffb21f" stop-opacity=".32"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="bu-core" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#fff6c8" stop-opacity="0"/>
+  </radialGradient>
+  <path id="spark4" d="M0 -1L.24 -.24L1 0L.24 .24L0 1L-.24 .24L-1 0L-.24 -.24Z" fill="#ffffff"/>
+  <filter id="em-shadow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+    <feOffset dx="0" dy="18" result="b"/>
+    <feFlood flood-color="#000000" flood-opacity=".55"/>
+    <feComposite in2="b" operator="in" result="s"/>
+    <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="em-cast" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="7"/>
+    <feOffset dx="6" dy="14" result="b"/>
+    <feFlood flood-color="#000000" flood-opacity=".6"/>
+    <feComposite in2="b" operator="in" result="s"/>
+    <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <linearGradient id="wm-gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
+    <stop offset="0" stop-color="#fff7d6"/><stop offset=".34" stop-color="#ffd860"/><stop offset=".52" stop-color="#ffb21f"/><stop offset="1" stop-color="#e07800"/>
+  </linearGradient>
+  <linearGradient id="wm-silver" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#eef3fc"/><stop offset=".55" stop-color="#c7d3ea"/><stop offset="1" stop-color="#8fa1c8"/>
+  </linearGradient>
+  <linearGradient id="wm-gloss" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/><stop offset=".44" stop-color="#ffffff" stop-opacity=".12"/><stop offset=".45" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="wm-shadow" x="-10%" y="-40%" width="120%" height="200%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+    <feOffset dx="0" dy="6" result="b"/>
+    <feFlood flood-color="#000000" flood-opacity=".6"/>
+    <feComposite in2="b" operator="in" result="s"/>
+    <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <radialGradient id="sp-glow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffc23d" stop-opacity="0.16"/><stop offset="1" stop-color="#ffc23d" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="sp-rule-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffc23d" stop-opacity="0"/><stop offset="1" stop-color="#ffc23d" stop-opacity=".9"/></linearGradient>
+  <linearGradient id="sp-rule-r" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffc23d" stop-opacity=".9"/><stop offset="1" stop-color="#ffc23d" stop-opacity="0"/></linearGradient>
+</defs>
+<g transform="scale(2.66796875)"><rect width="1024" height="1024" fill="url(#nv-bg)"/>
+  <g mask="url(#nv-raymask)"><path d="M512 506L512 -254L619.08 -246.42ZM512 506L746.85 -216.8L846.35 -176.5ZM512 506L958.72 -108.85L1040.89 -39.78ZM512 506L1126.85 59.28L1183.66 150.37ZM512 506L1234.8 271.15L1260.68 375.33ZM512 506L1272 506L1264.42 613.08ZM512 506L1234.8 740.85L1194.5 840.35ZM512 506L1126.85 952.72L1057.78 1034.89ZM512 506L958.72 1120.85L867.63 1177.66ZM512 506L746.85 1228.8L642.67 1254.68ZM512 506L512 1266L404.92 1258.42ZM512 506L277.15 1228.8L177.65 1188.5ZM512 506L65.28 1120.85L-16.89 1051.78ZM512 506L-102.85 952.72L-159.66 861.63ZM512 506L-210.8 740.85L-236.68 636.67ZM512 506L-248 506L-240.42 398.92ZM512 506L-210.8 271.15L-170.5 171.65ZM512 506L-102.85 59.28L-33.78 -22.89ZM512 506L65.28 -108.85L156.37 -165.66ZM512 506L277.15 -216.8L381.33 -242.68Z" fill="#9fc0ff" opacity="0.05"/></g>
+  <circle cx="512" cy="506" r="300" fill="none" stroke="#9fc0ff" stroke-width="3" opacity=".06"/>
+  <circle cx="512" cy="506" r="420" fill="none" stroke="#9fc0ff" stroke-width="2" opacity=".04"/></g>
+<circle cx="1366" cy="1326" r="900" fill="url(#sp-glow)"/>
+<g transform="translate(1046 860) scale(0.625)"><circle cx="512" cy="506" r="315" fill="url(#bu-glow)"/>
+  <g filter="url(#em-shadow)"><use xlink:href="#pen-red" transform="translate(819 819) rotate(-135) scale(8.68 -7.81)"/></g>
+  <g filter="url(#em-cast)"><use xlink:href="#pen-blue" transform="translate(205 819) rotate(-45) scale(8.68 7.81)"/></g>
+  <polygon points="527.68,356.82 533.5,449.99 564.9,433.19 558.63,468.24 635.33,451.09 571.26,496.61 613.44,516.66 568.01,527.5 645.49,602.98 549.76,552.63 549.83,590.96 521.39,565.26 497.1,647.72 490.5,562.01 450.28,590.95 465.37,543.76 372.23,568.23 452.74,515.39 425.48,496.91 455.99,484.5 407.64,430.18 474.24,459.37 468.07,407.34 502.61,446.74" fill="#7a3a00" stroke="#7a3a00" stroke-width="13.5" stroke-linejoin="round"/><polygon points="527.68,356.82 533.5,449.99 564.9,433.19 558.63,468.24 635.33,451.09 571.26,496.61 613.44,516.66 568.01,527.5 645.49,602.98 549.76,552.63 549.83,590.96 521.39,565.26 497.1,647.72 490.5,562.01 450.28,590.95 465.37,543.76 372.23,568.23 452.74,515.39 425.48,496.91 455.99,484.5 407.64,430.18 474.24,459.37 468.07,407.34 502.61,446.74" fill="url(#bu-fill)"/><polygon points="552.84,429.18 542.21,481.1 574.4,486.92 550.97,509.75 584.98,544.8 536.9,536.21 532.35,572.56 508.25,544.97 471.16,582.82 481.79,530.9 452.1,524.31 473.03,502.25 441.33,468.42 487.1,475.79 492.16,441.11 515.75,467.03" fill="#fffbe6" opacity=".95"/><circle cx="512" cy="506" r="45" fill="url(#bu-core)"/><use xlink:href="#spark4" transform="translate(515 257) scale(25.5)"/><use xlink:href="#spark4" transform="translate(272 524) scale(19.5)"/><use xlink:href="#spark4" transform="translate(749 509) scale(22.5)"/><use xlink:href="#spark4" transform="translate(519.5 749) scale(16.5)"/><circle cx="294.5" cy="434" r="6.75" fill="#ffd35a"/><circle cx="737" cy="590" r="6" fill="#ffd35a"/><circle cx="575" cy="723.5" r="5.7" fill="#ffd35a"/><circle cx="437" cy="281" r="6" fill="#ffd35a"/><circle cx="599" cy="293" r="4.8" fill="#ffd35a"/><circle cx="299" cy="599" r="5.1" fill="#ffd35a"/></g>
+
+  <clipPath id="wm-clip"><path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z"/><path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z"/></clipPath>
+  <g transform="translate(875.22 1530) scale(1.5) skewX(-10)">
+    <g filter="url(#wm-shadow)">
+      <g fill="#05070f" stroke="#05070f" stroke-width="13" stroke-linejoin="round">
+        <g transform="translate(0 8)"><path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z"/><path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z"/></g><path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z"/><path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z"/>
+      </g>
+    </g>
+    <g transform="translate(0 8)"><path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z" fill="#34447a"/><path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z" fill="#9a4f00"/></g>
+    <g transform="translate(0 4)"><path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z" fill="#34447a"/><path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z" fill="#b35f00"/></g>
+    <path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z" fill="url(#wm-silver)"/>
+    <path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z" fill="url(#wm-gold)"/>
+    <g clip-path="url(#wm-clip)"><rect x="-40" y="-5" width="769.63" height="60" fill="url(#wm-gloss)"/></g>
+    <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round" opacity=".35"><path d="M0 0L62 0L78 16L78 48L62 64L28 64L28 100L0 100ZM28 24L50 24L50 42L28 42ZM87 0L155 0L155 24L115 24L115 38L147 38L147 62L115 62L115 76L155 76L155 100L87 100ZM164 0L196 0L224 54L224 0L252 0L252 100L220 100L192 46L192 100L164 100Z"/><path d="M284 0L350 0L350 24L312 24L312 38L342 38L342 62L312 62L312 100L284 100ZM359 0L387 0L387 100L359 100ZM412 0L466 0L482 16L482 24L424 24L424 76L454 76L454 64L440 64L440 44L482 44L482 84L466 100L412 100L396 84L396 16ZM491 0L519 0L519 37L553 37L553 0L581 0L581 100L553 100L553 63L519 63L519 100L491 100ZM590 0L672 0L672 24L645 24L645 100L617 100L617 24L590 24Z"/></g>
+  </g>
+<path d="M918.81 1788L918.81 1743.86L928.17 1743.86Q933.63 1743.86 936.45 1746.83Q939.27 1749.81 939.27 1755.26L939.27 1775.91Q939.27 1782.11 936.26 1785.06Q933.25 1788 927.61 1788L918.81 1788ZM925.13 1749.81L925.13 1782.05L928.05 1782.05Q930.71 1782.05 931.83 1780.72Q932.94 1779.38 932.94 1776.53L932.94 1755.26Q932.94 1752.66 931.89 1751.23Q930.84 1749.81 928.05 1749.81L925.13 1749.81ZM960.22 1788L960.22 1743.86L979.07 1743.86L979.07 1749.81L966.54 1749.81L966.54 1762.77L977.46 1762.77L977.46 1768.72L966.54 1768.72L966.54 1781.68L979.07 1781.68L979.07 1788L960.22 1788ZM1018.62 1756.57L1012.3 1756.57L1012.3 1755.14Q1012.3 1752.97 1011.27 1751.39Q1010.25 1749.81 1007.83 1749.81Q1006.53 1749.81 1005.72 1750.3Q1004.92 1750.8 1004.42 1751.54Q1003.93 1752.35 1003.74 1753.37Q1003.56 1754.4 1003.56 1755.51Q1003.56 1756.81 1003.65 1757.68Q1003.74 1758.55 1004.11 1759.23Q1004.48 1759.91 1005.2 1760.41Q1005.91 1760.91 1007.15 1761.4L1011.99 1763.32Q1014.09 1764.13 1015.4 1765.22Q1016.7 1766.3 1017.44 1767.73Q1018.13 1769.21 1018.37 1771.11Q1018.62 1773 1018.62 1775.41Q1018.62 1778.2 1018.06 1780.59Q1017.51 1782.98 1016.27 1784.65Q1014.96 1786.39 1012.85 1787.38Q1010.75 1788.37 1007.71 1788.37Q1005.42 1788.37 1003.43 1787.57Q1001.45 1786.76 1000.02 1785.33Q998.59 1783.91 997.76 1782.02Q996.92 1780.13 996.92 1777.89L996.92 1775.54L1003.24 1775.54L1003.24 1777.52Q1003.24 1779.26 1004.27 1780.65Q1005.29 1782.05 1007.71 1782.05Q1009.32 1782.05 1010.22 1781.58Q1011.12 1781.12 1011.61 1780.25Q1012.11 1779.38 1012.2 1778.17Q1012.3 1776.96 1012.3 1775.48Q1012.3 1773.74 1012.17 1772.62Q1012.05 1771.51 1011.68 1770.83Q1011.24 1770.14 1010.53 1769.71Q1009.82 1769.28 1008.64 1768.78L1004.11 1766.92Q1000.02 1765.25 998.63 1762.49Q997.23 1759.73 997.23 1755.57Q997.23 1753.09 997.91 1750.86Q998.59 1748.63 999.96 1747.02Q1001.26 1745.41 1003.28 1744.45Q1005.29 1743.48 1008.08 1743.48Q1010.44 1743.48 1012.39 1744.35Q1014.34 1745.22 1015.77 1746.65Q1018.62 1749.62 1018.62 1753.47L1018.62 1756.57ZM1038.33 1788L1038.33 1743.86L1044.66 1743.86L1044.66 1764.01L1044.78 1764.01L1054.02 1743.86L1060.34 1743.86L1051.72 1761.53L1061.96 1788L1055.26 1788L1048.07 1768.41L1044.66 1774.79L1044.66 1788L1038.33 1788ZM1106.28 1788L1106.28 1743.86L1115.51 1743.86Q1118.55 1743.86 1120.69 1744.79Q1122.83 1745.72 1124.2 1747.27Q1125.56 1748.82 1126.15 1750.83Q1126.74 1752.85 1126.74 1755.02L1126.74 1756.63Q1126.74 1758.43 1126.46 1759.67Q1126.18 1760.91 1125.62 1761.84Q1124.57 1763.57 1122.4 1764.81Q1124.63 1765.87 1125.68 1767.91Q1126.74 1769.96 1126.74 1773.49L1126.74 1775.97Q1126.74 1781.8 1123.92 1784.9Q1121.1 1788 1114.9 1788L1106.28 1788ZM1112.6 1767.54L1112.6 1781.68L1115.33 1781.68Q1117.25 1781.68 1118.34 1781.12Q1119.42 1780.56 1119.98 1779.57Q1120.54 1778.58 1120.66 1777.21Q1120.78 1775.85 1120.78 1774.24Q1120.78 1772.56 1120.6 1771.32Q1120.41 1770.08 1119.86 1769.21Q1119.23 1768.35 1118.18 1767.94Q1117.13 1767.54 1115.39 1767.54L1112.6 1767.54ZM1112.6 1749.81L1112.6 1761.96L1115.45 1761.96Q1118.62 1761.96 1119.7 1760.38Q1120.78 1758.8 1120.78 1755.76Q1120.78 1752.78 1119.58 1751.3Q1118.37 1749.81 1115.21 1749.81L1112.6 1749.81ZM1160.46 1772.56L1157.36 1756.57L1157.24 1756.57L1154.14 1772.56L1160.46 1772.56ZM1144.84 1788L1154.7 1743.86L1159.96 1743.86L1169.82 1788L1163.5 1788L1161.64 1778.51L1153.02 1778.51L1151.16 1788L1144.84 1788ZM1192.08 1788L1192.08 1749.81L1184.76 1749.81L1184.76 1743.86L1205.72 1743.86L1205.72 1749.81L1198.4 1749.81L1198.4 1788L1192.08 1788ZM1227.66 1788L1227.66 1749.81L1220.35 1749.81L1220.35 1743.86L1241.3 1743.86L1241.3 1749.81L1233.98 1749.81L1233.98 1788L1227.66 1788ZM1259.09 1788L1259.09 1743.86L1265.42 1743.86L1265.42 1781.68L1277.94 1781.68L1277.94 1788L1259.09 1788ZM1297.03 1788L1297.03 1743.86L1315.88 1743.86L1315.88 1749.81L1303.36 1749.81L1303.36 1762.77L1314.27 1762.77L1314.27 1768.72L1303.36 1768.72L1303.36 1781.68L1315.88 1781.68L1315.88 1788L1297.03 1788ZM1381.59 1775.41L1381.59 1778.14Q1381.59 1780.19 1380.82 1782.02Q1380.04 1783.85 1378.68 1785.27Q1377.31 1786.7 1375.48 1787.54Q1373.66 1788.37 1371.55 1788.37Q1369.75 1788.37 1367.89 1787.88Q1366.03 1787.38 1364.54 1786.14Q1363.05 1784.9 1362.09 1782.95Q1361.13 1780.99 1361.13 1777.96L1361.13 1753.65Q1361.13 1751.48 1361.88 1749.62Q1362.62 1747.76 1363.98 1746.4Q1365.35 1745.03 1367.24 1744.26Q1369.13 1743.48 1371.42 1743.48Q1375.89 1743.48 1378.68 1746.4Q1380.04 1747.82 1380.82 1749.78Q1381.59 1751.73 1381.59 1754.02L1381.59 1756.5L1375.27 1756.5L1375.27 1754.4Q1375.27 1752.54 1374.21 1751.17Q1373.16 1749.81 1371.36 1749.81Q1369.01 1749.81 1368.23 1751.27Q1367.46 1752.72 1367.46 1754.95L1367.46 1777.52Q1367.46 1779.44 1368.29 1780.75Q1369.13 1782.05 1371.3 1782.05Q1371.92 1782.05 1372.63 1781.83Q1373.35 1781.61 1373.97 1781.12Q1374.52 1780.62 1374.9 1779.75Q1375.27 1778.89 1375.27 1777.58L1375.27 1775.41L1381.59 1775.41ZM1401.74 1788L1401.74 1743.86L1408.06 1743.86L1408.06 1762.77L1415.87 1762.77L1415.87 1743.86L1422.2 1743.86L1422.2 1788L1415.87 1788L1415.87 1768.35L1408.06 1768.35L1408.06 1788L1401.74 1788ZM1455.92 1772.56L1452.82 1756.57L1452.7 1756.57L1449.6 1772.56L1455.92 1772.56ZM1440.3 1788L1450.16 1743.86L1455.43 1743.86L1465.28 1788L1458.96 1788L1457.1 1778.51L1448.48 1778.51L1446.62 1788L1440.3 1788ZM1483.38 1788L1483.38 1743.86L1489.46 1743.86L1497.58 1767.23L1497.71 1767.23L1505.77 1743.86L1511.9 1743.86L1511.9 1788L1505.58 1788L1505.58 1761.15L1505.46 1761.15L1499.19 1780.13L1496.03 1780.13L1489.83 1761.15L1489.71 1761.15L1489.71 1788L1483.38 1788ZM1532.86 1788L1532.86 1743.86L1542.34 1743.86Q1544.95 1743.86 1546.93 1744.54Q1548.91 1745.22 1550.53 1746.96Q1552.14 1748.69 1552.76 1751.02Q1553.38 1753.34 1553.38 1757.31Q1553.38 1760.29 1553.04 1762.33Q1552.7 1764.38 1551.58 1766.18Q1550.28 1768.35 1548.11 1769.56Q1545.94 1770.76 1542.4 1770.76L1539.18 1770.76L1539.18 1788L1532.86 1788ZM1539.18 1749.81L1539.18 1764.81L1542.22 1764.81Q1544.14 1764.81 1545.19 1764.25Q1546.25 1763.7 1546.74 1762.7Q1547.24 1761.77 1547.33 1760.41Q1547.43 1759.05 1547.43 1757.37Q1547.43 1755.82 1547.36 1754.43Q1547.3 1753.03 1546.8 1751.98Q1546.31 1750.92 1545.32 1750.37Q1544.32 1749.81 1542.47 1749.81L1539.18 1749.81ZM1573.28 1788L1573.28 1743.86L1579.6 1743.86L1579.6 1788L1573.28 1788ZM1600.36 1754.27Q1600.36 1751.61 1601.29 1749.56Q1602.22 1747.51 1603.77 1746.15Q1605.26 1744.85 1607.15 1744.17Q1609.04 1743.48 1610.97 1743.48Q1612.89 1743.48 1614.78 1744.17Q1616.67 1744.85 1618.22 1746.15Q1619.71 1747.51 1620.64 1749.56Q1621.57 1751.61 1621.57 1754.27L1621.57 1777.58Q1621.57 1780.37 1620.64 1782.36Q1619.71 1784.34 1618.22 1785.64Q1616.67 1787.01 1614.78 1787.69Q1612.89 1788.37 1610.97 1788.37Q1609.04 1788.37 1607.15 1787.69Q1605.26 1787.01 1603.77 1785.64Q1602.22 1784.34 1601.29 1782.36Q1600.36 1780.37 1600.36 1777.58L1600.36 1754.27ZM1606.69 1777.58Q1606.69 1779.88 1607.96 1780.96Q1609.23 1782.05 1610.97 1782.05Q1612.7 1782.05 1613.97 1780.96Q1615.24 1779.88 1615.24 1777.58L1615.24 1754.27Q1615.24 1751.98 1613.97 1750.89Q1612.7 1749.81 1610.97 1749.81Q1609.23 1749.81 1607.96 1750.89Q1606.69 1751.98 1606.69 1754.27L1606.69 1777.58ZM1641.9 1788L1641.9 1743.86L1647.98 1743.86L1657.53 1770.45L1657.65 1770.45L1657.65 1743.86L1663.97 1743.86L1663.97 1788L1658.02 1788L1648.35 1761.46L1648.22 1761.46L1648.22 1788L1641.9 1788ZM1705.14 1756.57L1698.81 1756.57L1698.81 1755.14Q1698.81 1752.97 1697.79 1751.39Q1696.77 1749.81 1694.35 1749.81Q1693.05 1749.81 1692.24 1750.3Q1691.43 1750.8 1690.94 1751.54Q1690.44 1752.35 1690.26 1753.37Q1690.07 1754.4 1690.07 1755.51Q1690.07 1756.81 1690.16 1757.68Q1690.26 1758.55 1690.63 1759.23Q1691 1759.91 1691.71 1760.41Q1692.43 1760.91 1693.67 1761.4L1698.5 1763.32Q1700.61 1764.13 1701.91 1765.22Q1703.21 1766.3 1703.96 1767.73Q1704.64 1769.21 1704.89 1771.11Q1705.14 1773 1705.14 1775.41Q1705.14 1778.2 1704.58 1780.59Q1704.02 1782.98 1702.78 1784.65Q1701.48 1786.39 1699.37 1787.38Q1697.26 1788.37 1694.22 1788.37Q1691.93 1788.37 1689.95 1787.57Q1687.96 1786.76 1686.54 1785.33Q1685.11 1783.91 1684.27 1782.02Q1683.44 1780.13 1683.44 1777.89L1683.44 1775.54L1689.76 1775.54L1689.76 1777.52Q1689.76 1779.26 1690.78 1780.65Q1691.81 1782.05 1694.22 1782.05Q1695.84 1782.05 1696.74 1781.58Q1697.63 1781.12 1698.13 1780.25Q1698.63 1779.38 1698.72 1778.17Q1698.81 1776.96 1698.81 1775.48Q1698.81 1773.74 1698.69 1772.62Q1698.56 1771.51 1698.19 1770.83Q1697.76 1770.14 1697.05 1769.71Q1696.33 1769.28 1695.15 1768.78L1690.63 1766.92Q1686.54 1765.25 1685.14 1762.49Q1683.75 1759.73 1683.75 1755.57Q1683.75 1753.09 1684.43 1750.86Q1685.11 1748.63 1686.47 1747.02Q1687.78 1745.41 1689.79 1744.45Q1691.81 1743.48 1694.6 1743.48Q1696.95 1743.48 1698.91 1744.35Q1700.86 1745.22 1702.29 1746.65Q1705.14 1749.62 1705.14 1753.47L1705.14 1756.57ZM1724.85 1788L1724.85 1743.86L1731.17 1743.86L1731.17 1762.77L1738.99 1762.77L1738.99 1743.86L1745.31 1743.86L1745.31 1788L1738.99 1788L1738.99 1768.35L1731.17 1768.35L1731.17 1788L1724.85 1788ZM1766.45 1788L1766.45 1743.86L1772.77 1743.86L1772.77 1788L1766.45 1788ZM1793.91 1788L1793.91 1743.86L1803.39 1743.86Q1806 1743.86 1807.98 1744.54Q1809.97 1745.22 1811.58 1746.96Q1813.19 1748.69 1813.81 1751.02Q1814.43 1753.34 1814.43 1757.31Q1814.43 1760.29 1814.09 1762.33Q1813.75 1764.38 1812.63 1766.18Q1811.33 1768.35 1809.16 1769.56Q1806.99 1770.76 1803.46 1770.76L1800.23 1770.76L1800.23 1788L1793.91 1788ZM1800.23 1749.81L1800.23 1764.81L1803.27 1764.81Q1805.19 1764.81 1806.25 1764.25Q1807.3 1763.7 1807.8 1762.7Q1808.29 1761.77 1808.39 1760.41Q1808.48 1759.05 1808.48 1757.37Q1808.48 1755.82 1808.42 1754.43Q1808.35 1753.03 1807.86 1751.98Q1807.36 1750.92 1806.37 1750.37Q1805.38 1749.81 1803.52 1749.81L1800.23 1749.81Z" fill="#c3cff0"/>
+<rect x="725.83" y="1763" width="150" height="6" rx="3" fill="url(#sp-rule-l)"/>
+<rect x="1856.17" y="1763" width="150" height="6" rx="3" fill="url(#sp-rule-r)"/>
+</svg>

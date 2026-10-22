@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+<title>Pen Fight — adaptive icon background</title>
+<defs>
+  <radialGradient id="nv-bg" cx=".5" cy=".46" r=".72">
+    <stop offset="0" stop-color="#1f2e60"/><stop offset=".45" stop-color="#121b36"/><stop offset="1" stop-color="#070b16"/>
+  </radialGradient>
+  <radialGradient id="nv-rayfade" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="1"/><stop offset=".7" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <mask id="nv-raymask" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <rect width="1024" height="1024" fill="url(#nv-rayfade)"/>
+  </mask></defs>
+<rect width="1024" height="1024" fill="url(#nv-bg)"/>
+  <g mask="url(#nv-raymask)"><path d="M512 506L512 -254L619.08 -246.42ZM512 506L746.85 -216.8L846.35 -176.5ZM512 506L958.72 -108.85L1040.89 -39.78ZM512 506L1126.85 59.28L1183.66 150.37ZM512 506L1234.8 271.15L1260.68 375.33ZM512 506L1272 506L1264.42 613.08ZM512 506L1234.8 740.85L1194.5 840.35ZM512 506L1126.85 952.72L1057.78 1034.89ZM512 506L958.72 1120.85L867.63 1177.66ZM512 506L746.85 1228.8L642.67 1254.68ZM512 506L512 1266L404.92 1258.42ZM512 506L277.15 1228.8L177.65 1188.5ZM512 506L65.28 1120.85L-16.89 1051.78ZM512 506L-102.85 952.72L-159.66 861.63ZM512 506L-210.8 740.85L-236.68 636.67ZM512 506L-248 506L-240.42 398.92ZM512 506L-210.8 271.15L-170.5 171.65ZM512 506L-102.85 59.28L-33.78 -22.89ZM512 506L65.28 -108.85L156.37 -165.66ZM512 506L277.15 -216.8L381.33 -242.68Z" fill="#9fc0ff" opacity="0.055"/></g>
+  <circle cx="512" cy="506" r="300" fill="none" stroke="#9fc0ff" stroke-width="3" opacity=".06"/>
+  <circle cx="512" cy="506" r="420" fill="none" stroke="#9fc0ff" stroke-width="2" opacity=".04"/>
+</svg>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Pen Fight</string>
+    <string name="title_activity_main">Pen Fight</string>
+    <string name="package_name">com.penfight.game</string>
+    <string name="custom_url_scheme">com.penfight.game</string>
+</resources>
